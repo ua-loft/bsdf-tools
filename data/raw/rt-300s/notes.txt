@@ -1,0 +1,20 @@
+Magic Black
+- v1: only in-plane of incidence (i.e., no azimuth consideration)
+- v2: azimuth following Zemax's built-in angles
+
+"blank_v2o0_20250911_eitherWayItsATragedy"
+- JNC's RT-300S's computer monitor was on (in bottom cabinet of machine)
+- future blanks and sample measurements may want that monitor off due to stray light, but left on since "MagicBlack_v2o0_20250902" had it own
+
+Computer monitor off for all following measurements:
+
+"NiTE_on_steel_v1o0A_20250915" is 'data1' in picture (same sample, stage rotation 0 deg);
+"NiTE_on_steel_v1o0B_20250916" is 'data2' in picture (same sample, stage rotation 45 deg);
+"NiTE_on_steel_v1o0C_20250916" is 'data3' in picture (same sample, stage rotation 90 deg);
+
+"NiTE_on_invar_v1o0A_20250915" is 'data1' in picture (first mount, same position);
+"NiTE_on_invar_v1o0B_20250916" is 'data2' in picture (second mount, same position);
+"NiTE_on_invar_v1o0C_20250916" is 'data3' in picture (third mount, same position);
+
+"ANOPLATE_AnoBlack_EC1_Alum6061_v1o0_20251115" aligned as in picture;
+"ANOPLATE_AnoBlack_EC2_Alum6061_v1o0_20251115" aligned as in picture;
