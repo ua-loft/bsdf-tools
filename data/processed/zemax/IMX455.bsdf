@@ -9,7 +9,8 @@
 # Number of measurements averaged: n/a
 # Blank dataset: 'blank_v2o0_20250911_eitherWayItsATragedy.xls'
 # Dataset(s): 'IMX455_stageRotation0_20250922.xls', 'IMX455_stageRotation10_20250922.xls', 'IMX455_stageRotation20_20250922.xls', 'IMX455_stageRotation30_20250922.xls', 'IMX455_stageRotation40_20250922.xls', 'IMX455_stageRotation50_20250922.xls', 'IMX455_stageRotation60_20250922.xls', 'IMX455_stageRotation70_20250922.xls', 'IMX455_stageRotation80_20250922.xls', 'IMX455_stageRotation90_20250922.xls'
-# Processing script: 'process_RT300S_data_v1o1_anisotropic.m'
+# Processing script: 'rt300s_to_bsdf_aniso.m'
+# Processing source: https://github.com/ua-loft/bsdf-tools/tree/v1.1.0
 # Date(s) measured: 2025/09/22
 # Note(s): - sample is anisotropic;
 #          - TIS calculated over entire hemisphere, i.e., Az=[0,360), but only from BRDF values reported here so assuming BRDF=0 beyond Rz>=90;

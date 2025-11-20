@@ -9,7 +9,8 @@
 # Number of measurements averaged: 6
 # Blank dataset: 'blank_v2o0_20250911_eitherWayItsATragedy.xls'
 # Dataset(s): 'NiTE_on_invar_v1o0A_20250915.xls', 'NiTE_on_invar_v1o0B_20250916.xls', 'NiTE_on_invar_v1o0C_20250916.xls'
-# Processing script: 'process_RT300S_data_v1o0.m'
+# Processing script: 'rt300s_to_bsdf_iso.m'
+# Processing source: https://github.com/ua-loft/bsdf-tools/tree/v1.1.0
 # Date(s) measured: 2025/09/15, 2025/09/16
 # Note(s): - data from (A=[-90,0],R) and (A=[0,90],-R) considered unique because isotropic sample and therefore PlaneSymmetrical, hence 6 measurements from 3 datasets;
 #          - TIS calculated over entire hemisphere, i.e., Az=[0,360), but only from BRDF values reported here so assuming BRDF=0 beyond Rz>=90

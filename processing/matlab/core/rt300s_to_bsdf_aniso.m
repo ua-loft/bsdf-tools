@@ -99,6 +99,7 @@ name_contact = "Jacob P. Krell (jacobpkrell@arizona.edu)"; % name of person
     % including email or phone number in parentheses too
 name_bsdf_file = "IMX455.bsdf"; % name of new BSDF file to output 
     % results to; include '.bsdf' extension
+repo_version = "v1.1.0";
 
 % Logicals for returning plots:
 RETURNPLOT_RT_AzRz = false;
@@ -649,7 +650,8 @@ fprintf(fid, "# Number of measurements averaged: n/a\n");
 fprintf(fid, line_blankdataset);
 fprintf(fid, line_datasets);
 fprintf(fid, "# Processing script: '" + mfilename() + ".m'\n");
-    % e.g.: "# Processing script: 'process_RT300S_data_v1o0.m'\n"
+    % e.g.: "# Processing script: 'rt300s_to_bsdf_aniso.m'\n"
+fprintf(fid, "# Processing source: https://github.com/ua-loft/bsdf-tools/tree/" + repo_version + "\n");
 fprintf(fid, line_dates);
 fprintf(fid, "# Note(s): - sample is anisotropic;\n" + ...
     "#          - TIS calculated over entire hemisphere, i.e., " + ...
