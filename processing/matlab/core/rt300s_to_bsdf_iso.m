@@ -96,6 +96,7 @@ name_contact = "Jacob P. Krell (jacobpkrell@arizona.edu)"; % name of person
 %     % results to; include '.bsdf' extension
 name_bsdf_file = "AnoBlackEC2onAlum.bsdf"; % name of new BSDF file to output 
     % results to; include '.bsdf' extension
+repo_version = "v1.1.0";
 
 % Logicals for returning plots:
 RETURNPLOT_RT_PlaneSymmetrical = false;
@@ -728,7 +729,8 @@ fprintf(fid, sprintf("# Number of measurements averaged: %i\n", 2*M));
 fprintf(fid, line_blankdataset);
 fprintf(fid, line_datasets);
 fprintf(fid, "# Processing script: '" + mfilename() + ".m'\n");
-    % e.g.: "# Processing script: 'process_RT300S_data_v1o0.m'\n"
+    % e.g.: "# Processing script: 'rt300s_to_bsdf_iso.m'\n"
+fprintf(fid, "# Processing source: https://github.com/ua-loft/bsdf-tools/tree/" + repo_version + "\n");
 fprintf(fid, line_dates);
 fprintf(fid, sprintf("# Note(s): - data from (A=[-90,0],R) and " + ...
     "(A=[0,90],-R) considered unique because isotropic sample and " + ...
