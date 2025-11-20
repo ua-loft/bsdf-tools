@@ -2,7 +2,7 @@
 % =========================================================================
 % 
 % process_RT300S_data.m
-% (v1.0 - anisotropic)
+% (v1.1 - anisotropic)
 % 
 % Description:
 %   - Process raw data from J&C's RT-300S scatterometer, into format for
@@ -50,6 +50,7 @@
 % |            |      | and developer-friendly; added TIS calculation and |
 % |            |      | verified against BrownVinyl                       |
 % | 2025.10.07 | JPK  | Adapted into new script for anisotropic sample;   |
+% | 2025.11.20 | JPK  | [v1.1] Debugging missing quadrants in BSDF files; |
 % 
 % References:
 % [1] Max Duque's whitepaper on RT-300S
@@ -64,9 +65,6 @@ clearvars, clc, close all
 
 % =========================================================================
 % [BEGIN] USER INPUTS:
-
-% Directory of where raw measurement data files are saved:
-dir = "C:\Users\jakep\Documents\Optics_github\UofA\LOFT\BSDF\measurements"; 
 
 % Filenames of measurements, where first element is the blank data used
 % to zero the sample measurements:
@@ -153,6 +151,28 @@ sample_rotations = 0 : 10 : 90; % [deg], vector of sample rotation angles
 %   - Outputs 'blank' and 'sample' arrays; 6 rows are [A; I; R; RT; RT/nm;
 %     \lambda].
 
+% Directory of this script:
+dir_script = fileparts(mfilename('fullpath'));
+
+% Directory of 'bsdf-tools' project:
+dir_project = dir_script; % init
+for j = 1:3 % project is three folders upstream of script
+    dir_project = fileparts(dir_project); % make path go upstream
+end
+
+% Directory of raw measurements, relative to project:
+dir = fullfile(dir_project, 'data', 'raw', 'rt-300s'); % combine path
+
+% First, check bsdf filename is available:
+filepath_bsdf_file = fullfile(dir_project, 'data', 'processed', 'zemax', name_bsdf_file); 
+    % full filepath to where bsdf file is to be saved
+FILENAME_IS_AVAILABLE = true;
+if exist(filepath_bsdf_file, 'file')
+    FILENAME_IS_AVAILABLE = false;
+    error('BSDF file with user-specified name already exists. Specify different filename.', name_bsdf_file);
+end
+
+% Load data:
 [sample, blank] = load_data(dir, filenames);
 
 % [END] LOAD DATA.
@@ -302,9 +322,25 @@ for m = 1:M % for measurement, i.e., for each sample rotation
     for i = 1:nI
         mI = I_data_wo_Az0 == Iu(i); % uses expanded [-IV, ..., +I]
         mI_og = I == Iu(i); % uses original [I, ..., IV]
-        RT_data = [RT_data_wo_Az0, repelem(max(RT{m}(mI_og)), 1, nAz0)]; % add max
-            % RT values to (Az,Rz)=(:,0), assuming the max RT value is the 
-            % specular ray and corresponds to (Az,Rz)=(0,0)
+        % RT_data = [RT_data_wo_Az0, repelem(max(RT{m}(mI_og)), 1, nAz0)]; % add max
+        %     % RT values to (Az,Rz)=(:,0), assuming the max RT value is the 
+        %     % specular ray and corresponds to (Az,Rz)=(0,0)
+        
+        % =================================================================
+        % [v1.1] CORRECTION, BECAUSE MAX RT IS NOT GOOD ASSUMPTION:
+        mSpec1 = and(I == Iu(i), and(A == -90, R == Iu(i)));
+        mSpec2 = and(I == Iu(i), and(A == 90, R == -Iu(i)));
+        RT_spec1 = RT{m}(mSpec1); % expecting single value, from specular
+            % ray measured at A = -90, R = I
+        RT_spec2 = RT{m}(mSpec2); % expecting single value, from specular
+            % ray measured at A = +90, R = -I
+        RT_spec = mean([RT_spec1, RT_spec2]); % average the two measurements
+        RT_data = [RT_data_wo_Az0, repelem(RT_spec, 1, nAz0)]; 
+            % [v1.1] correction: copy RT value from specular ray to 
+            % (Az,Rz)=(:,0), because assumption that max RT value is
+            % specular ray is not stable assumption
+        % =================================================================
+            
         % Find where RT is nan, and remove those entries because they cause bug
         % in interpolation (they cause evaluated values to be 0 or nan):
         mKeep = and([mI, true(1, nAz0)], ~isnan(RT_data)); % mask to not 
@@ -333,9 +369,12 @@ for i = 1:nI
     Ii = Iu(i); % incident angle
     mAz_gt90 = Azq_grid > 90; % since max(Rzq)<=90, then Az>=90 must be 
         % true in order for |R|>=90
+    mAz_lt270 = Azq_grid < 270; % v1.1 correction, because really it is
+        % 270>=Az>=90 that must be true in order for |R|>=90
+    mAz_gt90_lt270 = and(mAz_gt90, mAz_lt270);
     Rz1 = (90 - Ii) ./ cosd(180 - Azq_grid); % upper limit of Rz at (I,Az)
     mRz_gtRz1 = Rzq_grid >= Rz1; % these angles produce |R|>=90
-    mTranmission = and(mAz_gt90, mRz_gtRz1);
+    mTranmission = and(mAz_gt90_lt270, mRz_gtRz1);
     for m = 1:M % for measurement, i.e., for each sample rotation
         RT_eval{i, m}(mTranmission) = 0; % set angles of transmission equal to 0
     end
@@ -588,7 +627,12 @@ line_BRDF = line_BRDF + "\n"; % finalize
 % =========================================================================
 % Write to file:
 
-fid = fopen('dummy.txt', 'wt');
+% Open file:
+if FILENAME_IS_AVAILABLE
+    fid = fopen(filepath_bsdf_file, 'wt');
+end
+
+% Write:
 
 fprintf(fid, line_break);
 fprintf(fid, line_break);
@@ -694,9 +738,8 @@ end
 
 fprintf(fid, "DataEnd\n");
 
-% Save as BSDF file:
+% Values have been written, so may close file:
 fclose(fid);
-copyfile("dummy.txt", name_bsdf_file) % copy dummy file and rename
 
 % [END] WRITE TO ZEMAX BSDF FILE.
 % =========================================================================
