@@ -1,8 +1,7 @@
 % =========================================================================
 % =========================================================================
 % 
-% process_RT300S_data.m
-% (v1.0)
+% rt300s_to_bsdf_iso.m
 % 
 % Description:
 %   - Process raw data from J&C's RT-300S scatterometer, into format for
@@ -52,9 +51,6 @@ clearvars, clc, close all
 % =========================================================================
 % [BEGIN] USER INPUTS:
 
-% Directory of where raw measurement data files are saved:
-dir = "C:\Users\jakep\Documents\Optics_github\UofA\LOFT\BSDF\measurements"; 
-
 % Filenames of measurements, where first element is the blank data used
 % to zero the sample measurements:
     % - include '.xls' extension;
@@ -62,30 +58,43 @@ dir = "C:\Users\jakep\Documents\Optics_github\UofA\LOFT\BSDF\measurements";
 %              "NiTE_on_invar_v1o0A_20250915.xls"; ... % measured dataset 1
 %              "NiTE_on_invar_v1o0B_20250916.xls"; ... % ...
 %              "NiTE_on_invar_v1o0C_20250916.xls"]; % measured dataset M
+% filenames = ["blank_v2o0_20250911_eitherWayItsATragedy.xls"; ... % blank
+%              "NiTE_on_steel_v1o0A_20250915.xls"; ... % measured dataset 1
+%              "NiTE_on_steel_v1o0B_20250916.xls"; ... % ...
+%              "NiTE_on_steel_v1o0C_20250916.xls"]; % measured dataset M
+% filenames = ["blank_v2o0_20250911_eitherWayItsATragedy.xls"; ... % blank
+%              "ANOPLATE_AnoBlack_EC1_Alum6061_v1o0_20251115.xls"]; ... % measured dataset 1
 filenames = ["blank_v2o0_20250911_eitherWayItsATragedy.xls"; ... % blank
-             "NiTE_on_steel_v1o0A_20250915.xls"; ... % measured dataset 1
-             "NiTE_on_steel_v1o0B_20250916.xls"; ... % ...
-             "NiTE_on_steel_v1o0C_20250916.xls"]; % measured dataset M
+             "ANOPLATE_AnoBlack_EC2_Alum6061_v1o0_20251115.xls"]; ... % measured dataset 1
 
 % Legend entries for plots of each dataset:
-legend_names_for_datasets = ["v1.0A", "v1.0B", "v1.0C", ...
-        "-v1.0A", "-v1.0B", "-v1.0C"]; % negative is for mirrored A=[0,90]
+% legend_names_for_datasets = ["v1.0A", "v1.0B", "v1.0C", ...
+%         "-v1.0A", "-v1.0B", "-v1.0C"]; % negative is for mirrored A=[0,90]
+legend_names_for_datasets = ["v1.0", "-v1.0"]; % negative is for mirrored A=[0,90]
 
 % Information for BSDF file:
 % name_sample = "Anoplate AnoBlack NiTE w/ Blast on INVAR 36"; 
 %     % name of sample measured
-name_sample = "Anoplate AnoBlack NiTE w/ Blast on Steel 1008 (So #: 1117496)"; 
+% name_sample = "Anoplate AnoBlack NiTE w/ Blast on Steel 1008 (So #: 1117496)"; 
+%     % name of sample measured
+% name_sample = "Anoplate AnoBlack EC1 on Alum 6061 (So #: 1114817)";
+name_sample = "Anoplate AnoBlack EC2 on Alum 6061 (So #: 1114818)";
     % name of sample measured
 name_source = "red laser (650 nm, 3.5mm spot diam.)"; 
     % name of light source used
 name_angles = "(10:20:70, -90:10:90, -80:10:80)"; % in (I,A,R) order
-name_dates = ["2025/09/15", "2025/09/16"]; % date(s) measurements were made
+% name_dates = ["2025/09/15", "2025/09/16"]; % date(s) measurements were made
+name_dates = ["2025/11/15"]; % date(s) measurements were made
 name_contact = "Jacob P. Krell (jacobpkrell@arizona.edu)"; % name of person
     % to contact, most likely you or whoever made the measurement; consider
     % including email or phone number in parentheses too
 % name_bsdf_file = "AnoBlackNiTEonINVAR.bsdf"; % name of new BSDF file to output 
 %     % results to; include '.bsdf' extension
-name_bsdf_file = "AnoBlackNiTEonSteel.bsdf"; % name of new BSDF file to output 
+% name_bsdf_file = "AnoBlackNiTEonSteel.bsdf"; % name of new BSDF file to output 
+%     % results to; include '.bsdf' extension
+% name_bsdf_file = "AnoBlackEC1onAlum.bsdf"; % name of new BSDF file to output 
+%     % results to; include '.bsdf' extension
+name_bsdf_file = "AnoBlackEC2onAlum.bsdf"; % name of new BSDF file to output 
     % results to; include '.bsdf' extension
 
 % Logicals for returning plots:
@@ -174,6 +183,28 @@ end
 %   - Outputs 'blank' and 'sample' arrays; 6 rows are [A; I; R; RT; RT/nm;
 %     \lambda].
 
+% Directory of this script:
+dir_script = fileparts(mfilename('fullpath'));
+
+% Directory of 'bsdf-tools' project:
+dir_project = dir_script; % init
+for j = 1:3 % project is three folders upstream of script
+    dir_project = fileparts(dir_project); % make path go upstream
+end
+
+% Directory of raw measurements, relative to project:
+dir = fullfile(dir_project, 'data', 'raw', 'rt-300s'); % combine path
+
+% First, check bsdf filename is available:
+filepath_bsdf_file = fullfile(dir_project, 'data', 'processed', 'zemax', name_bsdf_file); 
+    % full filepath to where bsdf file is to be saved
+FILENAME_IS_AVAILABLE = true;
+if exist(filepath_bsdf_file, 'file')
+    FILENAME_IS_AVAILABLE = false;
+    error('BSDF file with user-specified name already exists. Specify different filename.', name_bsdf_file);
+end
+
+% Load data:
 [sample, blank] = load_data(dir, filenames);
 
 % [END] LOAD DATA.
@@ -677,7 +708,12 @@ line_BRDF = line_BRDF + "\n"; % finalize
 % =========================================================================
 % Write to file:
 
-fid = fopen('dummy.txt', 'wt');
+% Open file:
+if FILENAME_IS_AVAILABLE
+    fid = fopen(filepath_bsdf_file, 'wt');
+end
+
+% Write:
 
 fprintf(fid, line_break);
 fprintf(fid, line_break);
@@ -742,9 +778,8 @@ end
 
 fprintf(fid, "DataEnd\n");
 
-% Save as BSDF file:
+% Values have been written, so may close file:
 fclose(fid);
-copyfile("dummy.txt", name_bsdf_file) % copy dummy file and rename
 
 % [END] WRITE TO ZEMAX BSDF FILE.
 % =========================================================================

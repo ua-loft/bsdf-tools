@@ -1,8 +1,7 @@
 % =========================================================================
 % =========================================================================
 % 
-% process_RT300S_data.m
-% (v1.1 - anisotropic)
+% rt300s_to_bsdf_aniso.m
 % 
 % Description:
 %   - Process raw data from J&C's RT-300S scatterometer, into format for
@@ -50,7 +49,9 @@
 % |            |      | and developer-friendly; added TIS calculation and |
 % |            |      | verified against BrownVinyl                       |
 % | 2025.10.07 | JPK  | Adapted into new script for anisotropic sample;   |
-% | 2025.11.20 | JPK  | [v1.1] Debugging missing quadrants in BSDF files; |
+% | 2025.11.20 | JPK  | Successfully debugged missing quadrants in BSDF   |
+% |            |      | files, along with different BRDF value at Az=0    |
+% |            |      | for Rz=0;                                         |
 % 
 % References:
 % [1] Max Duque's whitepaper on RT-300S
@@ -327,7 +328,7 @@ for m = 1:M % for measurement, i.e., for each sample rotation
         %     % specular ray and corresponds to (Az,Rz)=(0,0)
         
         % =================================================================
-        % [v1.1] CORRECTION, BECAUSE MAX RT IS NOT GOOD ASSUMPTION:
+        % [v1.1] CORRECTION, BECAUSE MAX(RT) IS NOT GOOD ASSUMPTION:
         mSpec1 = and(I == Iu(i), and(A == -90, R == Iu(i)));
         mSpec2 = and(I == Iu(i), and(A == 90, R == -Iu(i)));
         RT_spec1 = RT{m}(mSpec1); % expecting single value, from specular
