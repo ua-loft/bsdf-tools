@@ -7,7 +7,7 @@
 # Light source: red laser (650 nm, 3.5mm spot diam.)
 # Angles measured: (I,A,R) = (10:20:70, -90:10:90, -80:10:80)
 # Number of measurements averaged: 2
-# Blank dataset: 'blank_v2o0_20250911_eitherWayItsATragedy.xls'
+# Blank dataset: 'blank_v2o0_20250911.xls'
 # Dataset(s): 'ANOPLATE_AnoBlack_EC2_Alum6061_v1o0_20251115.xls'
 # Processing script: 'rt300s_to_bsdf_iso.m'
 # Processing source: https://github.com/ua-loft/bsdf-tools/tree/v1.1.0

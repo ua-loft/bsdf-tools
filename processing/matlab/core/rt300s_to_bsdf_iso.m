@@ -54,17 +54,17 @@ clearvars, clc, close all
 % Filenames of measurements, where first element is the blank data used
 % to zero the sample measurements:
     % - include '.xls' extension;
-% filenames = ["blank_v2o0_20250911_eitherWayItsATragedy.xls"; ... % blank
+% filenames = ["blank_v2o0_20250911.xls"; ... % blank
 %              "NiTE_on_invar_v1o0A_20250915.xls"; ... % measured dataset 1
 %              "NiTE_on_invar_v1o0B_20250916.xls"; ... % ...
 %              "NiTE_on_invar_v1o0C_20250916.xls"]; % measured dataset M
-% filenames = ["blank_v2o0_20250911_eitherWayItsATragedy.xls"; ... % blank
+% filenames = ["blank_v2o0_20250911.xls"; ... % blank
 %              "NiTE_on_steel_v1o0A_20250915.xls"; ... % measured dataset 1
 %              "NiTE_on_steel_v1o0B_20250916.xls"; ... % ...
 %              "NiTE_on_steel_v1o0C_20250916.xls"]; % measured dataset M
-% filenames = ["blank_v2o0_20250911_eitherWayItsATragedy.xls"; ... % blank
+% filenames = ["blank_v2o0_20250911.xls"; ... % blank
 %              "ANOPLATE_AnoBlack_EC1_Alum6061_v1o0_20251115.xls"]; ... % measured dataset 1
-filenames = ["blank_v2o0_20250911_eitherWayItsATragedy.xls"; ... % blank
+filenames = ["blank_v2o0_20250911.xls"; ... % blank
              "ANOPLATE_AnoBlack_EC2_Alum6061_v1o0_20251115.xls"]; ... % measured dataset 1
 
 % Legend entries for plots of each dataset:
@@ -159,7 +159,7 @@ VALIDATE_TIS_VIA_BROWNVINYL = false;
 % [BEGIN] ADJUST INPUTS IF USER REQUESTED VALIDATION TESTING:
 
 if VALIDATE_BRDF_VIA_MAGICBLACK % FOR VALIDATION TESTING
-    filenames = ["blank_v2o0_20250911_eitherWayItsATragedy.xls"; ...
+    filenames = ["blank_v2o0_20250911.xls"; ...
              "MagicBlack_v2o0_20250902.xls"];
     legend_names_for_datasets = ["v1.0A", "-v1.0A"];
     name_sample = "Validation test of BRDF conversion using " + ...

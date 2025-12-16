@@ -18,7 +18,7 @@ import copy
 sample_data1 = "ANOPLATE_AnoBlack_EC1_Alum6061_v1o0_20251115.xls"  # "NiTE_on_invar_v1o0A_20250915.xls"
 # sample_data2 = "NiTE_on_invar_v1o0B_20250916.xls"
 # sample_data3 = "NiTE_on_invar_v1o0C_20250916.xls"
-blank_data = "blank_v2o0_20250911_eitherWayItsATragedy.xls"
+blank_data = "blank_v2o0_20250911.xls"
 
 # Load all sheets into a dictionary of DataFrames
 data_sheets1 = pd.read_excel(sample_data1, sheet_name=None)
