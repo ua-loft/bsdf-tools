@@ -70,7 +70,7 @@ clearvars, clc, close all
 % Filenames of measurements, where first element is the blank data used
 % to zero the sample measurements:
     % - include '.xls' extension;
-filenames = ["blank_v2o0_20250911_eitherWayItsATragedy.xls"; ... % blank
+filenames = ["blank_v2o0_20250911.xls"; ... % blank
              "IMX455_stageRotation0_20250922.xls"; ... % sample rotation 1
              "IMX455_stageRotation10_20250922.xls"; ... % ...
              "IMX455_stageRotation20_20250922.xls"; ... % ...

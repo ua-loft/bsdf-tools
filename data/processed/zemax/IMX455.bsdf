@@ -7,7 +7,7 @@
 # Light source: red laser (650 nm, 3.5mm spot diam.)
 # Angles measured: (I,A,R) = (10:20:70, -90:10:90, -80:10:80)
 # Number of measurements averaged: n/a
-# Blank dataset: 'blank_v2o0_20250911_eitherWayItsATragedy.xls'
+# Blank dataset: 'blank_v2o0_20250911.xls'
 # Dataset(s): 'IMX455_stageRotation0_20250922.xls', 'IMX455_stageRotation10_20250922.xls', 'IMX455_stageRotation20_20250922.xls', 'IMX455_stageRotation30_20250922.xls', 'IMX455_stageRotation40_20250922.xls', 'IMX455_stageRotation50_20250922.xls', 'IMX455_stageRotation60_20250922.xls', 'IMX455_stageRotation70_20250922.xls', 'IMX455_stageRotation80_20250922.xls', 'IMX455_stageRotation90_20250922.xls'
 # Processing script: 'rt300s_to_bsdf_aniso.m'
 # Processing source: https://github.com/ua-loft/bsdf-tools/tree/v1.1.0
