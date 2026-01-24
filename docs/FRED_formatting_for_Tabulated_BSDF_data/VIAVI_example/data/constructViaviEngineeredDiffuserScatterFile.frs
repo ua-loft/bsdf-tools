@@ -1,0 +1,103 @@
+'#Language "WWB-COM"
+
+Option Explicit
+
+Sub Main
+
+    'Cleanup
+    ClearOutputWindow()
+
+    Print "Merging RPC Photonics BSDF Data Files"
+    SetTextColor(255,0,0)
+    Print "Note: Script should be located in the same folder as the BSDF TXT files."
+    Print "Note: Do not run this script multiple times without deleting the output file between executions."
+    SetTextColor(0,0,0)
+
+    'Current directory of this script (should be the same as the text files being merged)
+    Dim cDir As String
+    cDir = MacroDir$ & "\"
+
+    'Array which will be populated with the list of files to be merged
+    Dim fList() As String, curFile As String
+    GetFileList( cDir, fList )
+
+    Print ""
+    Print "Files found for merging:"
+    For Each curFile In fList
+        Print Chr(9) & curFile
+    Next
+
+    'Split the first text file name found to get the sample name.  First file should be 0-0 measurement.
+    Dim nameArray() As String, sampName As String
+    nameArray = Split(fList(0)," 0-0.txt")
+    sampName  = nameArray(0)
+    Print ""
+    Print "Sample name: " & Chr(9) & sampName
+
+    'Open an output file and write the FRED header data
+    Dim outFile As String
+    outFile = cDir & sampName & "_FRED.txt"
+    Open outFile For Output As #1
+    Print #1, "type bsdf_data"
+    Print #1, "format angles=deg bsdf=value scale=1"
+
+    'Loop the file list, skip the two header lines and write the remaining data to file
+    Dim lineArray() As String, curLine As Long
+    For Each curFile In fList
+        Print "Merging data from file " & curFile
+        ReadFile( cDir & curFile, lineArray )
+        For curLine = 2 To UBound(lineArray)
+            Print #1, lineArray(curLine)
+        Next
+    Next
+
+    'Close the output file
+    Close #1
+
+    Print "Finished merging RPC data for sample " & sampName
+    Print "FRED formatted data file: " & Chr(9) & outFile
+End Sub
+
+'Utility function to read the contents of a file into an array of strings.
+Function ReadFile(ByVal fileName As String, _
+                  ByRef lineArray() As String) As Long
+
+    ReadFile = -1
+    Dim oFSO As Object
+    Set oFSO = CreateObject("Scripting.FileSystemObject")
+    Erase lineArray
+
+    Dim fid As Long
+    If oFSO.fileexists( fileName ) Then
+        fid = FreeFile()
+        Open fileName For Input As fid
+        lineArray = Split(Input(LOF(fid), fid), vbCrLf)
+        Close fid
+    End If
+    Set oFSO = Nothing
+    Return UBound( lineArray )
+
+End Function
+
+Sub GetFileList( ByVal in_dir As String, _
+                 ByRef in_flist() As String )
+
+    'Redimension the file list array
+    Erase in_flist
+
+    'Tracks how many files are found
+    Dim fCount As Long
+    fCount = 0
+
+    'Recurse directory and search for text files
+    Dim f As String
+    f = Dir$(in_dir & "*.txt")
+    While f <> ""
+        ReDim Preserve in_flist(fCount)
+        in_flist(fCount) = f
+        fCount += 1
+        f = Dir$()
+    Wend
+    ReDim Preserve in_flist(fCount-1)
+
+End Sub

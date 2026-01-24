@@ -36,6 +36,8 @@
 % |            |      | finalized plots and cleaned code to be more user- |
 % |            |      | and developer-friendly; added TIS calculation and |
 % |            |      | verified against BrownVinyl                       |
+% | 2026.01.24 | JPK  | Initialized support for FRED format; not yet      |
+% |            |      | validated and code is messy;                      |
 % 
 % References:
 % [1] Max Duque's whitepaper on RT-300S
@@ -50,6 +52,9 @@ clearvars, clc, close all
 
 % =========================================================================
 % [BEGIN] USER INPUTS:
+
+OUTPUT_TO_FRED = true; % output to FRED txt format
+OUTPUT_TO_ZEMAX = false; % output to Zemax BSDF file format
 
 % Filenames of measurements, where first element is the blank data used
 % to zero the sample measurements:
@@ -73,13 +78,15 @@ filenames = ["blank_v2o0_20250911.xls"; ... % blank
 legend_names_for_datasets = ["v1.0", "-v1.0"]; % negative is for mirrored A=[0,90]
 
 % Information for BSDF file:
-% name_sample = "Anoplate AnoBlack NiTE w/ Blast on INVAR 36"; 
-%     % name of sample measured
+
+name_sample = "Anoplate AnoBlack NiTE w/ Blast on INVAR 36"; 
+    % name of sample measured
 % name_sample = "Anoplate AnoBlack NiTE w/ Blast on Steel 1008 (So #: 1117496)"; 
 %     % name of sample measured
 % name_sample = "Anoplate AnoBlack EC1 on Alum 6061 (So #: 1114817)";
-name_sample = "Anoplate AnoBlack EC2 on Alum 6061 (So #: 1114818)";
-    % name of sample measured
+% name_sample = "Anoplate AnoBlack EC2 on Alum 6061 (So #: 1114818)";
+%     % name of sample measured
+
 name_source = "red laser (650 nm, 3.5mm spot diam.)"; 
     % name of light source used
 name_angles = "(10:20:70, -90:10:90, -80:10:80)"; % in (I,A,R) order
@@ -88,29 +95,41 @@ name_dates = ["2025/11/15"]; % date(s) measurements were made
 name_contact = "Jacob P. Krell (jacobpkrell@arizona.edu)"; % name of person
     % to contact, most likely you or whoever made the measurement; consider
     % including email or phone number in parentheses too
-% name_bsdf_file = "AnoBlackNiTEonINVAR.bsdf"; % name of new BSDF file to output 
-%     % results to; include '.bsdf' extension
-% name_bsdf_file = "AnoBlackNiTEonSteel.bsdf"; % name of new BSDF file to output 
-%     % results to; include '.bsdf' extension
-% name_bsdf_file = "AnoBlackEC1onAlum.bsdf"; % name of new BSDF file to output 
-%     % results to; include '.bsdf' extension
-name_bsdf_file = "AnoBlackEC2onAlum.bsdf"; % name of new BSDF file to output 
-    % results to; include '.bsdf' extension
+
+% name_file = "AnoBlackNiTEonINVAR"; % name of new BSDF file to output 
+%     % results to (do not include '.bsdf' or 'txt' extension)
+% name_file = "AnoBlackNiTEonSteel"; % name of new BSDF file to output 
+%     % results to (do not include '.bsdf' or 'txt' extension)
+% name_file = "AnoBlackEC1onAlum"; % name of new BSDF file to output 
+%     % results to (do not include '.bsdf' or 'txt' extension)
+name_file = "AnoBlackEC2onAlum"; % name of new BSDF file to output 
+    % results to (do not include '.bsdf' or 'txt' extension)
+    
+if OUTPUT_TO_ZEMAX
+    name_bsdf_file = name_file + '.bsdf';
+end
+if OUTPUT_TO_FRED
+    name_txt_file = name_file + '.txt';
+end
 repo_version = "v1.1.0";
 
 % Logicals for returning plots:
 RETURNPLOT_RT_PlaneSymmetrical = false;
-RETURNPLOT_RT_AzRz = false;
-RETURNPLOT_RT_iso_AzRz = true;
-RETURNPLOT_BRDF_AzRz = true;
+if OUTPUT_TO_ZEMAX
+    RETURNPLOT_RT_AzRz = false;
+    RETURNPLOT_RT_iso_AzRz = true;
+    RETURNPLOT_BRDF_AzRz = true;
+end
 
-% Logical for attempting to correct light source misalignment:
-    % - note, fails to apply to when averaging A=[-90,0] and A=[0,90] of 
-    %   same dataset, because would need to convert new (Az,Rz) to a new
-    %   (A,R), which no longer would be common between datasets, and
-    %   therefore would need to interpolate RT on those uncommon (A,R)
-    %   values to a common grid prior to averaging;
-APPLY_SHIFT_CORRECTION = true;
+if OUTPUT_TO_ZEMAX
+    % Logical for attempting to correct light source misalignment:
+        % - note, fails to apply to when averaging A=[-90,0] and A=[0,90] of 
+        %   same dataset, because would need to convert new (Az,Rz) to a new
+        %   (A,R), which no longer would be common between datasets, and
+        %   therefore would need to interpolate RT on those uncommon (A,R)
+        %   values to a common grid prior to averaging;
+    APPLY_SHIFT_CORRECTION = true;
+end
 
 % Machine dimensions:
 beamdiam = 3.5; % [mm], spot diameter of light source (used to determine
@@ -118,19 +137,23 @@ beamdiam = 3.5; % [mm], spot diameter of light source (used to determine
 armlength = 82; % [mm], length of RT-300S's detector arm, i.e., the radius
     % from the sample placed at the machine's origin to the detector
 
-% FOR VALIDATION TESTING OF BRDF MEASUREMENT AGAINST MAGICBLACK:
-    % - overrides above inputs
-    % - only can validate values on Az=[0,90], since known 
-    %   'MagicBlack_VIS.bsdf' only provides Az=[0,90],[270,360)
-VALIDATE_BRDF_VIA_MAGICBLACK = false;
+if OUTPUT_TO_ZEMAX
 
-% FOR VALIDATION TESTING OF TIS CALCULATION AGAINST BROWNVINYL:
-    % - overrides 'VALIDATE_BRDF_VIA_MAGICBLACK'
-    % - uses BRDF values from known 'BrownVinyl.bsdf'
-    % - divides TIS by two, so quarter-sphere; this matches BrownVinyl but
-    %   otherwise TIS is defined here as twice that value for the full
-    %   hemisphere;
-VALIDATE_TIS_VIA_BROWNVINYL = false;
+    % FOR VALIDATION TESTING OF BRDF MEASUREMENT AGAINST MAGICBLACK:
+        % - overrides above inputs
+        % - only can validate values on Az=[0,90], since known 
+        %   'MagicBlack_VIS.bsdf' only provides Az=[0,90],[270,360)
+    VALIDATE_BRDF_VIA_MAGICBLACK = false;
+    
+    % FOR VALIDATION TESTING OF TIS CALCULATION AGAINST BROWNVINYL:
+        % - overrides 'VALIDATE_BRDF_VIA_MAGICBLACK'
+        % - uses BRDF values from known 'BrownVinyl.bsdf'
+        % - divides TIS by two, so quarter-sphere; this matches BrownVinyl but
+        %   otherwise TIS is defined here as twice that value for the full
+        %   hemisphere;
+    VALIDATE_TIS_VIA_BROWNVINYL = false;
+
+end
 
 % [END] USER INPUTS.
 % =========================================================================
@@ -158,23 +181,27 @@ VALIDATE_TIS_VIA_BROWNVINYL = false;
 % =========================================================================
 % [BEGIN] ADJUST INPUTS IF USER REQUESTED VALIDATION TESTING:
 
-if VALIDATE_BRDF_VIA_MAGICBLACK % FOR VALIDATION TESTING
-    filenames = ["blank_v2o0_20250911.xls"; ...
-             "MagicBlack_v2o0_20250902.xls"];
-    legend_names_for_datasets = ["v1.0A", "-v1.0A"];
-    name_sample = "Validation test of BRDF conversion using " + ...
-        "measured RT values of Magic Black on Aluminum"; 
-    name_dates = ["2025/09/02"];
-    name_bsdf_file = "ValidationTest_of_BRDF_via_MagicBlack.bsdf";
-end
+if OUTPUT_TO_ZEMAX
 
-if VALIDATE_TIS_VIA_BROWNVINYL % FOR VALIDATION TESTING
-    filenames = filenames(1:2); % want M=1 to create a single cell in which
-        % to later load BrownVinyl BRDF values
-    name_sample = "Validation test of TIS calculation using " + ...
-        "known BrownVinyl BRDF values"; 
-    name_dates = ["n/a"];
-    name_bsdf_file = "ValidationTest_of_TIS_via_BrownVinyl.bsdf";
+    if VALIDATE_BRDF_VIA_MAGICBLACK % FOR VALIDATION TESTING
+        filenames = ["blank_v2o0_20250911.xls"; ...
+                 "MagicBlack_v2o0_20250902.xls"];
+        legend_names_for_datasets = ["v1.0A", "-v1.0A"];
+        name_sample = "Validation test of BRDF conversion using " + ...
+            "measured RT values of Magic Black on Aluminum"; 
+        name_dates = ["2025/09/02"];
+        name_bsdf_file = "ValidationTest_of_BRDF_via_MagicBlack.bsdf";
+    end
+    
+    if VALIDATE_TIS_VIA_BROWNVINYL % FOR VALIDATION TESTING
+        filenames = filenames(1:2); % want M=1 to create a single cell in which
+            % to later load BrownVinyl BRDF values
+        name_sample = "Validation test of TIS calculation using " + ...
+            "known BrownVinyl BRDF values"; 
+        name_dates = ["n/a"];
+        name_bsdf_file = "ValidationTest_of_TIS_via_BrownVinyl.bsdf";
+    end
+
 end
 
 % [END] ADJUST INPUTS IF USER REQUESTED VALIDATION TESTING.
@@ -197,12 +224,14 @@ end
 dir = fullfile(dir_project, 'data', 'raw', 'rt-300s'); % combine path
 
 % First, check bsdf filename is available:
-filepath_bsdf_file = fullfile(dir_project, 'data', 'processed', 'zemax', name_bsdf_file); 
-    % full filepath to where bsdf file is to be saved
-FILENAME_IS_AVAILABLE = true;
-if exist(filepath_bsdf_file, 'file')
-    FILENAME_IS_AVAILABLE = false;
-    error('BSDF file with user-specified name already exists. Specify different filename.', name_bsdf_file);
+if OUTPUT_TO_ZEMAX
+    filepath_bsdf_file = fullfile(dir_project, 'data', 'processed', 'zemax', name_bsdf_file); 
+        % full filepath to where bsdf file is to be saved
+    FILENAME_IS_AVAILABLE = true;
+    if exist(filepath_bsdf_file, 'file')
+        FILENAME_IS_AVAILABLE = false;
+        error('BSDF file with user-specified name already exists. Specify different filename.', name_bsdf_file);
+    end
 end
 
 % Load data:
@@ -213,8 +242,10 @@ end
 % =========================================================================
 % [BEGIN] DATA PROCESSING:
 
-if VALIDATE_BRDF_VIA_MAGICBLACK % FOR VALIDATION TESTING
-    sample = fudge_data(sample);
+if OUTPUT_TO_ZEMAX
+    if VALIDATE_BRDF_VIA_MAGICBLACK % FOR VALIDATION TESTING
+        sample = fudge_data(sample);
+    end
 end
 
 % Constants:
@@ -246,9 +277,11 @@ Ru = unique(R); % Ru == "R unique"
 nR = length(Ru); % nR == "number of R unique"
 
 % Convert measurement angles to scatter-cone coordinates:
-[Az, Rz] = IAR_to_AzRz(I, A, R); % [deg]
-AzRz_as_x = -Rz .* sind(Az); % for making polar plot in Cartesian space
-AzRz_as_y = Rz .* cosd(Az); % for making polar plot in Cartesian space
+if OUTPUT_TO_ZEMAX
+    [Az, Rz] = IAR_to_AzRz(I, A, R); % [deg]
+    AzRz_as_x = -Rz .* sind(Az); % for making polar plot in Cartesian space
+    AzRz_as_y = Rz .* cosd(Az); % for making polar plot in Cartesian space
+end
 
 % Corrections to RT measurements:
 
@@ -256,8 +289,10 @@ RT = cell(M, 1);
 fig_RT_AR = cell(M, 1);
 mObscured = cell(M, 1);
 fig_RT_AR_PlaneSymmetrical{m} = cell(M, 1);
-fig_RT_AzRz = cell(M, 1);
-specular_error = zeros(M, nI); % offset of max RT from incident plane
+if OUTPUT_TO_ZEMAX
+    fig_RT_AzRz = cell(M, 1);
+    specular_error = zeros(M, nI); % offset of max RT from incident plane
+end
 for m = 1:M
 
     % First correction (zeroing system by subtracting blank measurement):
@@ -288,50 +323,58 @@ for m = 1:M
                 plot_RT_PlaneSymmetrical(nI, Iu, I, A, R, RT{m});
     end
 
-    % Check visual of polar heatmap, i.e., RT vs. (Az, Rz):
-    if RETURNPLOT_RT_AzRz
-        fig_RT_AzRz{m} = ...
-            plot_RT_AzRz(nI, Iu, I, AzRz_as_x, AzRz_as_y, RT{m});
-    end
-    
-    % Fourth correction (shift max RT to incident plane to compensate for
-    % systematic error):
-        % - introduced by JPK
-    for i = 1:nI
-        mI = I == Iu(i);
-        [~, id_of_maxRT] = max(RT{m}(mI));
-        AzRz_as_x_mI = AzRz_as_x(mI);
-        specular_error(m, i) = AzRz_as_x_mI(id_of_maxRT); % offset from 
-            % incident plane
+    if OUTPUT_TO_ZEMAX
+
+        % Check visual of polar heatmap, i.e., RT vs. (Az, Rz):
+        if RETURNPLOT_RT_AzRz
+            fig_RT_AzRz{m} = ...
+                plot_RT_AzRz(nI, Iu, I, AzRz_as_x, AzRz_as_y, RT{m});
+        end
+        
+        % Fourth correction (shift max RT to incident plane to compensate
+        % for systematic error):
+            % - introduced by JPK
+        for i = 1:nI
+            mI = I == Iu(i);
+            [~, id_of_maxRT] = max(RT{m}(mI));
+            AzRz_as_x_mI = AzRz_as_x(mI);
+            specular_error(m, i) = AzRz_as_x_mI(id_of_maxRT); % offset from 
+                % incident plane
+        end
+
     end
 
 end
 clear blank
 
-% Fourth correction (cont.):
-specular_error = mean(specular_error(:)); % average across datasets and 
-    % incident angles
-if APPLY_SHIFT_CORRECTION
-    AzRz_as_x = AzRz_as_x - specular_error; % shift specular to origin
-        % slong sagittal plane (i..e, Az=(90,270) axis) which on RT-300S is 
-        % controlled by the micrometer, hence how this corrects systematic
-        % error, assuming all datasets had same light source alignment
-    Az = atan2d(-AzRz_as_x, AzRz_as_y); % solve for new Az given new x
-    Rz = sqrt(AzRz_as_x.^2 + AzRz_as_y.^2); % solve for new Rz given new x
-        % == AzRz_as_y ./ cosd(Az_new) == -AzRz_as_x ./ sind(Az_new)
-    [Az, Rz] = ensure_AzRz_domain(Az*pi/180, Rz*pi/180); % [rad]
-    Az = Az * 180/pi; % [deg]
-    Rz = Rz * 180/pi; % [deg]
-end
+if OUTPUT_TO_ZEMAX
 
-% Check visual of shifted polar heatmap, i.e., RT vs. (Az, Rz), again but
-% this time after the shift:
-if and(APPLY_SHIFT_CORRECTION, RETURNPLOT_RT_AzRz)
-    fig_RT_AzRz_shifted = cell(M, 1);
-    for m = 1:M
-        fig_RT_AzRz_shifted{m} = ...
-            plot_RT_AzRz(nI, Iu, I, AzRz_as_x, AzRz_as_y, RT{m});
+    % Fourth correction (cont.):
+    specular_error = mean(specular_error(:)); % average across datasets and 
+        % incident angles
+    if APPLY_SHIFT_CORRECTION
+        AzRz_as_x = AzRz_as_x - specular_error; % shift specular to origin
+            % slong sagittal plane (i..e, Az=(90,270) axis) which on RT-300S is 
+            % controlled by the micrometer, hence how this corrects systematic
+            % error, assuming all datasets had same light source alignment
+        Az = atan2d(-AzRz_as_x, AzRz_as_y); % solve for new Az given new x
+        Rz = sqrt(AzRz_as_x.^2 + AzRz_as_y.^2); % solve for new Rz given new x
+            % == AzRz_as_y ./ cosd(Az_new) == -AzRz_as_x ./ sind(Az_new)
+        [Az, Rz] = ensure_AzRz_domain(Az*pi/180, Rz*pi/180); % [rad]
+        Az = Az * 180/pi; % [deg]
+        Rz = Rz * 180/pi; % [deg]
     end
+    
+    % Check visual of shifted polar heatmap, i.e., RT vs. (Az, Rz), again but
+    % this time after the shift:
+    if and(APPLY_SHIFT_CORRECTION, RETURNPLOT_RT_AzRz)
+        fig_RT_AzRz_shifted = cell(M, 1);
+        for m = 1:M
+            fig_RT_AzRz_shifted{m} = ...
+                plot_RT_AzRz(nI, Iu, I, AzRz_as_x, AzRz_as_y, RT{m});
+        end
+    end
+
 end
 
 % % Average RT measurements and get standard deviation:
@@ -349,16 +392,18 @@ n_iso = sum(mA); % number of data points with A <= 0
 I_iso = I(mA);
 A_iso = A(mA); % note (A,R) are original values
 R_iso = R(mA);
-Az_iso = Az(mA); % note (Az,Rz) are shifted, if APPLY_SHIFT_CORRECTION=1
-Rz_iso = Rz(mA);
-AzRz_as_x_iso = AzRz_as_x(mA); % shifted if APPLY_SHIFT_CORRECTION=1
-AzRz_as_y_iso = AzRz_as_y(mA);
-mFlip = Az_iso > 180; % R>0 in A=[-90,0] corresponds with quadrant III
-    % where Az is roughly [180,270], and R<0 corresponds with quadrant I
-    % where Az is roughly [0,90]; so, flipping [180,270] about incident 
-    % plane which is valid because isometric assumption
-Az_iso(mFlip) = 360 - Az_iso(mFlip);
-AzRz_as_x_iso(mFlip) = -AzRz_as_x_iso(mFlip);
+if OUTPUT_TO_ZEMAX
+    Az_iso = Az(mA); % note (Az,Rz) are shifted, if APPLY_SHIFT_CORRECTION=1
+    Rz_iso = Rz(mA);
+    AzRz_as_x_iso = AzRz_as_x(mA); % shifted if APPLY_SHIFT_CORRECTION=1
+    AzRz_as_y_iso = AzRz_as_y(mA);
+    mFlip = Az_iso > 180; % R>0 in A=[-90,0] corresponds with quadrant III
+        % where Az is roughly [180,270], and R<0 corresponds with quadrant I
+        % where Az is roughly [0,90]; so, flipping [180,270] about incident 
+        % plane which is valid because isometric assumption
+    Az_iso(mFlip) = 360 - Az_iso(mFlip);
+    AzRz_as_x_iso(mFlip) = -AzRz_as_x_iso(mFlip);
+end
 
 % Again, average but with A>0 as unique dataset:
     % - in v1.0, [A,R] were not updated to correspond with the shift, but
@@ -395,6 +440,19 @@ for i = 1:nI
     end
 end
 [RT_iso_std, RT_iso_avg] = std(RT_iso);
+
+% Output to FRED if requested (without fourth correction, since that
+% requires polar (Az,Rz) coordinates):
+if OUTPUT_TO_FRED
+    BRDF_in_RT300S_frame = RT_iso_avg ./ (pi * cosd(R_iso)); % equation 4.6 of [2]
+    save_as_fred(I_iso, A_iso, R_iso, BRDF_in_RT300S_frame, name_txt_file);
+end
+
+% =========================================================================
+% [BEGIN] CODE ONLY FOR ZEMAX BSDF FILE:
+    % - All subsequent code (aside from functions at end of script) are for
+    %   exporting to Zemax BSDF file only. Run only if BSDF file requested.
+if OUTPUT_TO_ZEMAX
 
 % Check visual of polar heatmap, i.e., RT vs. (Az, Rz), with all overlayed 
 % measurements, to confirm flipping (A,R) to -(A,R) worked correctly:
@@ -784,6 +842,11 @@ fprintf(fid, "DataEnd\n");
 fclose(fid);
 
 % [END] WRITE TO ZEMAX BSDF FILE.
+% =========================================================================
+
+end
+
+% [END] CODE ONLY FOR ZEMAX BSDF FILE.
 % =========================================================================
 % =========================================================================
 % [BEGIN] FUNCTIONS:
@@ -1541,6 +1604,196 @@ function BRDF = hardcode_BrownVinyl_BRDF(BRDF)
 end
 
 % [END] FUNCTIONS SPECIFICALLY FOR VALIDATION TESTING.
+% =========================================================================
+% =========================================================================
+% [BEGIN] FUNCTION SPECIFICALLY FOR EXPORTING TO FRED FORMAT.
+
+function status = save_as_fred(I_iso, A_iso, R_iso, ...
+    BRDF_in_RT300S_frame, name_txt_file)
+    % Assumption(s):
+    %   1) 'A_iso' \in [-90, 0], and if full [-90,90] was measured then
+    %       (0,90] was averaged with [-90,0) data (isotropic condition).
+
+    status = 0;
+
+    % % Copy 'A_iso' values from [-90,0] to (0,90] to get \phi_s \in (90,180)
+    % % and (270,360); otherwise only [0,90],[180,270] defined.
+    % mA = ~(A_iso == 0); % assuming last entries of 'A_iso' are 0, and so 
+    %     % intending to apply flip only to negative values
+    % A = [A_iso, -flip(A_iso(mA))]; % mirrors [-90,0) to make [-90,90]
+    % I = [I_iso, flip(I_iso(mA))]; % match 'A_full'
+    % R = [R_iso, -flip(R_iso(mA))]; % match 'A_full'; negative for '-A'
+    % BRDF = [BRDF_in_RT300S_frame, flip(BRDF_in_RT300S_frame(mA))]; % match
+
+    % Copy 'A_iso' values from [-90,0] to [-90,90) to get \phi_s \in 
+    % [0,180) and [180,360); otherwise only [0,90] and [180,270] defined.
+    mA = ~or(A_iso == -90, A_iso == 0); % assuming first entries of 'A_iso'
+        % are -90 and last entries are 0, so fliping (-90,0) to produce 
+        % [-90,90); not sure if this mask and flip break with first/last 
+        % entries are not -90/0;
+    A = [A_iso, -flip(A_iso(mA))]; % mirrors (-90,0) to make [-90,90)
+    I = [I_iso, flip(I_iso(mA))]; % match 'A_full'
+    R = [R_iso, -flip(R_iso(mA))]; % match 'A_full'; BRDF at (A,R) equal to 
+        % BRDF at (-A,-R) is the isotropic assumption
+    BRDF = [BRDF_in_RT300S_frame, flip(BRDF_in_RT300S_frame(mA))]; % match
+
+    % Process:
+    Iu = unique(I);
+    Au = unique(A);
+    nI = length(Iu);
+    nA = length(Au);
+
+    % Arbitrary (because iso) RT-300S coordinate:
+    rot = -(0 : abs(Au(2) - Au(1)) : 360); % sample rotation; all real 
+        % numbers [0,360); make negative so phi_i becomes positive;
+    rot = rot(1 : end - 1); % [0,360] to [0,360);
+    % NOTE: 'rot' requires same spacing as 'A' to keep \phi_s
+    % aligned with 0, i.e., [0,360), else would need to adjust \phi_i 
+    % (which is arbitrary for isotropic and therefore could be
+    % adjusted, but the FRED format examples have equidistant \phi_i
+    % values; the heart of this constraint is that \phi_i - \phi_s is
+    % what matters for isotropic, so changing \phi_s to align to 0
+    % would requires changing \phi_i -- setting 'rot' spacing seems to
+    % be only way to preserve both \phi_s aligned to 0 and \phi_i
+    % equidistant);
+
+    % FRED coordinates:
+    theta_i = Iu;
+    phi_i = -rot;
+    mR = R > 0; % treat R=0 separately; ignore R<0 because need for loop to
+        % behave like: 
+            % Iter 1: (R= +5, for Ai)
+            % Iter 2: (R= -5, for Ai)
+            % Iter 3: (R=+10, for Ai)
+            % ...
+    theta_s = unique(R(mR));
+    % \phi_s defined later
+
+    % Prepare structure of BRDF data:
+
+    out_arr = cell(nI, length(rot), length(theta_s)); % (\theta_i, \phi_i, 
+        % \theta_s); for storing BRDF values prior to re-ordering \phi_s 
+        % from [rot, rot + 360) to [0,360)
+
+    for Ii = 1:nI % for \theta_i
+        mI = I == Iu(Ii);
+        for rotj = 1:length(rot) % for \phi_i
+
+            % % FOR DEBUGGING / UNDERSTANDING FOR LOOP:
+            % fprintf('==================================================\n')
+            % fprintf('%i     %i\n', theta_i(Ii), phi_i(rotj))
+            % fprintf('==================================================\n')
+
+            for k = 1:length(theta_s)
+                out_arr{Ii, rotj, k} = nan(2*nA, 2);
+                current_row = 0;
+                for R_sign = [+1, -1] % for sign of what R actually is
+                    mR = R == R_sign * theta_s(k); % important to 
+                        % mask for 'R' not '|R|' else 'mIRA' will return 
+                        % two measurements
+                    mIR = and(mI, mR);
+                    for Ai = 1:nA % for \phi_s
+                        current_row = current_row + 1;
+                        mA = A == Au(Ai);
+                        mIRA = and(mIR, mA); % should be single true value
+                        j = mIRA == 1; % index of (hopefully) single value
+                    
+                        phi_s = 90 + Au(Ai) - rot(rotj) ...
+                            + (1 - R_sign)*90; % adds 180 if R<0
+                    
+                        % % FOR DEBUGGING / UNDERSTANDING FOR LOOP:
+                        % fprintf('%i     %i\n', theta_s(k), phi_s)
+
+                        out_arr{Ii, rotj, k}(current_row, :) = ...
+                            [phi_s, BRDF(j)];
+                    end
+                end
+            end
+        end
+    end
+
+    % Because \phi_s picks up \Delta{\phi_i} each new \phi_i, need to
+    % re-order \phi_s to [0,360) in each (\theta_i, \phi_i, \theta_s) set:
+
+    for Ii = 1:nI % for \theta_i
+        for rotj = 1:length(rot) % for \phi_i
+            for k = 1:length(theta_s)
+                
+                % Shift to [0,360) domain:
+                mphis_lo = out_arr{Ii, rotj, k}(:, 1) < 0; % initialize
+                mphis_hi = out_arr{Ii, rotj, k}(:, 1) >= 360;
+                while any([mphis_lo; mphis_hi])
+                    out_arr{Ii, rotj, k}(mphis_lo, 1) = ...
+                        out_arr{Ii, rotj, k}(mphis_lo, 1) + 360; % shift
+                    out_arr{Ii, rotj, k}(mphis_hi, 1) = ...
+                        out_arr{Ii, rotj, k}(mphis_hi, 1) - 360;
+                    mphis_lo = out_arr{Ii, rotj, k}(:, 1) < 0; % update
+                    mphis_hi = out_arr{Ii, rotj, k}(:, 1) >= 360;
+                end
+                
+                % Re-order to [0,360):
+                [~, sort_id] = sort(out_arr{Ii, rotj, k}(:, 1));
+                out_arr{Ii, rotj, k} = out_arr{Ii, rotj, k}(sort_id, :);
+                
+            end
+        end
+    end
+
+    % Open text file:
+    fid = fopen(name_txt_file, 'w');
+
+    % % Write development notes (pre header):
+    % fprintf(fid, '# IS THIS A COMMENT ?\n');
+
+    % Write header:
+    fprintf(fid, 'bsdf_data\n');
+    fprintf(fid, 'angles=deg bsdf=value scale=1\n');
+
+    % Write BRDF data to FRED file (now that \phi_s is sorted):
+
+    mR = R == 0;
+    for Ii = 1:nI % for \theta_i
+        mRI = and(mR, I == Iu(Ii));
+        for rotj = 1:length(rot) % for \phi_i
+            fprintf(fid, '%i	%i\n', theta_i(Ii), phi_i(rotj)); 
+                % space is tab
+
+            % Write for \theta_s = 0:
+            for phi_s_dummy = -rot
+                BRDF_at_R0 = BRDF(mRI); % average values from all 'A'
+                BRDF_at_R0 = mean(BRDF_at_R0(~isnan(BRDF_at_R0))); 
+                    % average only non-nan entries
+                fprintf(fid, '0	%i	%.6f\n', phi_s_dummy, BRDF_at_R0);
+                    % space is tab
+            end
+
+            % Write for \theta_s > 0:
+            for k = 1:length(theta_s) % for \theta_s > 0
+                current = 0;
+                for R_sign = [+1, -1] % for sign of what R actually is
+                    for Ai = 1:nA % for \phi_s
+                        current = current + 1;
+                        phi_s_current = out_arr{Ii, rotj, k}(current, 1);
+                        BRDF_current = out_arr{Ii, rotj, k}(current, 2);
+                        if ~isnan(BRDF_current) % ONLY WRITE IF NOT NAN
+                            fprintf(fid, '%i	%i	%.6f\n', ...
+                                theta_s(k), phi_s_current, BRDF_current);
+                                % space is tab
+                        end
+                    end
+                end
+            end
+
+        end
+    end
+
+    % Close text file and return status=1 success:
+    fclose(fid);
+    status = 1;
+
+end
+
+% [END] FUNCTION SPECIFICALLY FOR EXPORTING TO FRED FORMAT.
 % =========================================================================
 % =========================================================================
 
