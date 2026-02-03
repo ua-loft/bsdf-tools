@@ -19,6 +19,8 @@
 %   5) Multiple datasets are averaged, and all share the same light-source
 %      alignment, meaning all data is shifted by same amount to compensate
 %      for systematic error.
+%   6) Isotropic redundancy is removed by assuming FRED only needs entries 
+%      for: \phi_i=0 for all, \phi_s=0 at \theta_s=0, \phi_s \in [0,180].
 % 
 % Developer(s):
 %   - Jacob P. Krell (JPK)
@@ -38,6 +40,9 @@
 % |            |      | verified against BrownVinyl                       |
 % | 2026.01.24 | JPK  | Initialized support for FRED format; not yet      |
 % |            |      | validated and code is messy;                      |
+% | 2026.02.03 | JPK  | Revised FRED format to remove redundancy of       |
+% |            |      | isotropic data manually hardcoded to full         |
+% |            |      | anisotropic angles (see Assumption 6);            |
 % 
 % References:
 % [1] Max Duque's whitepaper on RT-300S
@@ -79,13 +84,13 @@ legend_names_for_datasets = ["v1.0", "-v1.0"]; % negative is for mirrored A=[0,9
 
 % Information for BSDF file:
 
-name_sample = "Anoplate AnoBlack NiTE w/ Blast on INVAR 36"; 
-    % name of sample measured
+% name_sample = "Anoplate AnoBlack NiTE w/ Blast on INVAR 36"; 
+%     % name of sample measured
 % name_sample = "Anoplate AnoBlack NiTE w/ Blast on Steel 1008 (So #: 1117496)"; 
 %     % name of sample measured
 % name_sample = "Anoplate AnoBlack EC1 on Alum 6061 (So #: 1114817)";
-% name_sample = "Anoplate AnoBlack EC2 on Alum 6061 (So #: 1114818)";
-%     % name of sample measured
+name_sample = "Anoplate AnoBlack EC2 on Alum 6061 (So #: 1114818)";
+    % name of sample measured
 
 name_source = "red laser (650 nm, 3.5mm spot diam.)"; 
     % name of light source used
@@ -104,7 +109,7 @@ name_contact = "Jacob P. Krell (jacobpkrell@arizona.edu)"; % name of person
 %     % results to (do not include '.bsdf' or 'txt' extension)
 name_file = "AnoBlackEC2onAlum"; % name of new BSDF file to output 
     % results to (do not include '.bsdf' or 'txt' extension)
-    
+
 if OUTPUT_TO_ZEMAX
     name_bsdf_file = name_file + '.bsdf';
 end
@@ -1746,26 +1751,36 @@ function status = save_as_fred(I_iso, A_iso, R_iso, ...
     % fprintf(fid, '# IS THIS A COMMENT ?\n');
 
     % Write header:
-    fprintf(fid, 'bsdf_data\n');
-    fprintf(fid, 'angles=deg bsdf=value scale=1\n');
+    fprintf(fid, 'type bsdf_data\n');
+    fprintf(fid, 'format angles=deg bsdf=value scale=1\n');
 
     % Write BRDF data to FRED file (now that \phi_s is sorted):
+
+    % For isotropic, need only phi_i = 0
 
     mR = R == 0;
     for Ii = 1:nI % for \theta_i
         mRI = and(mR, I == Iu(Ii));
-        for rotj = 1:length(rot) % for \phi_i
+
+        % % OUTDATED: Define all incident azimuths for isotropic:
+        % for rotj = 1:length(rot) % for \phi_i
+        % CORRECTION: Only need one incident azimuth for isotropic:
+        rotj = 1;
+
             fprintf(fid, '%i	%i\n', theta_i(Ii), phi_i(rotj)); 
                 % space is tab
 
             % Write for \theta_s = 0:
-            for phi_s_dummy = -rot
-                BRDF_at_R0 = BRDF(mRI); % average values from all 'A'
-                BRDF_at_R0 = mean(BRDF_at_R0(~isnan(BRDF_at_R0))); 
-                    % average only non-nan entries
-                fprintf(fid, '0	%i	%.6f\n', phi_s_dummy, BRDF_at_R0);
-                    % space is tab
-            end
+            BRDF_at_R0 = BRDF(mRI); % average values from all 'A'
+            BRDF_at_R0 = mean(BRDF_at_R0(~isnan(BRDF_at_R0))); 
+                % average only non-nan entries
+            % % OUTDATED: Define all scatter azimuths for \theta_s = 0:
+            % for phi_s_dummy = -rot
+            %     fprintf(fid, '0	%i	%.6f\n', phi_s_dummy, BRDF_at_R0);
+            %         % space is tab
+            % end
+            % CORRECTION: Only need one scatter azimuth for \theta_s = 0:
+            fprintf(fid, '0	0	%.6f\n', BRDF_at_R0); % space is tab
 
             % Write for \theta_s > 0:
             for k = 1:length(theta_s) % for \theta_s > 0
@@ -1774,17 +1789,25 @@ function status = save_as_fred(I_iso, A_iso, R_iso, ...
                     for Ai = 1:nA % for \phi_s
                         current = current + 1;
                         phi_s_current = out_arr{Ii, rotj, k}(current, 1);
+
+                        if and(phi_s_current >= 0, phi_s_current <= 180)
+                            % CORRECTION: Only need to define \phi_s \in
+                            % [0, 180] deg; FRED mirrors to (180, 360).
+
                         BRDF_current = out_arr{Ii, rotj, k}(current, 2);
                         if ~isnan(BRDF_current) % ONLY WRITE IF NOT NAN
                             fprintf(fid, '%i	%i	%.6f\n', ...
                                 theta_s(k), phi_s_current, BRDF_current);
                                 % space is tab
                         end
+
+                        end % CORRECTION
+
                     end
                 end
             end
 
-        end
+        % end % OUTDATED
     end
 
     % Close text file and return status=1 success:
