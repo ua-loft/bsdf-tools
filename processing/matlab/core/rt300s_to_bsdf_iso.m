@@ -61,6 +61,10 @@ clearvars, clc, close all
 OUTPUT_TO_FRED = true; % output to FRED txt format
 OUTPUT_TO_ZEMAX = false; % output to Zemax BSDF file format
 
+if OUTPUT_TO_FRED
+    OUTPUT_FULL_AZIMUTH = true; % define \psi_s \in [0,360), else [0,180]
+end
+
 % Filenames of measurements, where first element is the blank data used
 % to zero the sample measurements:
     % - include '.xls' extension;
@@ -114,7 +118,11 @@ if OUTPUT_TO_ZEMAX
     name_bsdf_file = name_file + '.bsdf';
 end
 if OUTPUT_TO_FRED
-    name_txt_file = name_file + '.txt';
+    if OUTPUT_FULL_AZIMUTH
+        name_txt_file = name_file + '_fullAz.txt';
+    else
+        name_txt_file = name_file + '.txt';
+    end
 end
 repo_version = "v1.1.0";
 
@@ -450,7 +458,8 @@ end
 % requires polar (Az,Rz) coordinates):
 if OUTPUT_TO_FRED
     BRDF_in_RT300S_frame = RT_iso_avg ./ (pi * cosd(R_iso)); % equation 4.6 of [2]
-    save_as_fred(I_iso, A_iso, R_iso, BRDF_in_RT300S_frame, name_txt_file);
+    save_as_fred(I_iso, A_iso, R_iso, BRDF_in_RT300S_frame, ...
+        name_txt_file, OUTPUT_FULL_AZIMUTH);
 end
 
 % =========================================================================
@@ -1614,7 +1623,7 @@ end
 % [BEGIN] FUNCTION SPECIFICALLY FOR EXPORTING TO FRED FORMAT.
 
 function status = save_as_fred(I_iso, A_iso, R_iso, ...
-    BRDF_in_RT300S_frame, name_txt_file)
+    BRDF_in_RT300S_frame, name_txt_file, OUTPUT_FULL_AZIMUTH)
     % Assumption(s):
     %   1) 'A_iso' \in [-90, 0], and if full [-90,90] was measured then
     %       (0,90] was averaged with [-90,0) data (isotropic condition).
@@ -1790,18 +1799,27 @@ function status = save_as_fred(I_iso, A_iso, R_iso, ...
                         current = current + 1;
                         phi_s_current = out_arr{Ii, rotj, k}(current, 1);
 
-                        if and(phi_s_current >= 0, phi_s_current <= 180)
-                            % CORRECTION: Only need to define \phi_s \in
-                            % [0, 180] deg; FRED mirrors to (180, 360).
-
-                        BRDF_current = out_arr{Ii, rotj, k}(current, 2);
-                        if ~isnan(BRDF_current) % ONLY WRITE IF NOT NAN
-                            fprintf(fid, '%i	%i	%.6f\n', ...
-                                theta_s(k), phi_s_current, BRDF_current);
-                                % space is tab
+                        % OPTIONAL CORRECTION: Only need to define \phi_s 
+                        % \in [0, 180] deg; FRED mirrors to (180, 360).
+                        if OUTPUT_FULL_AZIMUTH % then no correction
+                            DEFINE_PSI_S = true;
+                        else % then apply correction
+                            if phi_s_current >= 0 && phi_s_current <= 180
+                                DEFINE_PSI_S = true; % within range
+                            else
+                                DEFINE_PSI_S = false; % outside range
+                            end
                         end
 
-                        end % CORRECTION
+                        if DEFINE_PSI_S
+                            BRDF_current = out_arr{Ii, rotj, ...
+                                k}(current, 2);
+                            if ~isnan(BRDF_current) % ONLY WRITE IF NOT NAN
+                                fprintf(fid, '%i	%i	%.6f\n', ...
+                                    theta_s(k), phi_s_current, ...
+                                    BRDF_current); % space is tab
+                            end
+                        end
 
                     end
                 end
