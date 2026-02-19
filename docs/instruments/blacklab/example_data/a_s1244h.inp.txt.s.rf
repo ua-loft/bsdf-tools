@@ -1,0 +1,19 @@
+Measurements taken on Apr 09 2025 by matt
+Spectralon 7
+NIST BRF values linearly interpolated from F:\data\sorted\data_processing_programs\blacklab_rf_calculator_MATLAB\NIST RF files\RSG_working_NIST_standard\NIST_291181-Revised_24477-1-1_0-45_Extended.txt
+1243.53
+14
+12.000	1.072113
+15.000	1.069131
+20.000	1.061982
+25.000	1.056722
+30.000	1.049887
+35.000	1.042327
+40.000	1.032747
+45.000	1.023132
+50.000	1.011591
+55.000	0.999285
+60.000	0.984797
+65.000	0.964364
+70.000	0.939779
+75.000	0.906756
