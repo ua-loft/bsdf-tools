@@ -43,6 +43,7 @@
 % | 2026.02.03 | JPK  | Revised FRED format to remove redundancy of       |
 % |            |      | isotropic data manually hardcoded to full         |
 % |            |      | anisotropic angles (see Assumption 6);            |
+% | 2026.02.19 | JPK  | Divided TIS by 2 to correct bug in formula;       |
 % 
 % References:
 % [1] Max Duque's whitepaper on RT-300S
@@ -58,8 +59,8 @@ clearvars, clc, close all
 % =========================================================================
 % [BEGIN] USER INPUTS:
 
-OUTPUT_TO_FRED = true; % output to FRED txt format
-OUTPUT_TO_ZEMAX = false; % output to Zemax BSDF file format
+OUTPUT_TO_FRED = false; % output to FRED txt format
+OUTPUT_TO_ZEMAX = true; % output to Zemax BSDF file format
 
 if OUTPUT_TO_FRED
     OUTPUT_FULL_AZIMUTH = true; % define \psi_s \in [0,360), else [0,180]
@@ -99,8 +100,10 @@ name_sample = "Anoplate AnoBlack EC2 on Alum 6061 (So #: 1114818)";
 name_source = "red laser (650 nm, 3.5mm spot diam.)"; 
     % name of light source used
 name_angles = "(10:20:70, -90:10:90, -80:10:80)"; % in (I,A,R) order
+
 % name_dates = ["2025/09/15", "2025/09/16"]; % date(s) measurements were made
 name_dates = ["2025/11/15"]; % date(s) measurements were made
+
 name_contact = "Jacob P. Krell (jacobpkrell@arizona.edu)"; % name of person
     % to contact, most likely you or whoever made the measurement; consider
     % including email or phone number in parentheses too
@@ -124,7 +127,7 @@ if OUTPUT_TO_FRED
         name_txt_file = name_file + '.txt';
     end
 end
-repo_version = "v1.1.0";
+repo_version = "v1.2.2";
 
 % Logicals for returning plots:
 RETURNPLOT_RT_PlaneSymmetrical = false;
@@ -682,12 +685,10 @@ for i = 1:nI
     TIS(i) = 2 * (TIS_total - TIS_specular); % x2 because Az = [0, 180], 
         % but need [0, 360]
 
-    if VALIDATE_TIS_VIA_BROWNVINYL
-        % Adjust to Zemax format:
-            % - not sure why but BrownVinyl appears to only integrate on 
-            %   limits Az=[0,180] so provide TIS/2 instead;
-        TIS(i) = TIS(i) / 2;
-    end
+    % Not sure where mistake is in integral, but Zemax (i.e., 'BrownVinyl' 
+    % validation test) and FRED's internal TIS calculation both show a
+    % factor of 2 error:
+    TIS(i) = TIS(i) / 2;
 
 end
 

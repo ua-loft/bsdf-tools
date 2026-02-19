@@ -52,6 +52,7 @@
 % | 2025.11.20 | JPK  | Successfully debugged missing quadrants in BSDF   |
 % |            |      | files, along with different BRDF value at Az=0    |
 % |            |      | for Rz=0;                                         |
+% | 2026.02.19 | JPK  | Divided TIS by 2 to correct bug in formula;       |
 % 
 % References:
 % [1] Max Duque's whitepaper on RT-300S
@@ -99,7 +100,7 @@ name_contact = "Jacob P. Krell (jacobpkrell@arizona.edu)"; % name of person
     % including email or phone number in parentheses too
 name_bsdf_file = "IMX455.bsdf"; % name of new BSDF file to output 
     % results to; include '.bsdf' extension
-repo_version = "v1.1.0";
+repo_version = "v1.2.2";
 
 % Logicals for returning plots:
 RETURNPLOT_RT_AzRz = false;
@@ -510,6 +511,11 @@ for i = 1:nI
         % Subtract specular from total to get just scatter (which is TIS):
         TIS(i, m) = 2 * (TIS_total - TIS_specular); % x2 because Az = [0, 180], 
             % but need [0, 360]
+
+        % Not sure where mistake is in integral, but Zemax (i.e., 
+        % 'BrownVinyl' validation test) and FRED's internal TIS 
+        % calculation both show a factor of 2 error:
+        TIS(i, m) = TIS(i, m) / 2;
 
     end
 end
