@@ -515,7 +515,7 @@ for i = 1:nI
         % Not sure where mistake is in integral, but Zemax (i.e., 
         % 'BrownVinyl' validation test) and FRED's internal TIS 
         % calculation both show a factor of 2 error:
-        TIS(i) = TIS(i) / 2;
+        TIS(i, m) = TIS(i, m) / 2;
 
     end
 end
