@@ -100,7 +100,7 @@ name_contact = "Jacob P. Krell (jacobpkrell@arizona.edu)"; % name of person
     % including email or phone number in parentheses too
 name_bsdf_file = "IMX455.bsdf"; % name of new BSDF file to output 
     % results to; include '.bsdf' extension
-repo_version = "v1.1.0";
+repo_version = "v1.2.2";
 
 % Logicals for returning plots:
 RETURNPLOT_RT_AzRz = false;
