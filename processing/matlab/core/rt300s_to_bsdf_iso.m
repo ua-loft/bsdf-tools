@@ -43,6 +43,7 @@
 % | 2026.02.03 | JPK  | Revised FRED format to remove redundancy of       |
 % |            |      | isotropic data manually hardcoded to full         |
 % |            |      | anisotropic angles (see Assumption 6);            |
+% | 2026.02.19 | JPK  | Divided TIS by 2 to correct bug in formula;       |
 % 
 % References:
 % [1] Max Duque's whitepaper on RT-300S
@@ -682,12 +683,10 @@ for i = 1:nI
     TIS(i) = 2 * (TIS_total - TIS_specular); % x2 because Az = [0, 180], 
         % but need [0, 360]
 
-    if VALIDATE_TIS_VIA_BROWNVINYL
-        % Adjust to Zemax format:
-            % - not sure why but BrownVinyl appears to only integrate on 
-            %   limits Az=[0,180] so provide TIS/2 instead;
-        TIS(i) = TIS(i) / 2;
-    end
+    % Not sure where mistake is in integral, but Zemax (i.e., 'BrownVinyl' 
+    % validation test) and FRED's internal TIS calculation both show a
+    % factor of 2 error:
+    TIS(i) = TIS(i) / 2;
 
 end
 

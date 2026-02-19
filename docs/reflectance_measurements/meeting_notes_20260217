@@ -1,0 +1,49 @@
+
+2026/02/17
+
+Attendees:
+
+Nik
+Matt
+Daewook
+Heejoo
+Pierre
+Jacob
+
+---
+
+
+Jacob's notes:
+
+- Remote Sensing Lab is geared more towards larger samples
+
+- Field Measurement: outside in morning to minimize shading
+- 10 in sq black panel can be background
+- our sample placed on top
+- we can potentially subtract the background "blank" measurement
+
+- [ ] share Marshall paper
+
+---
+
+Pierre's notes:
+
+- 350 - 2500 nm range
+- SNR of 1000 is typical goal (at least 100)
+- want to know scattering behavior of aluminum above 700 nm
+    - ideally: above 1.3 um (and especially above 2.0 um)
+- want to try paints with different aluminum surface/coating
+    - surface manufacturing technique changes behavior
+- spectral reflectance --> field measurement instrument will give quick first-pass data (would be quick... few minutes)
+    - then, can do more detailed measurement in lab (would be couple days)
+
+
+
+
+
+
+
+
+
+
+
