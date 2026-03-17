@@ -1,6 +1,12 @@
 # bsdf-tools
 Tools for processing and converting BSDF/BRDF data, including RT-300S measurement handling and export to optical software formats.
 
+## NOTES ON IN-PROGRESS ANISOTROPIC FRED ROUTINE (2026/03/16):
+
+- 'rt300s_to_bsdf_aniso_devFRED_v1.m' produced 'DEBUG_ANISO_aniso.txt', which is IMX455 but only in measured quadrant of 'rot = [0, 90]'
+- 'apply_yz_symm_to_aniso_FRED_data.m' applies BOTH yz and xz plane symmetries to 'DEBUG_ANISO_aniso.txt', to produce 'DEBUG_ANISO_aniso_SYMM.txt', which has mirrored data to 'rot = [0, 360)'
+- i believe the code is fine, but it is messy
+
 ## RT-300S Data Processing Package
 
 Author: Jacob P. Krell (jacobpkrell@arizona.edu)
