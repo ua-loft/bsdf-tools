@@ -218,5 +218,8 @@ function [S, I, Az, Rz, BRDF] = interpolate_zemax(S, I, Az, Rz, BRDF, Az_q, Rz_q
         end
     end
 
+    % Set all nan to 0 (these should only be "transmission" angles):
+    BRDF(isnan(BRDF)) = 0;
+
 end
 

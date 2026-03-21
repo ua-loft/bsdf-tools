@@ -1,7 +1,8 @@
 
-function status = write_zemax(S, I, Az, Rz, BRDF, filepath, ISOTROPIC, OVERWRITE)
+function status = write_zemax(S, I, Az, Rz, BRDF, filepath, ISOTROPIC, OVERWRITE, header_info)
     % 'filepath' is full filepath of output *.bsdf file.
     % Only monochromatic light source is currently supported.
+    % Set 'header_info = ""' to leave blank.
 
     status = false; % initialize
 
@@ -14,37 +15,9 @@ function status = write_zemax(S, I, Az, Rz, BRDF, filepath, ISOTROPIC, OVERWRITE
         end
     end
     fid = fopen(filepath, 'wt'); % if no error above, open file
-    
-    % % Write comments at top of file:
-    % fprintf(fid, line_break);
-    % fprintf(fid, line_break);
-    % fprintf(fid, "# [BEGIN] DEVELOPMENT INFORMATION:\n");
-    % fprintf(fid, "# \n");
-    % fprintf(fid, line_sample);
-    % fprintf(fid, "# Scatterometer: Wyant College's J&C RT-300S\n");
-    % fprintf(fid, line_source);
-    % fprintf(fid, line_angles);
-    % fprintf(fid, "# Number of measurements averaged: n/a\n");
-    %     % for anisotropic, each dataset is unique sample rotation and therefore
-    %     % no measurements are averaged
-    % fprintf(fid, line_blankdataset);
-    % fprintf(fid, line_datasets);
-    % fprintf(fid, "# Processing script: '" + mfilename() + ".m'\n");
-    %     % e.g.: "# Processing script: 'rt300s_to_bsdf_aniso.m'\n"
-    % fprintf(fid, "# Processing source: https://github.com/ua-loft/bsdf-tools/tree/" + repo_version + "\n");
-    % fprintf(fid, line_dates);
-    % fprintf(fid, "# Note(s): - sample is anisotropic;\n" + ...
-    %     "#          - TIS calculated over entire hemisphere, i.e., " + ...
-    %     "Az=[0,360), but only from BRDF values reported here so " + ...
-    %     "assuming BRDF=0 beyond Rz>=90;\n");
-    % fprintf(fid, "# Point of contact: " + name_contact + "\n");
-    %     % e.g.: 
-    %     % "# Point of contact: Jacob P. Krell (jacobpkrell@arizona.edu)\n"
-    % fprintf(fid, "# \n");
-    % fprintf(fid, "# [END] DEVELOPMENT INFORMATION.\n");
-    % fprintf(fid, "# ======================================================\n");
-    % fprintf(fid, "# ======================================================\n");
-    % fprintf(fid, "# \n");
+
+    % Write header information for measurement:
+    fprintf(fid, header_info);
 
     % Write header information for assumptions (symmetry, source, etc.):
     fprintf(fid, "Source\tMeasured\n");

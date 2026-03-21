@@ -114,8 +114,6 @@ name_contact = "Jacob P. Krell (jacobpkrell@arizona.edu)"; % name of person
 name_file = "IMX455.bsdf"; % name of new BSDF file to output 
     % results to; include '.bsdf' extension
 
-name_file = "DEBUG_ANISO_aniso"
-
 if OUTPUT_TO_ZEMAX
     name_bsdf_file = name_file + '.bsdf';
 end
@@ -626,7 +624,7 @@ line_blankdataset = ...
     "# Blank dataset: '" + filenames(1) + "'\n";
     % e.g.: "# Blank dataset: 'blank_measurement.xls'\n"
 
-line_datasets = "# SDataset(s): "; % initialize
+line_datasets = "# Dataset(s): "; % initialize
 for m = 1:M
     if m > 1 % if not first dataset
         line_datasets = line_datasets + ", "; % add comma between datasets
