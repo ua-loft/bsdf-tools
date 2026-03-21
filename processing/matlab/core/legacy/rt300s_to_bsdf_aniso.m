@@ -626,7 +626,7 @@ line_blankdataset = ...
     "# Blank dataset: '" + filenames(1) + "'\n";
     % e.g.: "# Blank dataset: 'blank_measurement.xls'\n"
 
-line_datasets = "# Dataset(s): "; % initialize
+line_datasets = "# SDataset(s): "; % initialize
 for m = 1:M
     if m > 1 % if not first dataset
         line_datasets = line_datasets + ", "; % add comma between datasets

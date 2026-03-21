@@ -1,5 +1,5 @@
 
-function [Pi, Ai, Ps, As] = rt300s_to_fred(A, I, R, S)
+function [Pi, Ai, Ps, As] = rt300s_frame_to_fred(A, I, R, S)
     % Inputs and outputs are corresponding 1D vectors.
     % Converts RT-300S coordinates to FRED coordinates.
     % Pi == polar incident (\theta_i)

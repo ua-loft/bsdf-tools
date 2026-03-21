@@ -1,11 +1,11 @@
 % =========================================================================
 % =========================================================================
 % 
-% main.m
+% rt300s_to_fred.m
 % 
 % Description:
 %   - Process raw monochromatic measurement data from J&C's RT-300S 
-%     scatterometer into FRED format.
+%     scatterometer into FRED format, and save FRED file.
 % 
 % Assumptions:
 %   1) Data files are in default Excel format as output by RT-300S.
