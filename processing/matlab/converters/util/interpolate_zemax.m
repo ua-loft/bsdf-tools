@@ -126,50 +126,13 @@ function [S, I, Az, Rz, BRDF] = interpolate_zemax(S, I, Az, Rz, BRDF, Az_q, Rz_q
     Rz_new = [];
     BRDF_new = [];
 
-    % n = 3; % number of Az elements to expand with
+    delta = 20; % cutoff to expand Az domain, i.e., [-delta, 360 + delta)
     
     for S_j = unique(S)'
         mS = S == S_j;
         for I_j = unique(I(mS))'
             mSI = and(mS, I == I_j);
             
-            % % =============================================================
-            % % [BEGIN] DEV ATTEMPT 1:
-            % 
-            % for Rz_j = unique(Rz(mSI))'
-            %     mSIRz = and(mSI, Rz == Rz_j);
-            %     mSIRz_j = find(mSIRz); % logical to indices
-            % 
-            %     Az_jvec = Az(mSIRz);
-            %     [~, order] = sort(Az_jvec);
-            %     mSIRz_j_sorted = mSIRz_j(order); % global indices sorted
-            % 
-            %     mj_lo = mSIRz_j_sorted(1:n);
-            %     mj_hi = mSIRz_j_sorted(end-n+1 : end);
-            % 
-            %     if ISOTROPIC
-            %         Az_lo = -Az(mj_lo);
-            %         Az_hi = 360 - Az(mj_hi);
-            %     else
-            %         Az_lo = Az(mj_lo) + 360;
-            %         Az_hi = Az(mj_hi) - 360;
-            %     end
-            % 
-            %     S_new = [S_new; S(mj_lo); S(mj_hi)];
-            %     I_new = [I_new; I(mj_lo); I(mj_hi)];
-            %     Az_new = [Az_new; Az_lo; Az_hi];
-            %     Rz_new = [Rz_new; Rz(mj_lo); Rz(mj_hi)];
-            %     BRDF_new = [BRDF_new; BRDF(mj_lo); BRDF(mj_hi)];
-            % 
-            % end
-            % 
-            % % [END] DEV ATTEMPT 1.
-            % % =============================================================
-            % =============================================================
-            % [BEGIN] DEV ATTEMPT 2:
-
-            % Instead of sort order, use angle cutoff to expand Az:
-            delta = 20;
             m_lo = and(mSI, Az < delta);
             if ISOTROPIC
                 m_hi = and(mSI, Az > 180 - delta);
@@ -187,9 +150,6 @@ function [S, I, Az, Rz, BRDF] = interpolate_zemax(S, I, Az, Rz, BRDF, Az_q, Rz_q
             Rz_new = [Rz_new; Rz(m_lo); Rz(m_hi)];
             BRDF_new = [BRDF_new; BRDF(m_lo); BRDF(m_hi)];
 
-            % [END] DEV ATTEMPT 2.
-            % =============================================================
-            
         end
     end
 
@@ -224,24 +184,10 @@ function [S, I, Az, Rz, BRDF] = interpolate_zemax(S, I, Az, Rz, BRDF, Az_q, Rz_q
         mS = S == S_j;
         for I_j = unique(I(mS))'
             mSI = and(mS, I == I_j);
-            
             F = scatteredInterpolant(Az(mSI), Rz(mSI), BRDF(mSI), ...
                 'natural', 'none'); % more accurate but sometimes nan
-            F_nn = scatteredInterpolant(Az(mSI), Rz(mSI), BRDF(mSI), ...
-                'nearest', 'nearest'); % not nan
-            
             BRDF_new = F(Az_q_grid, Rz_q_grid);
             BRDF_new = BRDF_new(:); % grid to vector
-
-            BRDF_new_nn = F_nn(Az_q_grid, Rz_q_grid);
-            BRDF_new_nn = BRDF_new_nn(:); % grid to vector
-
-            % if any(isnan(BRDF_new))
-            %     disp('yep')
-            % end
-            % BRDF_new(isnan(BRDF_new)) = BRDF_new_nn(isnan(BRDF_new));
-            %     % use 'nn' values where 'BRDF_new' is nan
-
             L = length(BRDF_new);
             S_new = repelem(S_j, L, 1);
             I_new = repelem(I_j, L, 1);
@@ -250,7 +196,6 @@ function [S, I, Az, Rz, BRDF] = interpolate_zemax(S, I, Az, Rz, BRDF, Az_q, Rz_q
             Az_all = [Az_all; Az_q_grid(:)];
             Rz_all = [Rz_all; Rz_q_grid(:)];
             BRDF_all = [BRDF_all; BRDF_new];
-
         end
     end
 
