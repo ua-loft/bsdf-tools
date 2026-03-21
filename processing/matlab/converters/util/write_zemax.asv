@@ -82,31 +82,31 @@ function status = write_zemax(S, I, Az, Rz, BRDF, filepath, ISOTROPIC, OVERWRITE
     fprintf(fid, "%i", Iu(1)); % first value
     if nI > 1
         for I_j = Iu(2:end)' % non-first value(s)
-            fprintf(fid, "\t"); % tab, such that last value doesn't have tab
-            fprintf(fid, "%i", I_j); % value
+            fprintf("\t"); % tab, such that last value doesn't have tab
+            fprintf("%i", I_j); % value
         end
     end
-    fprintf(fid, "\n");
+    fprintf("\n");
 
     fprintf(fid, "ScatterAzimuth\t%i\n", nAz);
-    fprintf(fid, "%i", Azu(1)); % first value
+    fprintf("%i", Azu(1)); % first value
     if nAz > 1
         for Az_j = Azu(2:end)' % non-first value(s)
-            fprintf(fid, "\t"); % tab, such that last value doesn't have tab
-            fprintf(fid, "%i", Az_j); % value
+            fprintf("\t"); % tab, such that last value doesn't have tab
+            fprintf("%i", Az_j); % value
         end
     end
-    fprintf(fid, "\n");
+    fprintf("\n");
 
     fprintf(fid, "ScatterRadial\t%i\n", nRz);
-    fprintf(fid, "%i", Rzu(1)); % first value
+    fprintf("%i", Rzu(1)); % first value
     if nRz > 1
         for Rz_j = Rzu(2:end)' % non-first value(s)
-            fprintf(fid, "\t"); % tab, such that last value doesn't have tab
-            fprintf(fid, "%i", Rz_j); % value
+            fprintf("\t"); % tab, such that last value doesn't have tab
+            fprintf("%i", Rz_j); % value
         end
     end
-    fprintf(fid, "\n");
+    fprintf("\n");
 
     fprintf(fid, "Monochrome\n"); % assuming monochromatic source
     fprintf(fid, "DataBegin\n");

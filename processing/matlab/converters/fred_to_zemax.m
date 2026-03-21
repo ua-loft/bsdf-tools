@@ -9,10 +9,13 @@ clc, clearvars, close all
 
 filepath = 'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\AnoBlackEC1onAlum.txt';
 
-dAz = 10;
-dRz = 10;
+% Query points for FRED-to-Zemax interpolation:
+Az_q = 0 : 10 : 180; % [0, 180] if isotropic, [0, 360) if anisotropic
+Rz_q = [0 : 5 : 15, 20 : 10 : 180]; % [0, 180]
 
 ISOTROPIC = true;
+OVERWRITE = true;
+MAX_IS_SPECULAR= true;
 
 
 
@@ -30,13 +33,13 @@ ISOTROPIC = true;
 
 
 % NOT YET VALIDATED, BUT ON SURFACE NO BUGS:
-[S, I, Az, Rz, BRDF] = interpolate_zemax(S, I, Az, Rz, BRDF, dAz, dRz, ISOTROPIC);
+[S, I, Az, Rz, BRDF] = interpolate_zemax(S, I, Az, Rz, BRDF, Az_q, Rz_q, ISOTROPIC, MAX_IS_SPECULAR);
 
 
 
 % Write to BSDF file:
 filepath = 'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\zemax\test.bsdf';
-write_zemax(S, I, Az, Rz, BRDF, filepath);
+write_zemax(S, I, Az, Rz, BRDF, filepath, ISOTROPIC, OVERWRITE);
 
 
 

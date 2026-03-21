@@ -45,6 +45,13 @@ function [S, I, Az, Rz] = fred_frame_to_zemax(Pi, Ai, Ps, As)
     Az = Az';
     Rz = Rz';
 
+    % Snap values to remove numerical calculation error:
+    tau = 1e-6; % numerical error threshold
+    for target = [0, 90, 180, 270]
+        Az(abs(Az - target) < tau) = target;
+        Rz(abs(Rz - target) < tau) = target;
+    end
+
 end
 
 function xyz = fred_to_cartesian(P, A)

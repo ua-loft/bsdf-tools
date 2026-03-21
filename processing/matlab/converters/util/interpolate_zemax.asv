@@ -1,10 +1,6 @@
 
-function [S, I, Az, Rz, BRDF] = interpolate_zemax(S, I, Az, Rz, BRDF, Az_q, Rz_q, ISOTROPIC, MAX_IS_SPECULAR)
+function [S, I, Az, Rz, BRDF] = interpolate_zemax(S, I, Az, Rz, BRDF, Az_q, Rz_q, ISOTROPIC)
     % Assumes Az \in [0, 360).
-    % 'MAX_IS_SPECULAR' should almost always be set to true to account for
-    % misalignment error in the measurement; however, if the sample is
-    % anisotropic and highly diffractive, consider setting to false in case 
-    % diffracted BRDF is greater than specular BRDF.
 
     % Force specular ray (otherwise interpolation yields NaN at Rz=0):
 
@@ -46,22 +42,21 @@ function [S, I, Az, Rz, BRDF] = interpolate_zemax(S, I, Az, Rz, BRDF, Az_q, Rz_q
 
                 BRDF_vals = BRDF(mSIRz);
                 BRDF_vals = BRDF_vals(~isnan(BRDF_vals));
-                BRDF0 = mean(BRDF_vals); % average of non nan values 
-                    % within specular cone
+                BRDF0 = mean(BRDF_vals); % average of non nan values
 
                 Rz_mSI = Rz(mSI);
                 [BRDF_max, BRDF_max_j] = max(BRDF(mSI));
+                if Rz_mSI(BRDF_max_j) >= Rz0_threshold
+                    warning("Max BRDF value of (S,I)=(%i,%i) was found outside of 'Rz0_threshold=%.3e' range, at 'Rz=%.3e'. If the sample is highly diffractive and this Rz value is outside of what could be measurement alignment error, then ignore; otherwise, increase 'Rz0_threshold' to include this true specular measurement into the dataset's averaged-out specular cone.", S_j, I_j, Rz0_threshold, Rz_mSI(BRDF_max_j))
+                end
                 if MAX_IS_SPECULAR
                     BRDF0 = BRDF_max; % replace the BRDF value at the 
                         % specular angle with the max BRDF value, assuming 
-                        % the max value was displaced by alignment 
-                        % errors during the measurement
-                elseif Rz_mSI(BRDF_max_j) >= Rz0_threshold
-                    warning("Max BRDF value of (S,I)=(%i,%i) was found outside of 'Rz0_threshold=%.3e' range, at 'Rz=%.3e'. If the sample is highly diffractive and this Rz value is outside of what could be measurement alignment error, then ignore; otherwise, increase 'Rz0_threshold' to include this true specular measurement into the dataset's averaged-out specular cone.", S_j, I_j, Rz0_threshold, Rz_mSI(BRDF_max_j))
+                        % the max value is misplaced due to alignment 
+                        % error during the BRDF measurement
                 end
-                
-                BRDF(mSIRz) = BRDF0; % set angles within defined specular 
-                    % cone to specular value
+
+                BRDF(mSIRz) = BRDF0; % set to specular value
                 BRDF_ext = Lvec * BRDF0; % BRDF extension, across Az
 
                 S_new = [S_new; S_ext]; % extend
@@ -254,24 +249,12 @@ function [S, I, Az, Rz, BRDF] = interpolate_zemax(S, I, Az, Rz, BRDF, Az_q, Rz_q
         end
     end
 
-    % Update vectors to final interpolated values:
+    % Output final interpolated values:
     S = S_all;
     I = I_all;
     Az = Az_all;
     Rz = Rz_all;
     BRDF = BRDF_all;
-
-    % Ensure values across Az at Rz=0 are identical:
-    mDefined = ~isnan(BRDF);
-    for S_j = unique(S)'
-        mS = S == S_j;
-        for I_j = unique(I(mS))'
-            mSI = and(mS, I == I_j);
-            mSIRz = and(mSI, Rz == 0);
-            m = and(mSIRz, mDefined); % not nan
-            BRDF(mSIRz) = mean(BRDF(m)); % set to average of non-nan BRDF
-        end
-    end
 
 end
 
