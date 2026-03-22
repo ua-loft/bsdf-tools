@@ -72,7 +72,7 @@ ANISO_W_YZ_SYMM = true; % same, but for XZ plane
 blankpath_rt300s = 'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\raw\rt-300s\blank_v2o0_20250911.xls';
 
 % New FRED file's target filepath to save to (include '.txt'):
-filepath_fred = 'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\imx455_test.txt';
+filepath_fred = 'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\IMX455.txt';
 OVERWRITE = false; % if true and FRED file already exists, will overwrite
 
 % [END] USER INPUTS.
