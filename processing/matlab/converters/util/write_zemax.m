@@ -86,7 +86,7 @@ function status = write_zemax(S, I, Az, Rz, BRDF, filepath, ISOTROPIC, OVERWRITE
 
     % Write BRDF data:
 
-    TIS = calculate_TIS(S, I, Az, Rz, BRDF);
+    TIS = calculate_TIS_INTERNAL(S, I, Az, Rz, BRDF);
 
     S_index = 0;
     for S_j = Su'
@@ -135,7 +135,7 @@ function status = write_zemax(S, I, Az, Rz, BRDF, filepath, ISOTROPIC, OVERWRITE
 end
 
 
-function TIS = calculate_TIS(S, I, Az, Rz, BRDF)
+function TIS = calculate_TIS_INTERNAL(S, I, Az, Rz, BRDF)
     TIS = zeros(length(unique(S)), length(unique(I)));
 end
 
