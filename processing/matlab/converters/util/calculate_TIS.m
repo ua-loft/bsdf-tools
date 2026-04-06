@@ -139,13 +139,20 @@ for Ai_j = unique(Ai)'
 % Debug why I=30 has dip in TIS:
 
         figure
-        trisurf(k, x, y, z, RT_mAiPi) % SA)
+        % trisurf(k, x, y, z, RT_mAiPi) % SA)
+        trisurf(k, x, y, z, RT_avg)
         shading flat
         colorbar
         axis equal
+        xlabel('X Axis')
+        ylabel('Y Axis')
+        zlabel('Z Axis')
 
-        figure
-        histogram(SA)
+        % figure
+        % histogram(SA)
+
+        fprintf("Mean SA: %.6f\nMean RT: %.6f\nSum SA: %.6f\nTIS: %.6f\n\n", mean(SA), mean(RT_avg), sum(SA), TIS_j)
+        % note mean(RT_avg) = mean(RT_mAiPi)
 
         stop=1;
 
