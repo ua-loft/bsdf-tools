@@ -1,5 +1,5 @@
 
-function status = write_zemax(S, I, Az, Rz, BRDF, filepath, ISOTROPIC, OVERWRITE, header_info)
+function status = write_zemax(S, I, Az, Rz, BRDF, TIS, filepath, ISOTROPIC, OVERWRITE, header_info)
     % 'filepath' is full filepath of output *.bsdf file.
     % Only monochromatic light source is currently supported.
     % Set 'header_info = ""' to leave blank.
@@ -86,8 +86,6 @@ function status = write_zemax(S, I, Az, Rz, BRDF, filepath, ISOTROPIC, OVERWRITE
 
     % Write BRDF data:
 
-    TIS = calculate_TIS_INTERNAL(S, I, Az, Rz, BRDF);
-
     S_index = 0;
     for S_j = Su'
         S_index = S_index + 1;
@@ -132,11 +130,6 @@ function status = write_zemax(S, I, Az, Rz, BRDF, filepath, ISOTROPIC, OVERWRITE
 
     status = true; % success
 
-end
-
-
-function TIS = calculate_TIS_INTERNAL(S, I, Az, Rz, BRDF)
-    TIS = zeros(length(unique(S)), length(unique(I)));
 end
 
 

@@ -7,7 +7,7 @@ clc, clearvars, close all
 
 
 
-filepath_fred = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\AnoBlackNiTEonINVAR.txt";
+filepath_fred = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\Aeroglaze_9924Primer_2307Black_onAlum_Aonly_blank2.txt";
 % filepath_fred = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\IMX455.txt";
 
 
@@ -17,10 +17,10 @@ Rz_q = [0 : 5 : 15, 20 : 10 : 180]; % [0, 180]
 
 ISOTROPIC = true;
 OVERWRITE = true;
-MAX_IS_SPECULAR= true;
+MAX_IS_SPECULAR= false;
 
 
-filepath_zemax = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\zemax\AnoBlackNiTEonINVAR_test.bsdf";
+filepath_zemax = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\zemax\Aeroglaze_9924Primer_2307Black_onAlum_Aonly_blank2.bsdf";
     % name of new BSDF file to output results to; include '.bsdf' extension
 % filepath_zemax = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\zemax\IMX455_via_fred.bsdf";
 
@@ -31,21 +31,25 @@ name_contact = "Jacob P. Krell (jacobpkrell@arizona.edu)"; % name of person
     % to contact, most likely you or whoever made the measurement; consider
     % including email or phone number in parentheses too
 
-name_sample = "Anoplate AnoBlack NiTE w/ Blast on INVAR 36";
+name_sample = "Aeroglaze 9924 Primer with Aeroglaze 2307 Black on Aluminum";
     % name of sample measured
 % name_sample = "Validation test of FRED-to-Zemax routine, using IMX455.";
 
 name_source = "red laser (650 nm, 3.5mm spot diam.)"; 
     % name of light source used
-name_angles = "(10:20:70, -90:10:90, -80:10:80)"; % in (I,A,R) order
+
+% name_angles = "(10:20:70, -90:10:90, -80:10:80)"; % in (I,A,R) order
+name_angles = "(0:10:70, -90:10:90, -80:5:80)";
 
 % Filenames of measurements, where first element is the blank data used
 % to zero the sample measurements:
     % - include '.xls' extension;
-filenames = ["blank_v2o0_20250911.xls"; ... % blank
-             "NiTE_on_invar_v1o0A_20250915.xls"; ... % measured dataset 1
-             "NiTE_on_invar_v1o0B_20250916.xls"; ... % ...
-             "NiTE_on_invar_v1o0C_20250916.xls"]; % measured dataset M
+    % - use double quotations;
+    % - use filename only, not filepath;
+% filenames = ["blank_v2o0_20250911.xls"; ... % blank
+%              "NiTE_on_invar_v1o0A_20250915.xls"; ... % measured dataset 1
+%              "NiTE_on_invar_v1o0B_20250916.xls"; ... % ...
+%              "NiTE_on_invar_v1o0C_20250916.xls"]; % measured dataset M
 % filenames = ["blank_v2o0_20250911.xls"; ... % blank
 %              "IMX455_stageRotation0_20250922.xls"; ... % measured dataset 1
 %              "IMX455_stageRotation10_20250922.xls"; ... % ...
@@ -57,15 +61,22 @@ filenames = ["blank_v2o0_20250911.xls"; ... % blank
 %              "IMX455_stageRotation70_20250922.xls"; ...
 %              "IMX455_stageRotation80_20250922.xls"; ...
 %              "IMX455_stageRotation90_20250922.xls"]; % measured dataset M
+filenames = ["blank_v2o0_20250911.xls"; ... % blank
+             "Aeroglaze_9924Primer_2307Black_v1o0A_20260407.xls"];
 
-name_dates = ["2025/09/15", "2025/09/16"]; % date(s) measurements were made
+% name_dates = ["2025/09/15", "2025/09/16"]; % date(s) measurements were made
 % name_dates = ["2025/09/22"];
+name_dates = ["2026/04/07"];
 
 
 
+num_avg_per_rot = 2; % number of measurements per stage rotation angle 
+    % (which get averaged; note assumes same number per each rotation);
+    % NOTE IF ISOTROPIC, and have (A,R) = (-A,-R) data, then double number
+    % of measurement files because R>0 for A \in [-90,0] is same as R<0 for
+    % A \in [0,90].
 
-
-
+notes = []; % {'my note'};
 
 
 
@@ -85,7 +96,8 @@ name_dates = ["2025/09/15", "2025/09/16"]; % date(s) measurements were made
 
 
 % Calculate TIS per stage rotation and incident angle pair:
-TIS = calculate_TIS(Pi, Ai, Ps, As, BRDF);
+TIS = calculate_TIS(Pi, Ai, Ps, As, BRDF, ISOTROPIC);
+    % Format: TIS(S_inde, I_index)
 
 
 
@@ -106,8 +118,10 @@ header_info = generate_rt300s_header_info(...
     name_source, ...
     name_angles, ...
     filenames, ...
-    name_dates);
-write_zemax(S, I, Az, Rz, BRDF, filepath_zemax, ISOTROPIC, OVERWRITE, header_info);
+    name_dates, ...
+    num_avg_per_rot, ...
+    notes);
+write_zemax(S, I, Az, Rz, BRDF, TIS, filepath_zemax, ISOTROPIC, OVERWRITE, header_info);
 
 
 

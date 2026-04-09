@@ -174,6 +174,20 @@ function [S, I, Az, Rz, BRDF] = interpolate_zemax(S, I, Az, Rz, BRDF, Az_q, Rz_q
     end
     [Az_q_grid, Rz_q_grid] = meshgrid(Az_q, Rz_q);
 
+    % Check none are nan or inf, so interpolation does not fail:
+    mkeep = true(size(BRDF));
+    mkeep(isnan(Az)) = false;
+    mkeep(isinf(Az)) = false;
+    mkeep(isnan(Rz)) = false;
+    mkeep(isinf(Rz)) = false;
+    mkeep(isnan(BRDF)) = false;
+    mkeep(isinf(BRDF)) = false;
+    S = S(mkeep);
+    I = I(mkeep);
+    Az = Az(mkeep);
+    Rz = Rz(mkeep);
+    BRDF = BRDF(mkeep);
+
     % Interpolate:
     S_all = [];
     I_all = [];
@@ -187,17 +201,32 @@ function [S, I, Az, Rz, BRDF] = interpolate_zemax(S, I, Az, Rz, BRDF, Az_q, Rz_q
             F = scatteredInterpolant(Az(mSI), Rz(mSI), BRDF(mSI), ...
                 'natural', 'none'); % more accurate but sometimes nan
             BRDF_new = F(Az_q_grid, Rz_q_grid);
-            BRDF_new = BRDF_new(:); % grid to vector
-            L = length(BRDF_new);
-            S_new = repelem(S_j, L, 1);
-            I_new = repelem(I_j, L, 1);
-            S_all = [S_all; S_new]; % append values
-            I_all = [I_all; I_new];
-            Az_all = [Az_all; Az_q_grid(:)];
-            Rz_all = [Rz_all; Rz_q_grid(:)];
-            BRDF_all = [BRDF_all; BRDF_new];
+            if ~isempty(BRDF_new) % seems to just handle interpolation 
+                % failing at I_j=0; in future dev may add more support 
+                % for handling I_j=0 case
+                BRDF_new = BRDF_new(:); % grid to vector
+                L = length(BRDF_new);
+                S_new = repelem(S_j, L, 1);
+                I_new = repelem(I_j, L, 1);
+                S_all = [S_all; S_new]; % append values
+                I_all = [I_all; I_new];
+                Az_all = [Az_all; Az_q_grid(:)];
+                Rz_all = [Rz_all; Rz_q_grid(:)];
+                BRDF_all = [BRDF_all; BRDF_new];
+
+                % % rtw enabling breakpoints and rnning fred --> zemax
+                % if length(Rz_q_grid(:)) ~= L
+                %     stop = 1;
+                % end
+
+            end
+
         end
     end
+
+    % if length(Rz_all) ~= length(S_all)
+    %     stop = 1;
+    % end
 
     % Update vectors to final interpolated values:
     S = S_all;

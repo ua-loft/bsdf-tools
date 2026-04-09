@@ -6,7 +6,10 @@ function header_info = generate_rt300s_header_info(...
     name_source, ...
     name_angles, ...
     filenames, ...
-    name_dates)
+    name_dates, ...
+    num_avg_per_rot, ...
+    notes)
+    % 'notes' is cell of strings; leave empty (notes = []) is none.
 
     header_info = ""; % initialize
 
@@ -53,7 +56,7 @@ function header_info = generate_rt300s_header_info(...
     header_info = header_info + "# Scatterometer: Wyant College's J&C RT-300S\n";
     header_info = header_info + line_source;
     header_info = header_info + line_angles;
-    header_info = header_info + "# Number of measurements averaged: n/a\n";
+    header_info = header_info + sprintf("# Number of measurements averaged (per sample rotation): %i\n", num_avg_per_rot);
         % for anisotropic, each dataset is unique sample rotation and therefore
         % no measurements are averaged
     header_info = header_info + line_blankdataset;
@@ -62,7 +65,17 @@ function header_info = generate_rt300s_header_info(...
         % e.g.: "# Processing script: 'rt300s_to_bsdf_aniso.m'\n"
     header_info = header_info + "# Processing source: https://github.com/ua-loft/bsdf-tools/tree/" + repo_version + "\n";
     header_info = header_info + line_dates;
-    header_info = header_info + "# Note(s): \n";
+    header_info = header_info + "# Note(s): ";
+    if ~isempty(notes) % if not empty
+        header_info = header_info + sprintf("- %s;\n", notes{1}); % first
+        if length(notes) > 1 % need to indent non-first notes
+            for j = 2:length(notes) % first already written
+                header_info = header_info + sprintf("#          - %s;\n", notes{j});
+            end
+        end
+    else
+        header_info = header_info + "\n";
+    end
     header_info = header_info + "# Point of contact: " + name_contact + "\n";
         % e.g.: 
         % "# Point of contact: Jacob P. Krell (jacobpkrell@arizona.edu)\n"

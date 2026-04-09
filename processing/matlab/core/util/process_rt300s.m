@@ -13,6 +13,64 @@ function [A, I, R, S, BRDF] = process_rt300s(blankpath, filepaths, S)
 [A, I, R, RT] = load_multiple_rt300s(filepaths);
 n = length(A); % number of measurements
 
+% Keep only angles present in both blank and sample data:
+mkeep0 = cell(n, 1);
+mkeep = cell(n, 1);
+for j = 1:n
+    mkeep0{j} = false(size(RT0)); % logical for blank
+    mkeep{j} = false(size(RT{j})); % logical for sample
+    for I_j = unique(I{j})
+        mI = I{j} == I_j;
+        mI0 = I0 == I_j;
+        for A_j = unique(A{j}(mI))
+            mIA = and(mI, A{j} == A_j);
+            mI0A0 = and(mI0, A0 == A_j);
+            for R_j = unique(R{j}(mIA))
+                mIAR = and(mIA, R{j} == R_j);
+                mI0A0R0 = and(mI0A0, R0 == R_j);
+                if any(mIAR) && any(mI0A0R0) % then both sample and blank have a measurement at this angle, else want to remove that element from both sample and blank
+                    mkeep{j}(mIAR) = true;
+                    mkeep0{j}(mI0A0R0) = true;
+                end
+            end
+        end
+    end
+end
+
+% Currently, only supporting multiple sample measurements if all have same
+% angles. Catch exceptions:
+if n > 1 % if multiple sample measurements
+    for j = 2:n
+        if or(any(mkeep0{j} ~= mkeep0{j - 1}), any(mkeep{j} ~= mkeep{j - 1}))
+            error("Multiple files with different angles is not currently supported. Ensure all sample data files measured identical angles.")
+        end
+    end
+end
+    
+% Update dataset to the angles shared across sample and blank measurements:
+% A0_new = cell(n, 1);
+% I0_new = cell(n, 1);
+% R0_new = cell(n, 1);
+% RT0_new = cell(n, 1);
+for j = 1:n
+    % A0_new{j} = A0(mkeep0{j});
+    % I0_new{j} = I0(mkeep0{j});
+    % R0_new{j} = R0(mkeep0{j});
+    % RT0_new{j} = RT0(mkeep0{j});
+    A{j} = A{j}(mkeep{j});
+    I{j} = I{j}(mkeep{j});
+    R{j} = R{j}(mkeep{j});
+    RT{j} = RT{j}(mkeep{j});
+end
+% A0 = A0_new;
+% I0 = I0_new;
+% R0 = R0_new;
+% RT0 = RT0_new;
+A0 = A0(mkeep0{1}); % until future dev adds support for different angles across sample measurements, keep blank data as 1D vectors using any j value (since identical)
+I0 = I0(mkeep0{1});
+R0 = R0(mkeep0{1});
+RT0 = RT0(mkeep0{1});
+
 % First correction (zeroing system by subtracting blank measurement):
     % - from [1] and [2]
 for j = 1:n
@@ -26,7 +84,7 @@ end
 
 if isscalar(S) % then no need to extend A,I,R,S vectors
 
-    A = A0;
+    A = A0; % angles are same as blank data
     I = I0;
     R = R0;
     S = repelem(S, length(A));
@@ -54,7 +112,7 @@ else
         % rtw: cycle through same S values somehow
 
     else % then each measurement is unique stage rotation
-        A = repmat(A0, 1, n);
+        A = repmat(A0, 1, n); % angles are same as blank data
         I = repmat(I0, 1, n);
         R = repmat(R0, 1, n);
         S = repelem(S, length(RT0));

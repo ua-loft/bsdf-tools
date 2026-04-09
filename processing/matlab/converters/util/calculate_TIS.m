@@ -1,10 +1,11 @@
 
-function TIS = calculate_TIS(Pi, Ai, Ps, As, BRDF)
+function TIS = calculate_TIS(Pi, Ai, Ps, As, BRDF, ISOTROPIC)
 % Calculate TIS for Zemax, with data in FRED frame.
 % Assumes FRED domain already set; meaning, Ps \in [0, 90] and As \in [0,
 % 180] if isotropic of [0, 360) if anisotropic.
+% Format: TIS(S_index, I_index), which is TIS(Ai_index, Pi_index).
 
-ISOTROPIC = true;
+DEBUG = false;
 
 % =======
 
@@ -138,23 +139,27 @@ for Ai_j = unique(Ai)'
 
 % Debug why I=30 has dip in TIS:
 
-        figure
-        % trisurf(k, x, y, z, RT_mAiPi) % SA)
-        trisurf(k, x, y, z, RT_avg)
-        shading flat
-        colorbar
-        axis equal
-        xlabel('X Axis')
-        ylabel('Y Axis')
-        zlabel('Z Axis')
+        if DEBUG
 
-        % figure
-        % histogram(SA)
+            figure
+            % trisurf(k, x, y, z, RT_mAiPi) % SA)
+            trisurf(k, x, y, z, RT_avg)
+            shading flat
+            colorbar
+            axis equal
+            xlabel('X Axis')
+            ylabel('Y Axis')
+            zlabel('Z Axis')
+    
+            % figure
+            % histogram(SA)
+    
+            fprintf("Mean SA: %.6f\nMean RT: %.6f\nSum SA: %.6f\nTIS: %.6f\n\n", mean(SA), mean(RT_avg), sum(SA), TIS_j)
+            % note mean(RT_avg) = mean(RT_mAiPi)
 
-        fprintf("Mean SA: %.6f\nMean RT: %.6f\nSum SA: %.6f\nTIS: %.6f\n\n", mean(SA), mean(RT_avg), sum(SA), TIS_j)
-        % note mean(RT_avg) = mean(RT_mAiPi)
+            % stop=1;
 
-        stop=1;
+        end
 
 
 
@@ -163,12 +168,14 @@ end
 
 
 
-TIS
+if DEBUG
 
-stop = 1
+    % TIS
+    
+    % stop = 1
 
 
-
+end
 
 
 
