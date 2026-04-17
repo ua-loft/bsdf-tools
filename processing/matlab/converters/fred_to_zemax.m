@@ -1,0 +1,134 @@
+
+
+
+% Convert FRED file to Zemax BSDF file:
+
+clc, clearvars, close all
+
+
+
+filepath_fred = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\Aeroglaze_9924Primer_2307Black_onAlum_Aonly_blank3o2.txt";
+% filepath_fred = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\IMX455.txt";
+
+
+% Query points for FRED-to-Zemax interpolation:
+Az_q = 0 : 10 : 180; % [0, 180] if isotropic, [0, 360) if anisotropic
+Rz_q = [0 : 5 : 15, 20 : 10 : 180]; % [0, 180]
+
+ISOTROPIC = true;
+OVERWRITE = false;
+MAX_IS_SPECULAR= false;
+
+
+filepath_zemax = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\zemax\Aeroglaze_9924Primer_2307Black_onAlum_Aonly_blank3o2.bsdf";
+    % name of new BSDF file to output results to; include '.bsdf' extension
+% filepath_zemax = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\zemax\IMX455_via_fred.bsdf";
+
+
+
+repo_version = "v1.4.0"; % tag of 'bsdf-tools' repo release at time Zemax BSDF file is processed
+name_contact = "Jacob P. Krell (jacobpkrell@arizona.edu)"; % name of person
+    % to contact, most likely you or whoever made the measurement; consider
+    % including email or phone number in parentheses too
+
+name_sample = "Aeroglaze 9924 Primer with Aeroglaze 2307 Black on Aluminum 6061 (180-240 grit Al2O3 sandpaper, likely T6)";
+    % name of sample measured
+% name_sample = "Validation test of FRED-to-Zemax routine, using IMX455.";
+% name_sample = "IMX455 lenslet array w/o cover glass";
+
+name_source = "red laser (650 nm, 3.5mm spot diam.)"; 
+    % name of light source used
+
+% name_angles = "(10:20:70, -90:10:90, -80:10:80)"; % in (I,A,R) order
+name_angles = "(0:10:70, -90:10:90, -80:5:80)";
+% name_angles = "(10:20:70, -90:10:90, -80:5:80)";
+
+% Filenames of measurements, where first element is the blank data used
+% to zero the sample measurements:
+    % - include '.xls' extension;
+    % - use double quotations;
+    % - use filename only, not filepath;
+% filenames = ["blank_v2o0_20250911.xls"; ... % blank
+%              "NiTE_on_invar_v1o0A_20250915.xls"; ... % measured dataset 1
+%              "NiTE_on_invar_v1o0B_20250916.xls"; ... % ...
+%              "NiTE_on_invar_v1o0C_20250916.xls"]; % measured dataset M
+% filenames = ["blank_v2o0_20250911.xls"; ... % blank
+%              "IMX455_stageRotation0_20250922.xls"; ... % measured dataset 1
+%              "IMX455_stageRotation10_20250922.xls"; ... % ...
+%              "IMX455_stageRotation20_20250922.xls"; ...
+%              "IMX455_stageRotation30_20250922.xls"; ...
+%              "IMX455_stageRotation40_20250922.xls"; ...
+%              "IMX455_stageRotation50_20250922.xls"; ...
+%              "IMX455_stageRotation60_20250922.xls"; ...
+%              "IMX455_stageRotation70_20250922.xls"; ...
+%              "IMX455_stageRotation80_20250922.xls"; ...
+%              "IMX455_stageRotation90_20250922.xls"]; % measured dataset M
+filenames = ["blank_v3o2_20260412.xls"; ... % blank
+             "Aeroglaze_9924Primer_2307Black_v1o0A_20260407.xls"];
+
+% name_dates = ["2025/09/15", "2025/09/16"]; % date(s) measurements were made
+% name_dates = ["2025/09/22"];
+name_dates = ["2026/04/07"];
+
+
+
+num_avg_per_rot = 2; % number of measurements per stage rotation angle 
+    % (which get averaged; note assumes same number per each rotation);
+    % NOTE IF ISOTROPIC, and have (A,R) = (-A,-R) data, then double number
+    % of measurement files because R>0 for A \in [-90,0] is same as R<0 for
+    % A \in [0,90].
+
+notes = []; % {'my note'};
+
+
+
+
+
+
+
+
+
+% end user inputs
+% ======
+
+[Pi, Ai, Ps, As, BRDF] = load_fred(filepath_fred);
+
+[S, I, Az, Rz] = fred_frame_to_zemax(Pi, Ai, Ps, As);
+
+
+
+% Calculate TIS per stage rotation and incident angle pair:
+TIS = calculate_TIS(Pi, Ai, Ps, As, BRDF, ISOTROPIC);
+    % Format: TIS(S_inde, I_index)
+
+
+
+% NOT YET VALIDATED (well probably is, with newer ppt slides showing 
+% IMX455 results... but hold off on full "validated" claim), BUT ON 
+% SURFACE NO BUGS:
+[S, I, Az, Rz, BRDF] = interpolate_zemax(S, I, Az, Rz, BRDF, Az_q, Rz_q, ISOTROPIC, MAX_IS_SPECULAR);
+
+
+
+
+
+% Write to BSDF file:
+header_info = generate_rt300s_header_info(...
+    repo_version, ...
+    name_contact, ...
+    name_sample, ...
+    name_source, ...
+    name_angles, ...
+    filenames, ...
+    name_dates, ...
+    num_avg_per_rot, ...
+    notes);
+write_zemax(S, I, Az, Rz, BRDF, TIS, filepath_zemax, ISOTROPIC, OVERWRITE, header_info);
+
+
+
+
+
+
+
+
