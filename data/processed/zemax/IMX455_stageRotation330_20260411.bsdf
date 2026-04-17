@@ -9,7 +9,7 @@
 # Number of measurements averaged (per sample rotation): 1
 # Blank dataset: 'blank_v2o0_20250911.xls'
 # Dataset(s): , 'IMX455_stageRotation330_20260411.xls'
-# Processing script: 'generate_rt300s_header_info.m'
+# Processing script: 'fred_to_zemax.m'
 # Processing source: https://github.com/ua-loft/bsdf-tools/tree/v1.4.0
 # Date(s) measured: 2026/04/11
 # Note(s): 
