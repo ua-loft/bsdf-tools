@@ -70,10 +70,10 @@ ANISO_W_XZ_SYMM = false; % set true if sample is anisotropic but exhibits
 ANISO_W_YZ_SYMM = false; % same, but for XZ plane
 
 % Filepath of 'blank' (no light source) RT-300S data (include '.xls'):
-blankpath_rt300s = 'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\raw\rt-300s\blank_v2o0_20250911.xls';
+blankpath_rt300s = 'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\raw\rt-300s\blank_v3o2_20260412.xls';
 
 % New FRED file's target filepath to save to (include '.txt'):
-filepath_fred = 'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\Aeroglaze_9924Primer_2307Black_onAlum_Aonly_blank2.txt';
+filepath_fred = 'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\Aeroglaze_9924Primer_2307Black_onAlum_Aonly_blank3o2.txt';
 OVERWRITE = false; % if true and FRED file already exists, will overwrite
 
 % [END] USER INPUTS.
