@@ -9,7 +9,7 @@
 # Number of measurements averaged (per sample rotation): 4
 # Blank dataset: 'blank_v3o2_20260412.xls'
 # Dataset(s): , 'Aeroglaze_9924Primer_2307Black_v1o0A_20260407.xls', 'Aeroglaze_9924Primer_2307Black_v1o0B2_20260410.xls'
-# Processing script: 'generate_rt300s_header_info.m'
+# Processing script: 'fred_to_zemax.m'
 # Processing source: https://github.com/ua-loft/bsdf-tools/tree/v1.4.0
 # Date(s) measured: 2026/04/07, 2026/04/10
 # Note(s): 
