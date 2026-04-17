@@ -2,7 +2,7 @@ Magic Black
 - v1: only in-plane of incidence (i.e., no azimuth consideration)
 - v2: azimuth following Zemax's built-in angles
 
-"blank_v2o0_20250911_eitherWayItsATragedy"
+"blank_v2o0_20250911"
 - JNC's RT-300S's computer monitor was on (in bottom cabinet of machine)
 - future blanks and sample measurements may want that monitor off due to stray light, but left on since "MagicBlack_v2o0_20250902" had it own
 

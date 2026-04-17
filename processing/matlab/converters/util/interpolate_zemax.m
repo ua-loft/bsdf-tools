@@ -1,0 +1,254 @@
+
+function [S, I, Az, Rz, BRDF] = interpolate_zemax(S, I, Az, Rz, BRDF, Az_q, Rz_q, ISOTROPIC, MAX_IS_SPECULAR)
+    % Assumes Az \in [0, 360).
+    % 'MAX_IS_SPECULAR' should almost always be set to true to account for
+    % misalignment error in the measurement; however, if the sample is
+    % anisotropic and highly diffractive, consider setting to false in case 
+    % diffracted BRDF is greater than specular BRDF.
+
+    % Force specular ray (otherwise interpolation yields NaN at Rz=0):
+
+    Rz0_threshold = 1e-6; % [deg] upper limit of the "specular" cone; 
+        % exact Rz=0 values should exist, because in RT-300S coordinates
+        % that is simply R = I at A = -90, however numerical coordinate
+        % transformation may have introduced not perfect Rz=0 values;
+        % meaning, if RT-300S -> FRED -> Zemax, then 'Rz0_threshold' is
+        % just for numerical error, but if not RT-300S data and FRED
+        % coordinates do not contain the specular angle, expanding
+        % 'Rz0_threshold' effectively forces the specular angle(s) to  
+        % equal their nearest neighbor.
+        % Note also that the specular cone defined by 'Rz0_threshold'
+        % should encompass the true specular measurement, i.e., the max
+        % BRDF value, to smooth out any alignment error present in the 
+        % measurement.
+
+    Az_ext = Az_q; % Az extension
+    Az_ext = Az_ext(1 : end-1)'; % [0, 360)
+    Lvec = ones(length(Az_ext), 1); % to multiply S,I
+    Rz_ext = Lvec * 0; % Rz extension, across Az
+
+    S_new = S; % initialize
+    I_new = I;
+    Az_new = Az;
+    Rz_new = Rz;
+    BRDF_new = BRDF;
+
+    for S_j = unique(S)'
+        mS = S == S_j;
+        S_ext = Lvec * S_j; % S extension, across Az
+        for I_j = unique(I(mS))'
+            mSI = and(mS, I == I_j);
+            mSIRz = and(mSI, Rz < Rz0_threshold); % specular ray(s)
+
+            if any(mSIRz)
+
+                I_ext = Lvec * I_j; % I extension, across Az
+
+                BRDF_vals = BRDF(mSIRz);
+                BRDF_vals = BRDF_vals(~isnan(BRDF_vals));
+                BRDF0 = mean(BRDF_vals); % average of non nan values 
+                    % within specular cone
+
+                Rz_mSI = Rz(mSI);
+                [BRDF_max, BRDF_max_j] = max(BRDF(mSI));
+                if MAX_IS_SPECULAR
+                    BRDF0 = BRDF_max; % replace the BRDF value at the 
+                        % specular angle with the max BRDF value, assuming 
+                        % the max value was displaced by alignment 
+                        % errors during the measurement
+                elseif Rz_mSI(BRDF_max_j) >= Rz0_threshold
+                    warning("Max BRDF value of (S,I)=(%i,%i) was found outside of 'Rz0_threshold=%.3e' range, at 'Rz=%.3e'. If the sample is highly diffractive and this Rz value is outside of what could be measurement alignment error, then ignore; otherwise, increase 'Rz0_threshold' to include this true specular measurement into the dataset's averaged-out specular cone.", S_j, I_j, Rz0_threshold, Rz_mSI(BRDF_max_j))
+                end
+                
+                BRDF(mSIRz) = BRDF0; % set angles within defined specular 
+                    % cone to specular value
+                BRDF_ext = Lvec * BRDF0; % BRDF extension, across Az
+
+                S_new = [S_new; S_ext]; % extend
+                I_new = [I_new; I_ext];
+                Az_new = [Az_new; Az_ext];
+                Rz_new = [Rz_new; Rz_ext];
+                BRDF_new = [BRDF_new; BRDF_ext];
+
+            else
+                warning("No specular ray angles were found for (S,I) = (%i,%i). Interpolation of BRDF values at low Rz is therefore unrealiable, and values at Rz=0 are likely NaN. Increase 'Rz0_threshold' until this warning disappears.", S_j, I_j);
+            end
+        end
+    end
+
+    S = S_new; % update
+    I = I_new;
+    Az = Az_new;
+    Rz = Rz_new;
+    BRDF = BRDF_new;
+
+    % Apply isotropic domain (if isotropic):
+
+    if ISOTROPIC
+
+        S = zeros(size(S)); % set all stage rotations to 0 (by convention)
+
+        % Assuming Az \in [0, 360), force to [0, 180] domain:
+        m = Az > 180;
+        Az(m) = 360 - Az(m); % isotropic condition, e.g., 184 to 176
+
+        % Average-out and remove redundant Az entries:
+        mkeep = true(size(BRDF));
+        for I_j = unique(I)'
+            mI = I == I_j;
+            for Rz_j = unique(Rz)'
+                mIRz = and(mI, Rz == Rz_j);
+                for Az_j = unique(Az)'
+                    mIRzAz = and(mIRz, Az == Az_j);
+                    if sum(mIRzAz) > 1 % then multiple entries
+                        mIRzAz_j = find(mIRzAz); % logical to indices
+                        BRDF(mIRzAz_j(1)) = mean(BRDF(mIRzAz));
+                            % set first to average
+                        mkeep(mIRzAz_j(2:end)) = false; 
+                            % remove redundant entries
+                    end
+                end
+            end
+        end
+        S = S(mkeep);
+        I = I(mkeep);
+        Az = Az(mkeep);
+        Rz = Rz(mkeep);
+        BRDF = BRDF(mkeep);
+
+    end
+
+    % Extend dataset with outer limits of Az (per S,I,Rz), to interpolate:
+    
+    S_new = []; % initialize
+    I_new = [];
+    Az_new = [];
+    Rz_new = [];
+    BRDF_new = [];
+
+    delta = 20; % cutoff to expand Az domain, i.e., [-delta, 360 + delta)
+    
+    for S_j = unique(S)'
+        mS = S == S_j;
+        for I_j = unique(I(mS))'
+            mSI = and(mS, I == I_j);
+            
+            m_lo = and(mSI, Az < delta);
+            if ISOTROPIC
+                m_hi = and(mSI, Az > 180 - delta);
+                Az_lo = -Az(m_lo); % isotropic symmetry
+                Az_hi = 360 - Az(m_hi); % isotropic symmetry
+            else % anisotropic
+                m_hi = and(mSI, Az > 360 - delta);
+                Az_lo = Az(m_lo) + 360;
+                Az_hi = Az(m_hi) - 360;
+            end
+
+            S_new = [S_new; S(m_lo); S(m_hi)];
+            I_new = [I_new; I(m_lo); I(m_hi)];
+            Az_new = [Az_new; Az_lo; Az_hi];
+            Rz_new = [Rz_new; Rz(m_lo); Rz(m_hi)];
+            BRDF_new = [BRDF_new; BRDF(m_lo); BRDF(m_hi)];
+
+        end
+    end
+
+    S = [S; S_new]; % extend dataset, to expand Az domain for interpolation
+    I = [I; I_new];
+    Az = [Az; Az_new];
+    Rz = [Rz; Rz_new];
+    BRDF = [BRDF; BRDF_new];
+
+    % Define query points for interpolation:
+    if ISOTROPIC
+        if or(Az_q(1) ~= 0, Az_q(end) ~= 180)
+            error("Query points for Az, with 'ISOTROPIC=true', must be on [0, 180] domain.")
+        end
+    else
+        if or(Az_q(1) ~= 0, Az_q(end) >= 360)
+            error("Query points for Az must be on [0, 360) domain.")
+        end
+        if Az_q(2) ~= 360 - Az_q(end)
+            warning("Expecting query points for Az to be equally spaced on [0, 360). Not error, but caution to ensure 'Az_q' values are intentional.")
+        end
+    end
+    [Az_q_grid, Rz_q_grid] = meshgrid(Az_q, Rz_q);
+
+    % Check none are nan or inf, so interpolation does not fail:
+    mkeep = true(size(BRDF));
+    mkeep(isnan(Az)) = false;
+    mkeep(isinf(Az)) = false;
+    mkeep(isnan(Rz)) = false;
+    mkeep(isinf(Rz)) = false;
+    mkeep(isnan(BRDF)) = false;
+    mkeep(isinf(BRDF)) = false;
+    S = S(mkeep);
+    I = I(mkeep);
+    Az = Az(mkeep);
+    Rz = Rz(mkeep);
+    BRDF = BRDF(mkeep);
+
+    % Interpolate:
+    S_all = [];
+    I_all = [];
+    Az_all = [];
+    Rz_all = [];
+    BRDF_all = [];
+    for S_j = unique(S)'
+        mS = S == S_j;
+        for I_j = unique(I(mS))'
+            mSI = and(mS, I == I_j);
+            F = scatteredInterpolant(Az(mSI), Rz(mSI), BRDF(mSI), ...
+                'natural', 'none'); % more accurate but sometimes nan
+            BRDF_new = F(Az_q_grid, Rz_q_grid);
+            if ~isempty(BRDF_new) % seems to just handle interpolation 
+                % failing at I_j=0; in future dev may add more support 
+                % for handling I_j=0 case
+                BRDF_new = BRDF_new(:); % grid to vector
+                L = length(BRDF_new);
+                S_new = repelem(S_j, L, 1);
+                I_new = repelem(I_j, L, 1);
+                S_all = [S_all; S_new]; % append values
+                I_all = [I_all; I_new];
+                Az_all = [Az_all; Az_q_grid(:)];
+                Rz_all = [Rz_all; Rz_q_grid(:)];
+                BRDF_all = [BRDF_all; BRDF_new];
+
+                % % rtw enabling breakpoints and rnning fred --> zemax
+                % if length(Rz_q_grid(:)) ~= L
+                %     stop = 1;
+                % end
+
+            end
+
+        end
+    end
+
+    % if length(Rz_all) ~= length(S_all)
+    %     stop = 1;
+    % end
+
+    % Update vectors to final interpolated values:
+    S = S_all;
+    I = I_all;
+    Az = Az_all;
+    Rz = Rz_all;
+    BRDF = BRDF_all;
+
+    % Ensure values across Az at Rz=0 are identical:
+    mDefined = ~isnan(BRDF);
+    for S_j = unique(S)'
+        mS = S == S_j;
+        for I_j = unique(I(mS))'
+            mSI = and(mS, I == I_j);
+            mSIRz = and(mSI, Rz == 0);
+            m = and(mSIRz, mDefined); % not nan
+            BRDF(mSIRz) = mean(BRDF(m)); % set to average of non-nan BRDF
+        end
+    end
+
+    % Set all nan to 0 (these should only be "transmission" angles):
+    BRDF(isnan(BRDF)) = 0;
+
+end
+
