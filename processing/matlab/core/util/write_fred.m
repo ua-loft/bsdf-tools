@@ -3,6 +3,8 @@ function status = write_fred(Pi, Ai, Ps, As, BRDF, filepath)
     % Writes BRDF data to '.txt' file for use in FRED.
     % Include '.txt' in 'filepath' argument.
     % Writes all provided values, in boolean order of [Pi,Ai,Ps,As].
+    % If multi-wavelength, user should most likely put wavelength into
+    % 'filepath' name.
 
     status = false;
 
