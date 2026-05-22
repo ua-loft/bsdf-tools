@@ -1,0 +1,7 @@
+Python package tool (Zemax <--> SPEOS anisotropic):
+- https://community.zemax.com/code-exchange-10/python-zemax-to-speos-bsdf-converter-version-in-progress-3760
+	- updated link to where author tried to link: https://github.com/ansys/optical-automation/blob/main/ansys_optical_automation/application/BSDF_converter_example.py
+
+BRDF file example:
+- see 'Associated Files' of: https://optics.ansys.com/hc/en-us/articles/18384793374227-Speos-BRDF-BTDF-and-BSDF-Formats
+	- downloaded in 'LAB_Anisotropic_BSDF_Surface' folder

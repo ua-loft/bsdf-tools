@@ -143,7 +143,7 @@ filepath_zemax = filepaths_zemax{j};
 
 % Calculate TIS per stage rotation and incident angle pair:
 TIS = calculate_TIS(Pi, Ai, Ps, As, BRDF, ISOTROPIC);
-    % Format: TIS(S_inde, I_index)
+    % Format: TIS(S_index, I_index)
 
 
 
