@@ -1,3 +1,8 @@
+# Code downloaded 2026/05/21 locally to 'bsdf-tools' repo from 'https://github.com/ansys/optical-automation/tree/main' repo.
+# Edits are by:
+#   - JPK == Jacob P. Krell ('bsdf-tools' developer);
+# ===============================================================================================================
+
 import bisect
 import math
 import os
@@ -1156,8 +1161,10 @@ class BsdfStructure:
         print("Writing Speos data\n")
         nLines = self.write_speos_header_anisotropicbsdf()
         nLines = self.write_speos_data_anisotropicbsdf(nLines)
-        outputFilepath = os.path.splitext(self.filename_input)[0].lower() + ".anisotropicbsdf"
-        write_file(outputFilepath, nLines)
+        # outputFilepath = os.path.splitext(self.filename_input)[0].lower() + ".anisotropicbsdf"  # commented out by JPK, 2026/05/30
+        # write_file(outputFilepath, nLines)  # commented out by JPK, 2026/05/30
+        write_file(self.filename_output, nLines)  # added by JPK, 2026/05/30
+
 
     def write_speos_header_anisotropicbsdf(self):
         """
