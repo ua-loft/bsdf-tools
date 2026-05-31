@@ -132,26 +132,26 @@ end
 % Apply YZ symmetry first so later XZ symmetry may drive S \in [0, 90]
 % measurements to full S \in [0, 360) FRED equivalent:
 if ANISO_W_YZ_SYMM
-    [Pi, Ai, Ps, As, BRDF] = apply_yz_symm_to_fred(Pi, Ai, Ps, As, BRDF);
+    [Pi, Ai, Ps, As, BRDF, ~] = apply_yz_symm_to_fred(Pi, Ai, Ps, As, BRDF);
 end
 
 % Apply XZ symmetry:
 if ANISO_W_XZ_SYMM
-    [Pi, Ai, Ps, As, BRDF] = apply_xz_symm_to_fred(Pi, Ai, Ps, As, BRDF);
+    [Pi, Ai, Ps, As, BRDF, ~] = apply_xz_symm_to_fred(Pi, Ai, Ps, As, BRDF);
 end
 
 % Remove FRED redundancy (at Ps=0 only need one As angle, and average-out 
 % any duplicated angles):
-[Pi, Ai, Ps, As, BRDF] = remove_fred_redundancy(Pi, Ai, Ps, As, BRDF);
+[Pi, Ai, Ps, As, BRDF, ~] = remove_fred_redundancy(Pi, Ai, Ps, As, BRDF);
 
 % Remove FRED redundancy for isotropic data (only need one Ai angle, and 
 % only need $As - Ai \in [0, 180]$ defined):
 if ISOTROPIC
-    [Pi, Ai, Ps, As, BRDF] = remove_fred_redundancy_iso(Pi, Ai, Ps, As, BRDF);
+    [Pi, Ai, Ps, As, BRDF, ~] = remove_fred_redundancy_iso(Pi, Ai, Ps, As, BRDF);
 end
 
 % Write to FRED file:
-write_fred(Pi, Ai, Ps, As, BRDF, filepath_fred);
+write_fred([], Pi, Ai, Ps, As, BRDF, filepath_fred);
 
 % [END] CONVERT RAW RT-300S MEASUREMENT DATA TO BSDF FILE IN FRED FORMAT.
 % =========================================================================
