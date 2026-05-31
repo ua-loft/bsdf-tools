@@ -35,7 +35,7 @@
 # Add local libraies to path:
 from pathlib import Path
 import sys
-REPO_ROOT = Path(__file__).resolve().parents[3]  # ../processing/python/converters/zemax_to_speos.py --> ../_vendor/ansys/optical-automation
+REPO_ROOT = Path(__file__).resolve().parents[2]  # ../processing/converters/zemax_to_speos.py --> ../_vendor/ansys/optical-automation
 VENDOR_ROOT = REPO_ROOT / "_vendor" / "ansys" / "optical-automation"
 if str(VENDOR_ROOT) not in sys.path:
     sys.path.insert(0, str(VENDOR_ROOT))
