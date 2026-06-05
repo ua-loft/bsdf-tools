@@ -6,7 +6,7 @@
 
 Author: Jacob P. Krell (jacobpkrell@arizona.edu)
 
-## v1.0
+## v0.0
 
 Prepared 2026/05/20.
 
@@ -22,7 +22,10 @@ Prepared 2026/05/20.
 Total measurements: 7776 \
 Estimated time (assuming 2 measurements/min): 64.8 hours
 
+## v1.0
 
+2026/06/05.
+See angle text file.
 
 
 
