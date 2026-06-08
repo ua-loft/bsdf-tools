@@ -15,15 +15,11 @@ This program needs to be in the same folder as the function files:
     rodrigues.m
 
 Josie Maxwell, 28 May 2020, RSG
-
-% =========================================================================
-
-JPK == Jacob P. Krell, 2026/06/08-2026/xx/xx, LOFT;
-
 %}
 
 clear all; clc;
 
+DEBUG = true; % [JPK]
 shading_cutoff = 10; % [JPK] minimum acceptable radiometer angle [deg] at 
     % which shading does not occur
 
@@ -39,16 +35,20 @@ header = filecontents.textdata(1:end-1,1);
 %%% CALCULATE STAGE ANGLES %%%
 stage = zeros(size(angles));
 for n = 1:size(angles,1)
-    stage(n,:) = compute_BL_angles(angles(n,:));
+    if ~DEBUG % [JPK]
+        stage(n,:) = compute_BL_angles(angles(n,:));
+    else % [JPK]
+        if any(n == [21, 60, 99, 138]) % [JPK] if specular angle
+            breakpoint = 1; % [JPK]
+        end % [JPK]
+        stage(n,:) = compute_BL_angles_v1o1(angles(n,:)); % [JPK]
+    end % [JPK]
 end
 
 %%% [JPK] FILTER OUT SELF-SHADING STAGE ANGLES %%%
 radiometer_angle = stage(:, 1);
-angles_to_remove = abs(radiometer_angle) < shading_cutoff;
-if any(angles_to_remove)
-    warning("Filtering out self-shading angles.")
-    stage = stage(~angles_to_remove, :); % keep only non-shaded angles
-end
+angles_to_keep = abs(radiometer_angle) >= shading_cutoff;
+stage = stage(angles_to_keep, :); % filter ou
 
 %%% CREATE HEADER FOR OUTPUT FILE %%%
 guiprompts = {};
