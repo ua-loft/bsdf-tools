@@ -7,7 +7,7 @@ clc, clearvars, close all
 
 
 
-filepath_fred = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\blacklab\test_blacklab_dev_*nm.txt";
+filepath_fred = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\blacklab\aeroglaze\aeroglaze_20260608_vnir_validation_test_*nm.txt";
     % If multiwavelength, use format: 
         % filepath_fred = "C:\...\my_fred_file_*nm.txt"
     % for filenames like "my_fred_file_1243o53nm.txt", 
@@ -24,7 +24,7 @@ MAX_IS_SPECULAR= false;
 MULTI_WAVELENGTH = true;
 
 
-filepath_zemax = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\zemax\blacklab\test_blacklab_dev.bsdf";
+filepath_zemax = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\zemax\blacklab\aeroglaze\aeroglaze_20260608_vnir_validation_test.bsdf";
     % name of new BSDF file to output results to; include '.bsdf' extension
 
     % If multiwavelength, use format: 
@@ -36,28 +36,28 @@ filepath_zemax = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\pro
 
 
 
-repo_version = "v1.4.1"; % tag of 'bsdf-tools' repo release at time Zemax BSDF file is processed
+repo_version = "v1.5.1"; % tag of 'bsdf-tools' repo release at time Zemax BSDF file is processed
 name_contact = "Jacob P. Krell (jacobpkrell@arizona.edu)"; % name of person
     % to contact, most likely you or whoever made the measurement; consider
     % including email or phone number in parentheses too
 
-name_sample = "test blacklab dev";
+name_sample = "Aeroglaze validation test (Blacklab in-plane measurements at 631nm)";
     % name of sample measured
 
 
-name_source = "multi (RSG's Blacklab)"; 
+name_source = "Blacklab VNIR"; 
     % name of light source used
 
-name_angles = "blah";
+name_angles = "in-plane";
 
 % Filenames of raw measurements, where first element is the blank data used
 % to zero the sample measurements:
     % - include '.xls' extension (or other extension if not RT-300S);
     % - use double quotations;
     % - use filename only, not filepath;
-filenames = ["20250409_S7_swir_sample.txt"];
+filenames = ["20260608_sample.txt"];
 
-name_dates = ["sometime CE"]; % date(s) measurements were made
+name_dates = ["2026/06/08"]; % date(s) measurements were made
 
 num_avg_per_rot = 1; % number of measurements per stage rotation angle 
     % (which get averaged; note assumes same number per each rotation);
@@ -66,7 +66,7 @@ num_avg_per_rot = 1; % number of measurements per stage rotation angle
     % double number of measurement files because R>0 for A \in [-90,0] is 
     % same as R<0 for A \in [0,90].
 
-notes = []; 
+notes = ['not accounting for measured NIST values in bsdf-tools processing, not sure if need to or if handled by Blacklab;']; 
     % [] or {'my first note', 'my second note'};
 
 

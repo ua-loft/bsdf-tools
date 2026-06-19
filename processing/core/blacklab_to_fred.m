@@ -36,8 +36,8 @@ clearvars, clc, close all
 % [BEGIN] USER INPUTS:
 
 % Measured sample(s):
-filepaths_blacklab = {'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\raw\blacklab\example\20250409_S7_swir_sample.txt'};
-    % cell of filepath(s) to measured RT-300S data (include '.xls')
+filepaths_blacklab = {'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\raw\blacklab\aeroglaze\vnir\20260608\20260608_sample.txt'};
+    % cell of filepath(s) to measured Blacklab data (include '.txt')
 ISOTROPIC = true; % set true if sample is isotropic
 ANISO_W_XZ_SYMM = false; % set true if sample is anisotropic but exhibits 
     % plane-symmetric features (e.g., lenslet array) across YZ plane when 
@@ -48,7 +48,7 @@ ANISO_W_YZ_SYMM = false; % same, but for XZ plane
 % New FRED file's target filepath to save to (include '.txt'):
     % - note, if multi-wavelength, then each wavelength gets its own file 
     % in the format "{filename}_XXXXoXXnm.txt";
-filepath_fred = 'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\blacklab\test_blacklab_dev.txt';
+filepath_fred = 'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\blacklab\aeroglaze\aeroglaze_20260608_vnir_validation_test.txt';
 OVERWRITE = false; % if true and FRED file already exists, will overwrite
 
 % [END] USER INPUTS.
