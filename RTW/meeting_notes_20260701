@@ -1,0 +1,36 @@
+
+
+Blacklab
+
+Misc
+- VNIR can go up to ~1050 nm; SWIR down to ~750 nm
+- [ ] from stray light team perspective, why not measure full 300-1700 reflectance data? (no filter, ie.., very wide bandwidth) ..... but would need to understnad detector responsivity
+- [ ] check for publications of reflectance of 3d print material in near IR --- are there any with low reflectance ?
+- [ ] want to design 3d cad for smaller mount
+- nik gone ~21 - 31 of july
+
+Confirming aeroglaze has back scatter and therefore data from previous monday is correct.
+- source azimuth visually does not impact grazing angle scatter
+- see videos of source at 85 deg showing back scatter with/without the mount covered ..... we can put ultrapol on mount, or just cut out data ... but this is driving high exponential curve in BRF
+    - at 70 deg source, we don't see streak from mount, but we still see increase which seems to be just the sample back scatter itself
+
+
+shading
+- 160deg radiometer is radiometer just starting to be illuminated by source
+- 155 is ok
+
+
+angle set
+- remove outer boundary angles that had near-zero BRF
+- VNIR: 385nm, 1061nm
+- SWIR: 1646nm if science band goes up to 1700nm
+- could do bulk filter... ~200nm bandwidth
+
+
+
+
+
+
+
+
+
