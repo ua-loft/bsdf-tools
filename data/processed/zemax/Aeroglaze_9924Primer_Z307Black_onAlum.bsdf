@@ -4,7 +4,7 @@
 # 
 # Sample: Aeroglaze 9924 Primer with Aeroglaze 2307 Black on Aluminum 6061 (180-240 grit Al2O3 sandpaper, likely T6)
 # Scatterometer: Wyant College's J&C RT-300S
-# Light source: red laser (650 nm, 3.5mm spot diam.)
+# Light source: HeNe laser (632.8 nm, 3.5mm spot diam.)
 # Angles measured: (I,A,R) = (0:10:70, -90:10:90, -80:5:80)
 # Number of measurements averaged (per sample rotation): 4
 # Blank dataset: 'blank_v3o2_20260412.xls'
