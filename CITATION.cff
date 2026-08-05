@@ -3,10 +3,10 @@ message: "If you use this software or its associated datasets, please cite it as
 title: "bsdf-tools"
 authors:
   - family-names: Krell
-    given-names: Jacob
-    affiliation: "Large Optics Fabrication and Testing, Wyant College of Optical Sciences"
-version: 1.5.2
-date-released: 2026-07-24
+    given-names: Jacob P.
+    affiliation: "Large Optics Fabrication and Testing (LOFT), Wyant College of Optical Sciences, University of Arizona"
+version: 1.x.x
+date-released: 2026-xx-xx
 url: "https://github.com/ua-loft/bsdf-tools"
-repository-code: "https://github.com/ua-loft/bsdf-tools/tree/v1.5.2"
+repository-code: "https://github.com/ua-loft/bsdf-tools/tree/v1.x.x"
 license: MIT
