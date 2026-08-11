@@ -9,7 +9,8 @@ DEBUG = false;
 
 % =======
 
-RT = BRDF .* cosd(Ps); % TIS is integral of reflectance RT, not BRDF
+f = BRDF .* cosd(Ps); % integrand of TIS integral, that is:
+    % $TIS = \int BRDF \cos(\theta_s) d\Omega$
 
 % Expand data set to Ps = 90, for full integration bounds:
 
@@ -17,7 +18,7 @@ Pi_new = [];
 Ai_new = [];
 Ps_new = [];
 As_new = [];
-RT_new = [];
+f_new = [];
 
 eps = 1e-6; % +/- threshold of numeric error
 
@@ -33,7 +34,7 @@ for Ai_j = unique(Ai)'
         Ai_new = [Ai_new; Ai(mAiPiPs)];
         Ps_new = [Ps_new; repelem(90, sum(mAiPiPs), 1)];
         As_new = [As_new; As(mAiPiPs)];
-        RT_new = [RT_new; RT(mAiPiPs)];
+        f_new = [f_new; f(mAiPiPs)];
 
     end
 end
@@ -42,7 +43,7 @@ Pi = [Pi; Pi_new];
 Ai = [Ai; Ai_new];
 Ps = [Ps; Ps_new];
 As = [As; As_new];
-RT = [RT; RT_new];
+f = [f; f_new];
 
 
 
@@ -81,17 +82,17 @@ for Ai_j = unique(Ai)'
         z = z ./ norms;
 
         % Make into full sphere:
-        RT_mAiPi = RT(mAiPi);
+        f_mAiPi = f(mAiPi);
         if ISOTROPIC
             x = [x; x];
             y = [y; -y];
             z = [z; z];
-            RT_mAiPi = [RT_mAiPi; RT_mAiPi];
+            f_mAiPi = [f_mAiPi; f_mAiPi];
         end
         x = [x; x];
         y = [y; y];
         z = [z; -z];
-        RT_mAiPi = [RT_mAiPi; RT_mAiPi];
+        f_mAiPi = [f_mAiPi; f_mAiPi];
 
 % Generate triangular mesh / convex hull, of unit sphere points:
 
@@ -104,12 +105,12 @@ for Ai_j = unique(Ai)'
         a = zeros(3, n); % [x;y;z] of mesh element's first vertex
         b = zeros(3, n); % [x;y;z] of mesh element's second vertex
         c = zeros(3, n); % [x;y;z] of mesh element's third vertex
-        RT_avg = zeros(1, n);
+        f_avg = zeros(1, n);
         for m = 1:n % index of mesh element
             a(:, m) = [x(k(m, 1)); y(k(m, 1)); z(k(m, 1))];
             b(:, m) = [x(k(m, 2)); y(k(m, 2)); z(k(m, 2))];
             c(:, m) = [x(k(m, 3)); y(k(m, 3)); z(k(m, 3))];
-            RT_avg(m) = (RT_mAiPi(k(m, 1)) + RT_mAiPi(k(m, 2)) + RT_mAiPi(k(m, 3))) / 3; % average across mesh element
+            f_avg(m) = (f_mAiPi(k(m, 1)) + f_mAiPi(k(m, 2)) + f_mAiPi(k(m, 3))) / 3; % average across mesh element
         end
         
 % Curve mesh elements to get exact solid angle:
@@ -127,7 +128,7 @@ for Ai_j = unique(Ai)'
 
 % Integrate:
 
-        TIS_j = sum(RT_avg .* SA) / 2; % divide by 2 because mirrored  
+        TIS_j = sum(f_avg .* SA) / 2; % divide by 2 because mirrored  
             % mirror to full sphere, and TIS is hemisphere
         
 % Normalize to Zemax definition of TIS:
@@ -142,8 +143,8 @@ for Ai_j = unique(Ai)'
         if DEBUG
 
             figure
-            % trisurf(k, x, y, z, RT_mAiPi) % SA)
-            trisurf(k, x, y, z, RT_avg)
+            % trisurf(k, x, y, z, f_mAiPi) % SA)
+            trisurf(k, x, y, z, f_avg)
             shading flat
             colorbar
             axis equal
@@ -154,8 +155,8 @@ for Ai_j = unique(Ai)'
             % figure
             % histogram(SA)
     
-            fprintf("Mean SA: %.6f\nMean RT: %.6f\nSum SA: %.6f\nTIS: %.6f\n\n", mean(SA), mean(RT_avg), sum(SA), TIS_j)
-            % note mean(RT_avg) = mean(RT_mAiPi)
+            fprintf("Mean SA: %.6f\nMean BRDF*cos(Ps): %.6f\nSum SA: %.6f\nTIS: %.6f\n\n", mean(SA), mean(f_avg), sum(SA), TIS_j)
+            % note mean(f_avg) = mean(f_mAiPi)
 
             % stop=1;
 

@@ -4,7 +4,7 @@
 # 
 # Sample: Anoplate AnoBlack EC2 on Alum 6061 (So #: 1114818)
 # Scatterometer: Wyant College's J&C RT-300S
-# Light source: HeNe laser (632.8 nm, 3.5mm spot diam.)
+# Light source: 630nm laser, 3.5mm spot diam.
 # Angles measured: (I,A,R) = (10:20:70, -90:10:90, -80:10:80)
 # Number of measurements averaged (per sample rotation): 2
 # Blank dataset: 'blank_v2o0_20250911.xls'

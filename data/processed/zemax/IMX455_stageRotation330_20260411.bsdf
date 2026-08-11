@@ -4,7 +4,7 @@
 # 
 # Sample: IMX455 lenslet array w/o cover glass
 # Scatterometer: Wyant College's J&C RT-300S
-# Light source: HeNe laser (632.8 nm, 3.5mm spot diam.)
+# Light source: 630nm laser, 3.5mm spot diam.
 # Angles measured: (I,A,R) = (10:20:70, -90:10:90, -80:5:80)
 # Number of measurements averaged (per sample rotation): 1
 # Blank dataset: 'blank_v2o0_20250911.xls'

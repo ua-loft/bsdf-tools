@@ -61,7 +61,7 @@ S = 0; % 0 : 10: 90; % stage rotation [deg]; if isotropic set to integer 0,
 %     'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\raw\rt-300s\IMX455_stageRotation80_20250922.xls', ...
 %     'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\raw\rt-300s\IMX455_stageRotation90_20250922.xls'};
 %     % cell of filepath(s) to measured RT-300S data (include '.xls')
-filepaths_rt300s = {'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\raw\rt-300s\Aeroglaze_9924Primer_2307Black_v1o0A_20260407.xls'};
+filepaths_rt300s = {'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\raw\rt-300s\Aeroglaze_Z307_12inX12in_20260809.xls'};
 ISOTROPIC = true; % set true if sample is isotropic
 ANISO_W_XZ_SYMM = false; % set true if sample is anisotropic but exhibits 
     % plane-symmetric features (e.g., lenslet array) across YZ plane when 
@@ -73,8 +73,8 @@ ANISO_W_YZ_SYMM = false; % same, but for XZ plane
 blankpath_rt300s = 'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\raw\rt-300s\blank_v3o2_20260412.xls';
 
 % New FRED file's target filepath to save to (include '.txt'):
-filepath_fred = 'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\Aeroglaze_9924Primer_2307Black_onAlum_Aonly_blank3o2.txt';
-OVERWRITE = false; % if true and FRED file already exists, will overwrite
+filepath_fred = 'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\test_AeroglazeZ307_wPrimer9929__onAl6061T6_12x12in.txt';
+OVERWRITE = true; % if true and FRED file already exists, will overwrite
 
 % [END] USER INPUTS.
 % =========================================================================
@@ -151,7 +151,7 @@ if ISOTROPIC
 end
 
 % Write to FRED file:
-write_fred([], Pi, Ai, Ps, As, BRDF, filepath_fred);
+write_fred(Pi, Ai, Ps, As, BRDF, filepath_fred);
 
 % [END] CONVERT RAW RT-300S MEASUREMENT DATA TO BSDF FILE IN FRED FORMAT.
 % =========================================================================
