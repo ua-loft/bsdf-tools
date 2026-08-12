@@ -7,24 +7,25 @@ clc, clearvars, close all
 
 
 
-filepath_fred = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\test_AeroglazeZ307_wPrimer9929__onAl6061T6_12x12in.txt";
+% filepath_fred = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\test_AeroglazeZ307_wPrimer9929__onAl6061T6_12x12in.txt";
+filepath_fred = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\Z306_from_FRED_20260811\tabulated_FRED_Z306_TIS0o04_specAzi0d.txt";
     % If multiwavelength, use format: 
         % filepath_fred = "C:\...\my_fred_file_*nm.txt"
     % for filenames like "my_fred_file_1243o53nm.txt", 
     % "my_fred_file_1380o83nm.txt", ...
-
 
 % Query points for FRED-to-Zemax interpolation:
 Az_q = 0 : 10 : 180; % [0, 180] if isotropic, [0, 360) if anisotropic
 Rz_q = [0 : 5 : 15, 20 : 10 : 180]; % [0, 180]
 
 ISOTROPIC = true;
-OVERWRITE = true;
+OVERWRITE = false;
 MAX_IS_SPECULAR= false;
 MULTI_WAVELENGTH = false;
 
 
-filepath_zemax = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\zemax\test_AeroglazeZ307_wPrimer9929__onAl6061T6_12x12in.bsdf";
+% filepath_zemax = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\zemax\test_AeroglazeZ307_wPrimer9929__onAl6061T6_12x12in.bsdf";
+filepath_zemax = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\zemax\Z306_from_FRED_20260811\tabulated_FRED_Z306_TIS0o04_specAzi0d.bsdf";
     % name of new BSDF file to output results to; include '.bsdf' extension
 
     % If multiwavelength, use format: 
@@ -41,24 +42,28 @@ name_contact = "Jacob P. Krell (jacobpkrell@arizona.edu)"; % name of person
     % to contact, most likely you or whoever made the measurement; consider
     % including email or phone number in parentheses too
 
-name_sample = "Aeroglaze Z307 with 9929 Primer on Al 6061-T6 (12""x12"" sample)";
+% name_sample = "Aeroglaze Z307 with 9929 Primer on Al 6061-T6 (12""x12"" sample)";
+name_sample = "Aeroglaze Z306 (exported from FRED binomial model)";
     % name of sample measured
 
 
-name_source = "HeNe laser (632.8 nm, 3.5mm spot diam.)"; 
+% name_source = "HeNe laser (632.8 nm, 3.5mm spot diam.)";
+name_source = "";
     % name of light source used
 
-name_angles = "(I,A,R) = ([10,70], -90:10:0, -80:5:80)";
+% name_angles = "(I,A,R) = ([10,70], -90:10:0, -80:5:80)";
+name_angles = "";
 
 % Filenames of raw measurements, where first element is the blank data used
 % to zero the sample measurements:
     % - include '.xls' extension (or other extension if not RT-300S);
     % - use double quotations;
     % - use filename only, not filepath;
-filenames = ["blank_v3o2_20260412.xls", ...
-    "Aeroglaze_Z307_12inX12in_20260809.xls"];
+% filenames = ["blank_v3o2_20260412.xls", ...
+%     "Aeroglaze_Z307_12inX12in_20260809.xls"];
+filenames = [""];
 
-name_dates = ["2026/08/09"]; % date(s) measurements were made
+name_dates = ["Exported from FRED 2026/08/11"]; % date(s) measurements were made
 
 num_avg_per_rot = 1; % number of measurements per stage rotation angle 
     % (which get averaged; note assumes same number per each rotation);
