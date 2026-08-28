@@ -57,7 +57,7 @@ function [S, I, Az, Rz, BRDF] = interpolate_zemax(S, I, Az, Rz, BRDF, Az_q, Rz_q
                         % the max value was displaced by alignment 
                         % errors during the measurement
                 elseif Rz_mSI(BRDF_max_j) >= Rz0_threshold
-                    warning("Max BRDF value of (S,I)=(%i,%i) was found outside of 'Rz0_threshold=%.3e' range, at 'Rz=%.3e'. If the sample is highly diffractive and this Rz value is outside of what could be measurement alignment error, then ignore; otherwise, increase 'Rz0_threshold' to include this true specular measurement into the dataset's averaged-out specular cone.", S_j, I_j, Rz0_threshold, Rz_mSI(BRDF_max_j))
+                    warning("Max BRDF value of (S,I)=(%i,%i) was found outside of 'Rz0_threshold=%.3e' range, at 'Rz=%.3e'. If the sample is highly diffractive or AOI is near grazing, and this Rz value seems reasonable, then ignore; otherwise, potential measurement-alignment error, so increase 'Rz0_threshold' to include this potentially true specular measurement into the dataset's averaged-out specular cone.", S_j, I_j, Rz0_threshold, Rz_mSI(BRDF_max_j))
                 end
                 
                 BRDF(mSIRz) = BRDF0; % set angles within defined specular 

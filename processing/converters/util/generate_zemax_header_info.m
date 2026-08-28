@@ -6,7 +6,8 @@ function header_info = generate_zemax_header_info(...
     name_angles, ...
     num_avg_per_rot, ...
     blank_dataset_filename, ...
-    dataset_filenames, ...
+    raw_dataset_filenames, ...
+    fred_dataset_filenames, ...
     mfilename_parent, ...
     repo_version, ...
     name_dates, ...
@@ -19,15 +20,14 @@ function header_info = generate_zemax_header_info(...
     %     blank_dataset_filename = "'example.txt'";
     % For multiple dataset filenames, 
 
-    header_info = ""; % initialize
-
+    % Process input arguments:
     if isinteger(num_avg_per_rot)
         num_avg_per_rot_as_str = num2str(num_avg_per_rot);
     else
         num_avg_per_rot_as_str = num_avg_per_rot; % assume "" or "n/a", etc.; not []
     end
 
-    if ~blank_dataset_filename == "" % if blank, do not add quotes
+    if ~(blank_dataset_filename == "") % if blank, do not add quotes
         blank_dataset_filename = "'" + blank_dataset_filename + "'"; % add quotes
     end
 
@@ -53,15 +53,24 @@ function header_info = generate_zemax_header_info(...
     line_blankdataset = ...
         "# Blank dataset: " + blank_dataset_filename + "\n";
         % e.g.: "# Blank dataset: 'blank_measurement.xls'\n"
-    line_datasets = "# Dataset(s): "; % initialize
-    for m = 1 : length(dataset_filenames) % assuming 'dataset_filenames' is cell
+    line_raw_datasets = "# Raw dataset(s): "; % initialize
+    for m = 1 : length(raw_dataset_filenames) % assuming 'raw_dataset_filenames' is cell
         if m > 1 % if not first dataset
-            line_datasets = line_datasets + ", "; % add comma between datasets
+            line_raw_datasets = line_raw_datasets + ", "; % add comma between datasets
         end
-        line_datasets = line_datasets + "'" + dataset_filenames(m) + "'";
+        line_raw_datasets = line_raw_datasets + "'" + raw_dataset_filenames(m) + "'";
     end
-    line_datasets = line_datasets + "\n"; % finalize
+    line_raw_datasets = line_raw_datasets + "\n"; % finalize
         % e.g.: "# Dataset(s): 'sample_measurement_1.xls', 'sample_measurement_2.xls', 'sample_measurement_3.xls'\n"
+    line_fred_datasets = "# FRED BRDF file(s): "; % initialize
+    for m = 1 : length(fred_dataset_filenames) % assuming 'fred_dataset_filenames' is cell
+        if m > 1 % if not first dataset
+            line_fred_datasets = line_fred_datasets + ", "; % add comma between datasets
+        end
+        line_fred_datasets = line_fred_datasets + "'" + fred_dataset_filenames(m) + "'";
+    end
+    line_fred_datasets = line_fred_datasets + "\n"; % finalize
+        % e.g.: "# FRED BRDF file(s): 'fred_file_1.txt', 'fred_file_2.txt', 'fred_file_3.txt'\n"
     line_processing_script = ...
         "# Processing script: '" + mfilename_parent + ".m'\n";
         % e.g.: "# Processing script: 'fred_to_zemax.m'\n"
@@ -79,6 +88,7 @@ function header_info = generate_zemax_header_info(...
         % e.g.: "# Date(s) measured: 2025/09/15, 2025/09/16\n"
 
     % Compile comments into single string:
+    header_info = ""; % initialize
     header_info = header_info + line_break;
     header_info = header_info + line_break;
     header_info = header_info + "# [BEGIN] DEVELOPMENT INFORMATION:\n";
@@ -89,7 +99,8 @@ function header_info = generate_zemax_header_info(...
     header_info = header_info + line_angles;
     header_info = header_info + line_num_avg_per_rot;
     header_info = header_info + line_blankdataset;
-    header_info = header_info + line_datasets;
+    header_info = header_info + line_raw_datasets;
+    header_info = header_info + line_fred_datasets;
     header_info = header_info + line_processing_script;
     header_info = header_info + line_processing_source;
     header_info = header_info + line_dates;

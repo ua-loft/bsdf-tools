@@ -19,7 +19,7 @@ clc, clearvars, close all
 filepath_raw = 'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\raw\_imported\Z306_from_FRED_20260811\tabulated_FRED_Z306_TIS0o08_specAzi0d.txt';
 
 % File to create:
-filepath_fred = 'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\Z306_from_FRED_20260811\tabulated_FRED_Z306_TIS0o08_specAzi0d.txt';
+filepath_fred = 'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\Z306_from_FRED_20260811\Aeroglaze_Z306_from_PEs_FRED_binomial_model_20260811_8percNormTIS.txt';
 
 
 % end user.
@@ -45,13 +45,21 @@ Ps = Ps(mkeep);
 As = As(mkeep);
 BRDF = BRDF(mkeep);
 
-% Remove normal incidence (b/c cannot define incident plane):
-mkeep = Pi ~= 0;
-Pi = Pi(mkeep);
-Ai = Ai(mkeep);
-Ps = Ps(mkeep);
-As = As(mkeep);
-BRDF = BRDF(mkeep);
+% % Remove normal incidence (b/c cannot define incident plane):
+% mkeep = Pi ~= 0;
+% Pi = Pi(mkeep);
+% Ai = Ai(mkeep);
+% Ps = Ps(mkeep);
+% As = As(mkeep);
+% BRDF = BRDF(mkeep);
+
+% Average rings of same Ps for normal Pi=0 (since cannot define incident
+% plane):
+mPi = Pi == 0;
+for Ps_val = unique(Ps(mPi))
+    mPiPs = and(mPi, Ps == Ps_val);
+    BRDF(mPiPs) = mean(BRDF(mPiPs));
+end
 
 % Remove multiple BRDF entries at surface normal scatter:
 for Pi_val = unique(Pi)
@@ -66,13 +74,13 @@ for Pi_val = unique(Pi)
     BRDF = BRDF(mkeep);
 end
 
-% Remove Ps > 80:
-mkeep = ~(Ps > 80);
-Pi = Pi(mkeep);
-Ai = Ai(mkeep);
-Ps = Ps(mkeep);
-As = As(mkeep);
-BRDF = BRDF(mkeep);
+% % Remove Ps > 80:
+% mkeep = ~(Ps > 80);
+% Pi = Pi(mkeep);
+% Ai = Ai(mkeep);
+% Ps = Ps(mkeep);
+% As = As(mkeep);
+% BRDF = BRDF(mkeep);
 
 % =============
 

@@ -19,102 +19,30 @@ for Ii = 1:nI
     value(:, Ii) = data(:, 3);
 end
 
+% General processing:
 
-
-
-
-
-
-
+theta_i = Ivec; % [deg] polar angle
 r_proj_xy = sqrt(x.^2 + y.^2);
 r = max(r_proj_xy);
 x = x ./ r; % unit sphere
 y = y ./ r;
-z = sqrt(1 - x.^2 - y.^2);
-phi = atan2d(y, x); % [deg] azimuth
-theta = acosd(z); % [deg] polar angle
 
-A_det = 1;
-% r = sqrt(x(1, 1)^2 + y(1, 1)^2); % assume first entry gives radius of hemisphere
-theta_s = theta; % asind(sqrt(x.^2 + y.^2));
-theta_i = Ivec; % (Ii);
-P_inc = 1; % [W]
-
-P_det = value;
-Omega_det = 1; % A_det .* cosd(theta_s) ./ r.^2;
-% BRDF_est = P_det ./ (P_inc .* cosd(theta_i) .* Omega_det);
-% BRDF_est = value ./ cosd(theta_s);
-
-% BRDF_est = value;
-
-
-
-
-
-
-
-
-
-% r_proj_xy = sqrt(x.^2 + y.^2);
-% r = max(r_proj_xy);
-% x = x ./ r; % unit sphere
-% y = y ./ r;
 % z = sqrt(1 - x.^2 - y.^2);
-% phi = atan2d(y, x); % [deg] azimuth
-% theta = acos(z); % [deg] polar angle
-dphi = 5; % [deg] spacing of pixels in SPEOS
-dtheta = 5; % [deg] spacing of pixels in SPEOS
-dcostheta = abs(cosd(theta + dtheta/2) - cosd(theta - dtheta/2));
-Omega = dphi * dcostheta * pi/180; % [sr] solid angle
+% phi_r = atan2d(y, x); % [deg] azimuth
+% theta_r = acosd(z); % [deg] polar angle
 
-% BRDF_est = BRDF_est .* Omega;
-% BRDF_est = P_det ./ (P_inc .* cosd(theta_i) .* Omega);
-BRDF_est = P_det ./ (P_inc .* cosd(theta_i));
-% BRDF_est = P_det .* cosd(theta_s) ./ (P_inc .* cosd(theta_i));
+theta_r = 90 * sqrt(x.^2 + y.^2); % assume x,y are polar plot image
+phi_r = atan2d(-x, y);
 
-
-
-
-
-
-
-peak_values_BRDF = [0.0348, 0.0420, 0.1407, 1.6020]; % from Zemax BSDF file
-scales = zeros(1, nI);
+% Plot raw data:
+figure
+t1 = tiledlayout(2, 2);
 for Ii = 1:nI
-    % scales(Ii) = peak_values_BRDF(Ii) / max(value(:, Ii));
-    scales(Ii) = peak_values_BRDF(Ii) / max(BRDF_est(:, Ii));
-    % BRDF_est(:, Ii) = BRDF_est(:, Ii) * scales(Ii);
-end
-scales
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-for Ii = 1:nI
-
-    % Visualize:
-    fig = figure;
-    % scatter3(x(:, 2), y(:, 2), value(:, 2))
-    % imagesc([x(:, 2), y(:, 2), value(:, 2)])
-
+    ax = nexttile;
     x_unique = unique(x(:, Ii));
     y_unique = unique(y(:, Ii));
     [Xg,Yg] = meshgrid(x_unique, y_unique);
-    % Zimg = griddata(x(:, Ii), y(:, Ii), value(:, Ii), Xg, Yg);
-    Zimg = griddata(x(:, Ii), y(:, Ii), BRDF_est(:, Ii), Xg, Yg);
+    Zimg = griddata(x(:, Ii), y(:, Ii), value(:, Ii), Xg, Yg);
     imagesc(x_unique, y_unique, Zimg)
     axis xy
     colorbar
@@ -124,9 +52,56 @@ for Ii = 1:nI
     ylabel(hcb, 'value')
     axis equal
     colormap jet
-
+    subtitle(sprintf('AOI = %i', Ivec(Ii)))
 end
 
+% =========================================================================
+% Process Speos output into inferred BRDF values:
+
+A_det = 1;
+P_inc = 1; % [W], total incident power in simulation was set to 1 W
+P_det = value; % [W], it seems the Speos units is "total power hitting detector"
+
+% dphi_r = 5; % [deg] spacing of pixels in SPEOS
+% dtheta_r = 5; % [deg] spacing of pixels in SPEOS
+% dcostheta_r = abs(cosd(theta_r + dtheta_r/2) - cosd(theta_r - dtheta_r/2));
+% Omega = dphi_r * dcostheta_r * pi/180; % [sr] solid angle
+
+% domega_i = sind(theta_i) * dtheta_i * dphi_i; % [sr] solid angle
+const = 1;
+domega_i = sind(theta_i) * const;
+dOmega_i = cosd(theta_i) .* domega_i;
+
+% BRDF = P_det ./ (P_inc .* cosd(theta_i));
+
+% dE = L * cos(theta) * domega
+% E = L * cos(theta) * omega
+% L = E / (cos(theta) * omega)
+% so... assuming:
+domega_r = sind(theta_r) * const;
+E_r = value;
+dL_r = E_r ./ (cosd(theta_r) .* domega_r);
+
+L_i = 1;
+% dL_r = value ./ dOmega_r;
+BRDF = dL_r ./ (L_i * dOmega_i);
+% BRDF = value .* sind(theta_r) ./ (L_i * cosd(theta_i) .* sind(theta_i));
+
+
+
+
+
+% BRDF = value ./ (pi * cosd(theta_r)); % if speos is relative reflectance
+
+
+
+
+% Speos is power. From Max thesis,
+%   RT / cos(theta_r) = P_r / P_i, where P is power
+%   BRDF = RT / (pi cos(theta_r) )
+%   --> BRDF = P_r * cos(theta_r) / (P_i pi cos(theta_r) )
+% BRDF = value .* cosd(theta_r) ./ (pi * cosd(theta_r));
+% BRDF = value / pi;
 
 
 
@@ -135,10 +110,25 @@ end
 
 
 
-
-
-
-
-
-
+% =========================================================================
+% Plot BRDF data:
+figure
+t2 = tiledlayout(2, 2);
+for Ii = 1:nI
+    ax = nexttile;
+    x_unique = unique(x(:, Ii));
+    y_unique = unique(y(:, Ii));
+    [Xg,Yg] = meshgrid(x_unique, y_unique);
+    Zimg = griddata(x(:, Ii), y(:, Ii), BRDF(:, Ii), Xg, Yg);
+    imagesc(x_unique, y_unique, Zimg)
+    axis xy
+    colorbar
+    xlabel('x')
+    ylabel('y')
+    hcb = colorbar;
+    ylabel(hcb, 'value')
+    axis equal
+    colormap jet
+    subtitle(sprintf('AOI = %i', Ivec(Ii)))
+end
 

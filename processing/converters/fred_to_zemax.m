@@ -8,15 +8,17 @@ clc, clearvars, close all
 
 
 % filepath_fred = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\test_AeroglazeZ307_wPrimer9929__onAl6061T6_12x12in.txt";
-filepath_fred = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\Z306_from_FRED_20260811\tabulated_FRED_Z306_TIS0o04_specAzi0d.txt";
+filepath_fred = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\Z306_from_FRED_20260811\Aeroglaze_Z306_from_PEs_FRED_binomial_model_20260811_8percNormTIS.txt";
     % If multiwavelength, use format: 
         % filepath_fred = "C:\...\my_fred_file_*nm.txt"
     % for filenames like "my_fred_file_1243o53nm.txt", 
     % "my_fred_file_1380o83nm.txt", ...
 
 % Query points for FRED-to-Zemax interpolation:
-Az_q = 0 : 10 : 180; % [0, 180] if isotropic, [0, 360) if anisotropic
-Rz_q = [0 : 5 : 15, 20 : 10 : 180]; % [0, 180]
+% Az_q = 0 : 10 : 180; % [0, 180] if isotropic, [0, 360) if anisotropic
+% Rz_q = [0 : 5 : 15, 20 : 10 : 180]; % [0, 180]
+Az_q = 0 : 5 : 180;
+Rz_q = [0:1:5, 10, 15, 20:10:180];
 
 ISOTROPIC = true;
 OVERWRITE = false;
@@ -25,7 +27,7 @@ MULTI_WAVELENGTH = false;
 
 
 % filepath_zemax = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\zemax\test_AeroglazeZ307_wPrimer9929__onAl6061T6_12x12in.bsdf";
-filepath_zemax = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\zemax\Z306_from_FRED_20260811\tabulated_FRED_Z306_TIS0o04_specAzi0d.bsdf";
+filepath_zemax = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\zemax\Z306_from_FRED_20260811\Aeroglaze_Z306_from_PEs_FRED_binomial_model_20260811_8percNormTIS.bsdf";
     % name of new BSDF file to output results to; include '.bsdf' extension
 
     % If multiwavelength, use format: 
@@ -43,9 +45,11 @@ name_contact = "Jacob P. Krell (jacobpkrell@arizona.edu)"; % name of person
     % including email or phone number in parentheses too
 
 % name_sample = "Aeroglaze Z307 with 9929 Primer on Al 6061-T6 (12""x12"" sample)";
-name_sample = "Aeroglaze Z306 (exported from FRED binomial model)";
+name_sample = "Aeroglaze Z306";
     % name of sample measured
 
+% name_scatterometer = "Wyant College's J&C RT-300S";
+name_scatterometer = "";
 
 % name_source = "HeNe laser (632.8 nm, 3.5mm spot diam.)";
 name_source = "";
@@ -61,16 +65,20 @@ name_angles = "";
     % - use filename only, not filepath;
 % filenames = ["blank_v3o2_20260412.xls", ...
 %     "Aeroglaze_Z307_12inX12in_20260809.xls"];
-filenames = [""];
 
-name_dates = ["Exported from FRED 2026/08/11"]; % date(s) measurements were made
+blank_dataset_filename = "";
+raw_dataset_filenames = {".\\_imported\\Z306_from_FRED_20260811\\tabulated_FRED_Z306_TIS0o06_specAzi0d.txt"};
+fred_dataset_filenames = {".\\Z306_from_FRED_20260811\\Aeroglaze_Z306_from_PEs_FRED_binomial_model_20260811_6percNormTIS.txt"};
 
-num_avg_per_rot = 1; % number of measurements per stage rotation angle 
+name_dates = ["Dataset exported 2026/08/11 by Photon Engineering, from FRED binomial model"]; % date(s) measurements were made
+
+% num_avg_per_rot = 1; % number of measurements per stage rotation angle 
     % (which get averaged; note assumes same number per each rotation);
 
     % NOTE IF ISOTROPIC AND RT-300S, and have (A,R) = (-A,-R) data, then 
     % double number of measurement files because R>0 for A \in [-90,0] is 
     % same as R<0 for A \in [0,90].
+num_avg_per_rot = "";
 
 notes = []; 
     % [] or {'my first note', 'my second note'};
@@ -84,7 +92,6 @@ notes = [];
 
 % end user inputs
 % ======
-
 
 % Get all filepaths if multiple files:
 if MULTI_WAVELENGTH
@@ -164,17 +171,20 @@ TIS = calculate_TIS(Pi, Ai, Ps, As, BRDF, ISOTROPIC);
 
 % Write to BSDF file:
 mfilename_parent = mfilename(); % = "fred_to_zemax"
-header_info = generate_rt300s_header_info(...
-    repo_version, ...
-    name_contact, ...
+header_info = generate_zemax_header_info(...
     name_sample, ...
+    name_scatterometer, ...
     name_source, ...
     name_angles, ...
-    filenames, ...
-    name_dates, ...
     num_avg_per_rot, ...
+    blank_dataset_filename, ...
+    raw_dataset_filenames, ...
+    fred_dataset_filenames, ...
+    mfilename_parent, ...
+    repo_version, ...
+    name_dates, ...
     notes, ...
-    mfilename_parent);
+    name_contact);
 write_zemax(S, I, Az, Rz, BRDF, TIS, filepath_zemax, ISOTROPIC, OVERWRITE, header_info);
 
 

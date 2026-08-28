@@ -50,8 +50,8 @@ from ansys_optical_automation.interop_process.BSDF_converter import BsdfStructur
 # =========================================================================
 # [BEGIN] USER INPUTS:
 
-filepath_zemax = "C:\\Users\\jakep\\Documents\\Optics_local\\UofA\\bsdf-tools\\data\\processed\\zemax\\Z306_from_FRED_20260811\\tabulated_FRED_Z306_TIS0o04_specAzi0d.bsdf"  # filepath to Zemax *.bsdf file
-filepath_speos = "C:\\Users\\jakep\\Documents\\Optics_local\\UofA\\bsdf-tools\\data\\processed\\speos\\Z306_from_FRED_20260811\\tabulated_FRED_Z306_TIS0o04_specAzi0d.anisotropicbsdf"  # filepath to SPEOS *.anisotropicbsdf file
+filepath_zemax = "C:\\Users\\jakep\\Documents\\Optics_local\\UofA\\bsdf-tools\\data\\processed\\zemax\\Z306_from_FRED_20260811\\Aeroglaze_Z306_from_PEs_FRED_binomial_model_20260811_8percNormTIS.bsdf"  # filepath to Zemax *.bsdf file
+filepath_speos = "C:\\Users\\jakep\\Documents\\Optics_local\\UofA\\bsdf-tools\\data\\processed\\speos\\Z306_from_FRED_20260811\\Aeroglaze_Z306_from_PEs_FRED_binomial_model_20260811_8percNormTIS.anisotropicbsdf"  # filepath to SPEOS *.anisotropicbsdf file
 
 # [END] USER INPUTS.
 # =========================================================================
