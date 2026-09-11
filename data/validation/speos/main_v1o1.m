@@ -22,11 +22,11 @@ end
 % General processing:
 
 theta_i = Ivec; % [deg] polar angle
+
 r_proj_xy = sqrt(x.^2 + y.^2);
 r = max(r_proj_xy);
 x = x ./ r; % unit sphere
 y = y ./ r;
-
 % z = sqrt(1 - x.^2 - y.^2);
 % phi_r = atan2d(y, x); % [deg] azimuth
 % theta_r = acosd(z); % [deg] polar angle
@@ -103,6 +103,19 @@ BRDF = dL_r ./ (L_i * dOmega_i);
 % BRDF = value .* cosd(theta_r) ./ (pi * cosd(theta_r));
 % BRDF = value / pi;
 
+
+
+
+
+
+
+% From ASTM,
+% BRDF = P_s / ( P_i Omega cos(theta_s) )
+% as Omega --> 0.
+dphi_r = 5 * pi/180; % [rad] spacing of pixels in SPEOS
+dtheta_r = 5 * pi/180; % [rad] spacing of pixels in SPEOS
+Omega = sind(theta_r) * dtheta_r * dphi_r; % [sr] solid angle
+BRDF = value ./ ( 1 * Omega .* cosd(theta_r) );
 
 
 
