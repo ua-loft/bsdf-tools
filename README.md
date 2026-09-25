@@ -1,5 +1,63 @@
 # bsdf-tools
+
+
+## About
+
 Tools for processing and converting BSDF/BRDF data, including RT-300S measurement handling and export to optical software formats.
+
+
+## Repo
+
+- _vendor == contains local (and potentially slightly modified) copies of open-source scripts
+- data
+  - images
+  - processed == formatted files for stray light softwares
+  - raw == raw (or nearly-raw) output from RT-300S, Blacklab, or other instruments
+  - validation == validation checks of the processed and formatted data
+- docs
+- processing
+  - _legacy
+  - converters == scripts to convert files from one stray light software format to another
+  - core == scripts to take raw data to a stray light software format (namely, FRED)
+  - preprocessing == takes truly raw to nearly-raw (e.g., Blacklab voltages to BRF)
+- supplemental == misc. measurements or other, such as surface roughness; not BRDF, but not unrelated
+  - blacklab_mount_for_3x6in_samples == CAD for Blacklab sub-mount to support 3"x6" samples
+  - csi_surface_roughness == measurements from Zygo NewView 8300
+  - reflectance_vs_wavelength == measurements from ASD FieldSpec
+
+
+## Using the repo
+
+- Upload raw data to ```./data/raw```
+- Process raw data into FRED using a script from ```./processing/core```
+- Convert FRED file to Zemax using ```./processing/converters/fred_to_zemax.m```
+- Convert Zemax file to Speos using ```./processing/converters/zemax_to_speos.py```
+- Grab the generated files from ```./data/processed```, and upload to your stray light simulation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+---
+---
+
+# OLD:
 
 ## NOTES ON IN-PROGRESS ANISOTROPIC FRED ROUTINE (2026/03/16):
 

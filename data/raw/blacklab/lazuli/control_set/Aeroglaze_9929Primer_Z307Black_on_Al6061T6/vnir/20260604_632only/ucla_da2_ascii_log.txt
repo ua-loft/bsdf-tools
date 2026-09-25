@@ -1,0 +1,3640 @@
+File:  ucla_da2_ascii_log.txt opened for debug output at Thu Jun 04 16:00:32 2026
+
+main:  Found a single LUCI-10 controller for the FEMTO DDPCA-300 amp
+main:  call to LedOn(1) returned 0
+main:  call to WriteData(1, 5, 0) returned 0
+main:  call to GetStatusPin5(1, *status) returned 0 with Pin5 status = 0
+main:  GetStatusPin5 returned status_pin_low (0) so amp is not overloaded
+ucla_ascii:  Soloist SISetup() returned.
+ucla_ascii:  Soloist ExecuteEnable() returned.
+ucla_ascii:  Ensemble EISetup() returned.
+ucla_ascii:  Ensemble ExecuteEnable() returned.
+main:  Issuing a home command for X, Y, and U rotation stages
+read_stage_cal_file:  starting execution
+read_stage_cal_file:  Opened file:  c:\Users\stu\Documents\gpib_setup\stage_home_velocity_che.txt
+read_stage_cal_file:  j = 0, string = c:\Users\stu\Documents\gpib_setup\stage_home_velocity_che.txt
+read_stage_cal_file:  j = 1, string = Blacklab stage positions and velocities
+read_stage_cal_file:  j = 2, string = 2022
+read_stage_cal_file:  j = 3, string = 01
+read_stage_cal_file:  j = 4, string = 28
+read_stage_cal_file:  j = 5, string = SFB (Copy of swir version after 4th axis fix to setup)
+read_stage_cal_file:  j = 6, string = X	-5.465	10.0
+read_stage_cal_file:  Found X with j = 6
+read_stage_cal_file:  X	pos = -5.465000	velocity = 10.000000
+read_stage_cal_file:  Closing input file after finding X axis data
+
+read_stage_cal_file:  starting execution
+read_stage_cal_file:  Opened file:  c:\Users\stu\Documents\gpib_setup\stage_home_velocity_che.txt
+read_stage_cal_file:  j = 0, string = c:\Users\stu\Documents\gpib_setup\stage_home_velocity_che.txt
+read_stage_cal_file:  j = 1, string = Blacklab stage positions and velocities
+read_stage_cal_file:  j = 2, string = 2022
+read_stage_cal_file:  j = 3, string = 01
+read_stage_cal_file:  j = 4, string = 28
+read_stage_cal_file:  j = 5, string = SFB (Copy of swir version after 4th axis fix to setup)
+read_stage_cal_file:  j = 6, string = X	-5.465	10.0
+read_stage_cal_file:  j = 7, string = Y	-1.795	10.0
+read_stage_cal_file:  Found Y with j = 7
+read_stage_cal_file:  Y	pos = -1.795000	velocity = 10.000000
+read_stage_cal_file:  Closing input file after finding Y axis data
+
+read_stage_cal_file:  starting execution
+read_stage_cal_file:  Opened file:  c:\Users\stu\Documents\gpib_setup\stage_home_velocity_che.txt
+read_stage_cal_file:  j = 0, string = c:\Users\stu\Documents\gpib_setup\stage_home_velocity_che.txt
+read_stage_cal_file:  j = 1, string = Blacklab stage positions and velocities
+read_stage_cal_file:  j = 2, string = 2022
+read_stage_cal_file:  j = 3, string = 01
+read_stage_cal_file:  j = 4, string = 28
+read_stage_cal_file:  j = 5, string = SFB (Copy of swir version after 4th axis fix to setup)
+read_stage_cal_file:  j = 6, string = X	-5.465	10.0
+read_stage_cal_file:  j = 7, string = Y	-1.795	10.0
+read_stage_cal_file:  j = 8, string = U	-66.04	10.0
+read_stage_cal_file:  Found U with j = 8
+read_stage_cal_file:  U	pos = -66.040001	velocity = 10.000000
+read_stage_cal_file:  Closing input file after finding U axis data
+
+encoder_angle():  angle =   -5.4650001526 enc_angle =   -5.4650000000 for counts = 1200 (  -0.0000001526 deg change)
+encoder_angle():  angle =   -1.7949999571 enc_angle =   -1.7950000000 for counts = 1200 (   0.0000000429 deg change)
+encoder_angle():  angle =  -66.0400009155 enc_angle =  -66.0400000000 for counts = 600 (  -0.0000009155 deg change)
+read_stage_cal_file:  starting execution
+read_stage_cal_file:  Opened file:  c:\Users\stu\Documents\gpib_setup\stage_home_velocity_che.txt
+read_stage_cal_file:  j = 0, string = c:\Users\stu\Documents\gpib_setup\stage_home_velocity_che.txt
+read_stage_cal_file:  j = 1, string = Blacklab stage positions and velocities
+read_stage_cal_file:  j = 2, string = 2022
+read_stage_cal_file:  j = 3, string = 01
+read_stage_cal_file:  j = 4, string = 28
+read_stage_cal_file:  j = 5, string = SFB (Copy of swir version after 4th axis fix to setup)
+read_stage_cal_file:  j = 6, string = X	-5.465	10.0
+read_stage_cal_file:  j = 7, string = Y	-1.795	10.0
+read_stage_cal_file:  j = 8, string = U	-66.04	10.0
+read_stage_cal_file:  j = 9, string = V	-75.03	40.0
+read_stage_cal_file:  Found V with j = 9
+read_stage_cal_file:  V	pos = -75.029999	velocity = 40.000000
+read_stage_cal_file:  Closing input file after finding V axis data
+
+encoder_angle():  angle =  -75.0299987793 enc_angle =  -75.0300000000 for counts = 600 (   0.0000012207 deg change)
+main:  ps->filen = |c:\Users\stu\Documents\gpib_setup\data\ucla_ascii.ini.txt|
+main:  Calling read_init(c:\Users\stu\Documents\gpib_setup\data\ucla_ascii.ini.txt)
+read_init:  starting execution
+
+read_init:  j = 0 --> reading the next line from file
+read_init:  read line = |filen:		/gpib/data/calh.ini|
+read_init:  starting loop on i to find strings in ini file
+read_init:  found string |filen| for i = 0
+read_init:  will use sscanf to read |		/gpib/data/calh.ini|
+
+read_init:  j = 1 --> reading the next line from file
+read_init:  read line = ||
+read_init:  starting loop on i to find strings in ini file
+
+read_init:  j = 2 --> reading the next line from file
+read_init:  read line = |name:		sfb|
+read_init:  starting loop on i to find strings in ini file
+read_init:  found string |name| for i = 1
+read_init:  will use sscanf to read |		sfb|
+
+read_init:  j = 3 --> reading the next line from file
+read_init:  read line = ||
+read_init:  starting loop on i to find strings in ini file
+
+read_init:  j = 4 --> reading the next line from file
+read_init:  read line = |panel_char:	a|
+read_init:  starting loop on i to find strings in ini file
+read_init:  found string |panel_char| for i = 2
+read_init:  will use sscanf to read |	a|
+
+read_init:  j = 5 --> reading the next line from file
+read_init:  read line = ||
+read_init:  starting loop on i to find strings in ini file
+
+read_init:  j = 6 --> reading the next line from file
+read_init:  read line = |view_angle:	0.0|
+read_init:  starting loop on i to find strings in ini file
+read_init:  found string |view_angle| for i = 3
+read_init:  will use sscanf to read |	0.0|
+
+read_init:  j = 7 --> reading the next line from file
+read_init:  read line = ||
+read_init:  starting loop on i to find strings in ini file
+
+read_init:  j = 8 --> reading the next line from file
+read_init:  read line = |angle_interval:	5.0|
+read_init:  starting loop on i to find strings in ini file
+read_init:  found string |angle_interval| for i = 4
+read_init:  will use sscanf to read |	5.0|
+
+read_init:  j = 9 --> reading the next line from file
+read_init:  read line = ||
+read_init:  starting loop on i to find strings in ini file
+
+read_init:  j = 10 --> reading the next line from file
+read_init:  read line = |min_angle:	10.0|
+read_init:  starting loop on i to find strings in ini file
+read_init:  found string |min_angle| for i = 5
+read_init:  will use sscanf to read |	10.0|
+
+read_init:  j = 11 --> reading the next line from file
+read_init:  read line = ||
+read_init:  starting loop on i to find strings in ini file
+
+read_init:  j = 12 --> reading the next line from file
+read_init:  read line = |max_angle:	85.0|
+read_init:  starting loop on i to find strings in ini file
+read_init:  found string |max_angle| for i = 6
+read_init:  will use sscanf to read |	85.0|
+
+read_init:  j = 13 --> reading the next line from file
+read_init:  read line = ||
+read_init:  starting loop on i to find strings in ini file
+
+read_init:  j = 14 --> reading the next line from file
+read_init:  read line = |nplc:		10.0|
+read_init:  starting loop on i to find strings in ini file
+read_init:  found string |nplc| for i = 7
+read_init:  will use sscanf to read |		10.0|
+
+read_init:  j = 15 --> reading the next line from file
+read_init:  read line = ||
+read_init:  starting loop on i to find strings in ini file
+
+read_init:  j = 16 --> reading the next line from file
+read_init:  read line = |num_samples:	10|
+read_init:  starting loop on i to find strings in ini file
+read_init:  found string |num_samples| for i = 8
+read_init:  will use sscanf to read |	10|
+
+read_init:  j = 17 --> reading the next line from file
+read_init:  read line = ||
+read_init:  starting loop on i to find strings in ini file
+
+read_init:  j = 18 --> reading the next line from file
+read_init:  read line = |step_rate:	10000|
+read_init:  starting loop on i to find strings in ini file
+read_init:  found string |step_rate| for i = 9
+read_init:  will use sscanf to read |	10000|
+
+read_init:  j = 19 --> reading the next line from file
+read_init:  read line = ||
+read_init:  starting loop on i to find strings in ini file
+
+read_init:  j = 20 --> reading the next line from file
+read_init:  read line = |reverse_scan:	0|
+read_init:  starting loop on i to find strings in ini file
+read_init:  found string |reverse_scan| for i = 10
+read_init:  will use sscanf to read |	0|
+
+read_init:  j = 21 --> reading the next line from file
+read_init:  found EOF
+read_init:  input file closed --> returning TRUE
+
+main:  Returned with TRUE from read_init()
+person = sfb
+panel type = a
+off_normal = 0
+angle_step = 5
+min_angle = 10
+max_angle = 85
+plc = 10
+num_samples = 10
+feedrate = 1.4013e-041
+reverse = 0 (FALSE = 0, TRUE = 1)
+main:  large_panel = 0
+main:  will measure 1 filters
+main:  comment = |aeroglaze retry with only 631 nm wavelenth|
+main:  angle_file_name = |LOFT_angles_test.txt|
+read_angle_file:  starting execution
+read_angle_file:  j = 0, string = 45	0	0	180
+read_angle_file:  j = 1, string = 10	10	0	180
+read_angle_file:  j = 2, string = 20	10	0	180
+read_angle_file:  j = 3, string = 30	30	0	180
+read_angle_file:  j = 4, string = 60	30	0	180
+read_angle_file:  j = 5, string = 50	50	0	180
+read_angle_file:  j = 6, string = 100	50	0	180
+read_angle_file:  j = 7, string = 70	70	0	180
+read_angle_file:  j = 8, string = 140	70	0	180
+read_angle_file:  j = 9, string = 45	0	0	180
+main:  returned from read_angle_file with 10 sets of angles
+j=0	45	0	0	180
+j=1	10	10	0	180
+j=2	20	10	0	180
+j=3	30	30	0	180
+j=4	60	30	0	180
+j=5	50	50	0	180
+j=6	100	50	0	180
+j=7	70	70	0	180
+j=8	140	70	0	180
+j=9	45	0	0	180
+read_gain_file:  line 0 = |0	11	413.91
+|
+read_gain_file:  i = 0
+read_gain_file:  gain = 11
+read_gain_file:  wavel = 413.91
+read_gain_file:  line 1 = |1	10	445.02
+|
+read_gain_file:  i = 1
+read_gain_file:  gain = 10
+read_gain_file:  wavel = 445.02
+read_gain_file:  line 2 = |2	10	500.12
+|
+read_gain_file:  i = 2
+read_gain_file:  gain = 10
+read_gain_file:  wavel = 500.12
+read_gain_file:  line 3 = |3	10	537.85
+|
+read_gain_file:  i = 3
+read_gain_file:  gain = 10
+read_gain_file:  wavel = 537.85
+read_gain_file:  line 4 = |4	10	630.79
+|
+read_gain_file:  i = 4
+read_gain_file:  gain = 10
+read_gain_file:  wavel = 630.79
+read_gain_file:  line 5 = |5	9	683.54
+|
+read_gain_file:  i = 5
+read_gain_file:  gain = 9
+read_gain_file:  wavel = 683.54
+read_gain_file:  line 6 = |6	9	806.19
+|
+read_gain_file:  i = 6
+read_gain_file:  gain = 9
+read_gain_file:  wavel = 806.19
+read_gain_file:  line 7 = |7	11	385.65
+|
+read_gain_file:  i = 7
+read_gain_file:  gain = 11
+read_gain_file:  wavel = 385.65
+read_gain_file:  line 8 = |8	10	0
+|
+read_gain_file:  i = 8
+read_gain_file:  gain = 10
+read_gain_file:  wavel = 0
+read_gain_file:  line 9 = |9	9	852.23
+|
+read_gain_file:  i = 9
+read_gain_file:  gain = 9
+read_gain_file:  wavel = 852.23
+read_gain_file:  line 10 = |10	9	940.89
+|
+read_gain_file:  i = 10
+read_gain_file:  gain = 9
+read_gain_file:  wavel = 940.89
+read_gain_file:  line 11 = |11	10	1059.04
+|
+read_gain_file:  i = 11
+read_gain_file:  gain = 10
+read_gain_file:  wavel = 1059.04
+read_gain_file:  line 12 = |12	10	444.55
+|
+read_gain_file:  i = 12
+read_gain_file:  gain = 10
+read_gain_file:  wavel = 444.55
+read_gain_file:  line 13 = |13	10	484.69
+|
+read_gain_file:  i = 13
+read_gain_file:  gain = 10
+read_gain_file:  wavel = 484.69
+read_gain_file:  line 14 = |14	9	560.44
+|
+read_gain_file:  i = 14
+read_gain_file:  gain = 9
+read_gain_file:  wavel = 560.44
+read_gain_file:  line 15 = |15	9	656.61
+|
+read_gain_file:  i = 15
+read_gain_file:  gain = 9
+read_gain_file:  wavel = 656.61
+read_gain_file:  line 16 = |16	9	863.38
+|
+read_gain_file:  i = 16
+read_gain_file:  gain = 9
+read_gain_file:  wavel = 863.38
+read_gain_file:  line 17 = |17	10	0
+|
+read_gain_file:  i = 17
+read_gain_file:  gain = 10
+read_gain_file:  wavel = 0
+find_gpib_info:  Entered function looking for |HP34970A|
+find_gpib_info:  line 0 = |HP34970A	1	9
+|
+find_gpib_info:  line 0 contained |HP34970A	1	9|
+find_gpib_info:  Found HP34970A in HP34970A	1	9
+
+	find_gpib_info:  bus = 1; address = 9
+find_gpib_info:  returning TRUE
+find_gpib_info:  Entered function looking for |fw|
+find_gpib_info:  line 0 = |HP34970A	1	9
+|
+find_gpib_info:  line 0 contained |HP34970A	1	9|
+find_gpib_info:  line 1 = |fw	1	6
+|
+find_gpib_info:  line 1 contained |fw	1	6|
+find_gpib_info:  Found fw in fw	1	6
+
+	find_gpib_info:  bus = 1; address = 6
+find_gpib_info:  returning TRUE
+InitWheel: filter wheel about to be initialized
+find_gpib_info:  Entered function looking for |fw|
+find_gpib_info:  line 0 = |HP34970A	1	9
+|
+find_gpib_info:  line 0 contained |HP34970A	1	9|
+find_gpib_info:  line 1 = |fw	1	6
+|
+find_gpib_info:  line 1 contained |fw	1	6|
+find_gpib_info:  Found fw in fw	1	6
+
+	find_gpib_info:  bus = 1; address = 6
+find_gpib_info:  returning TRUE
+InitWheel:  ibdev returned - filter wheel initialized with wheel id 31256
+InitWheel:  ibclr(wheel) returned
+InitWheel:  calling RQSCheck()
+RQSCheck:  entered RQSCheck()
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+RQSCheck:  DoSerialPoll returned 4, iteration i = 1 in RQSCheck
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+RQSCheck:  DoSerialPoll returned 0, iteration i = 2 in RQSCheck
+RQSCheck:  returning value of 0 with i = 2 iterations (calls to DoSerialPoll)
+InitWheel:  Initializing filter wheel controller for serial input
+InitWheel:  ibwrt sent |î|
+InitWheel:  first byte = -18 (0xffffffee)
+RQSCheck:  entered RQSCheck()
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+RQSCheck:  DoSerialPoll returned 4, iteration i = 1 in RQSCheck
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+RQSCheck:  DoSerialPoll returned 0, iteration i = 2 in RQSCheck
+RQSCheck:  returning value of 0 with i = 2 iterations (calls to DoSerialPoll)
+RQSCheck:  entered RQSCheck()
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+RQSCheck:  DoSerialPoll returned 0, iteration i = 1 in RQSCheck
+RQSCheck:  returning value of 0 with i = 1 iterations (calls to DoSerialPoll)
+InitWheel:  Filter Wheel GPIB controller correctly setup
+main:  InitWheel() returned OK
+ChangeFilter:  Entering ChangeFilter with position = 2, Che blocking = 0, OLI blocking = 0
+ChangeFilter:  calling ibclr()
+ChangeFilter:  calling RQSCheck(fw)
+RQSCheck:  entered RQSCheck()
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+RQSCheck:  DoSerialPoll returned 4, iteration i = 1 in RQSCheck
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+RQSCheck:  DoSerialPoll returned 0, iteration i = 2 in RQSCheck
+RQSCheck:  returning value of 0 with i = 2 iterations (calls to DoSerialPoll)
+ChangeFilter:  RQSCheck() returned 0
+ChangeFilter:  sending command to move wheel 0 to position:  2
+ChangeFilter:  string to be sent = |r| first byte:  114 (0x72)
+ChangeFilter:  calling sleep(2)
+ChangeFilter:  returned from sleep - calling ibwait(fw)
+ChangeFilter:  done waiting for SRQ, calling ReadSerial()
+ReadSerial:  Entering ReadSerial()
+ReadSerial:  calling DoSerialPoll()DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+ReadSerial:  calling DoSerialPoll() as DoSerialPoll returned 4
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x41 (65)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+ReadSerial:  DoSerialPoll returned 2
+ReadSerial:  calling ibrd() to read 1 byte
+ReadSerial:  ibrd command returned
+ReadSerial:  Byte read is: 72 (114) on iteration i = 1
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x1 (1)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+ReadSerial:  DoSerialPoll returned 2
+ReadSerial:  calling ibrd() to read 1 byte
+ReadSerial:  ibrd command returned
+ReadSerial:  Byte read is: d (13) on iteration i = 2
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+ReadSerial:  Returning 114 on iteration 2
+ChangeFilter:  ReadSerial returned 114
+ChangeFilter:  byte to be checked against is  114
+ChangeFilter:  return byte compares OK - done = 2
+ChangeFilter:  sending command to move wheel 1 to position:  9
+ChangeFilter:  string to be sent = |ù| first byte:  -7 (0xfffffff9)
+ChangeFilter:  calling sleep(2)
+ChangeFilter:  returned from sleep - calling ibwait(fw)
+ChangeFilter:  done waiting for SRQ, calling ReadSerial()
+ReadSerial:  Entering ReadSerial()
+ReadSerial:  calling DoSerialPoll()DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+ReadSerial:  calling DoSerialPoll() as DoSerialPoll returned 4
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x41 (65)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+ReadSerial:  DoSerialPoll returned 2
+ReadSerial:  calling ibrd() to read 1 byte
+ReadSerial:  ibrd command returned
+ReadSerial:  Byte read is: fffffff9 (-7) on iteration i = 1
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x1 (1)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+ReadSerial:  DoSerialPoll returned 2
+ReadSerial:  calling ibrd() to read 1 byte
+ReadSerial:  ibrd command returned
+ReadSerial:  Byte read is: d (13) on iteration i = 2
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+ReadSerial:  Returning -7 on iteration 2
+ChangeFilter:  ReadSerial returned -7
+ChangeFilter:  byte to be checked against is  -7
+ChangeFilter:  return byte compares OK - done = -119
+ChangeFilter:  Returning 2 at completion
+ChangeFilter:  Entering ChangeFilter with position = 0, Che blocking = 0, OLI blocking = 0
+ChangeFilter:  calling ibclr()
+ChangeFilter:  calling RQSCheck(fw)
+RQSCheck:  entered RQSCheck()
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+RQSCheck:  DoSerialPoll returned 4, iteration i = 1 in RQSCheck
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+RQSCheck:  DoSerialPoll returned 0, iteration i = 2 in RQSCheck
+RQSCheck:  returning value of 0 with i = 2 iterations (calls to DoSerialPoll)
+ChangeFilter:  RQSCheck() returned 0
+ChangeFilter:  sending command to move wheel 0 to position:  0
+ChangeFilter:  string to be sent = |p| first byte:  112 (0x70)
+ChangeFilter:  calling sleep(2)
+ChangeFilter:  returned from sleep - calling ibwait(fw)
+ChangeFilter:  done waiting for SRQ, calling ReadSerial()
+ReadSerial:  Entering ReadSerial()
+ReadSerial:  calling DoSerialPoll()DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+ReadSerial:  calling DoSerialPoll() as DoSerialPoll returned 4
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x41 (65)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+ReadSerial:  DoSerialPoll returned 2
+ReadSerial:  calling ibrd() to read 1 byte
+ReadSerial:  ibrd command returned
+ReadSerial:  Byte read is: 70 (112) on iteration i = 1
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x1 (1)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+ReadSerial:  DoSerialPoll returned 2
+ReadSerial:  calling ibrd() to read 1 byte
+ReadSerial:  ibrd command returned
+ReadSerial:  Byte read is: d (13) on iteration i = 2
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+ReadSerial:  Returning 112 on iteration 2
+ChangeFilter:  ReadSerial returned 112
+ChangeFilter:  byte to be checked against is  112
+ChangeFilter:  return byte compares OK - done = 0
+ChangeFilter:  sending command to move wheel 1 to position:  9
+ChangeFilter:  string to be sent = |ù| first byte:  -7 (0xfffffff9)
+ChangeFilter:  calling sleep(2)
+ChangeFilter:  returned from sleep - calling ibwait(fw)
+ChangeFilter:  done waiting for SRQ, calling ReadSerial()
+ReadSerial:  Entering ReadSerial()
+ReadSerial:  calling DoSerialPoll()DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+ReadSerial:  calling DoSerialPoll() as DoSerialPoll returned 4
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x41 (65)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+ReadSerial:  DoSerialPoll returned 2
+ReadSerial:  calling ibrd() to read 1 byte
+ReadSerial:  ibrd command returned
+ReadSerial:  Byte read is: d (13) on iteration i = 1
+ReadSerial:  First byte read is a carriage return
+ReadSerial:  assuming new and previous filter positions are the same
+ChangeFilter:  ReadSerial returned -7
+ChangeFilter:  byte to be checked against is  -7
+ChangeFilter:  return byte compares OK - done = -119
+ChangeFilter:  Returning 0 at completion
+main:  filter wheel positioned to filter number 0 (of 0 to 17)
+
+OpenShutter:  Entering OpenShutter - executing a ibclr(fw)
+OpenShutter:  returned from ibclr(fw)
+OpenShutter:  calling RQSCheck()
+RQSCheck:  entered RQSCheck()
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+RQSCheck:  DoSerialPoll returned 4, iteration i = 1 in RQSCheck
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+RQSCheck:  DoSerialPoll returned 0, iteration i = 2 in RQSCheck
+RQSCheck:  returning value of 0 with i = 2 iterations (calls to DoSerialPoll)
+OpenShutter:  RQSCheck() returned 0
+OpenShutter:  calling ibwrt(fw, ¬, 1)
+OpenShutter:  ibwrt sent |¬| to filter wheel controller
+OpenShutter:  first byte of ibwrt string = -84 (0xffffffac)
+OpenShutter:  calling ibwait to wait for SRQ
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x41 (65)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+OpenShutter:  Iteration (i) = 1
+OpenShutter:  Byte returned by ibrd() is: 13 (0xd)
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+OpenShutter:  done while loop with 1 passes
+main:  OpenShutter returned 1
+
+main:  Filter wheel shutter is closed
+main:  Finished initializing filter wheel and shutter
+
+init_hp34970a:  MakeAddr returned 9
+init_hp34970a:  ibdev found a device on GPIB1 at address 9
+init_hp34970a:  ibdev returned da = 31257
+init_hp34970a:  calling SendIFC(da_bus)
+init_hp34970a:  calling ReadStatusByte()
+init_hp34970a:  returned from ReadStatusByte with 0
+init_hp34970a:  calling DevClear(da_bus, 9)
+init_hp34970a:  returned from |DevClear()|
+init_hp34970a:  returned from |EnableRemote()|
+init_hp34970a:  sending |*RST|
+init_hp34970a:  returned from |*RST|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+init_hp34970a:  returned from |*IDN?|
+init_hp34970a:  Read instrument ID:  HEWLETT-PACKARD,34970A,0,13-2-2
+
+init_hp34970a:  returned from |SYSTEM:VERSION?|
+init_hp34970a:  Read instrument SCPI Version number:  1994.0
+
+init_hp34970a:  |*ESE 60| sent to enable error checking
+init_hp34970a:  |*SRE 248| sent to setup status checking
+init_hp34970a:  Send |*OPC?| command returned
+init_hp34970a:  Result of *OPC? command:  1
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+init_hp34970a:  timeout set to 100 seconds
+init_hp34970a:  Send |*TST?| command returned
+init_hp34970a:  status byte = 0 after Send |*TST?|
+init_hp34970a:  Test result:  0 (passed)
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+init_hp34970a:  Timeout reset to 10 seconds
+init_hp34970a:  HP34970A lock file created at Thu Jun 04 16:04:16 2026
+init_hp34970a:  returning TRUE
+
+amp_on:  sending |SOURCE:DIGITAL:DATA:BYTE 10,(@202)| to HP34970A to turn amp off
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+amp_on:  Returning with return code = 1
+
+amp_on:  sending |SOURCE:DIGITAL:DATA:BYTE 2,(@202)| to HP34970A
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+amp_on:  Returning with return code = 1
+
+amp_remote:  sending |SOURCE:DIGITAL:DATA:BYTE 0,(@202)| to HP34970A to set remote control
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+amp_remote:  Returning with return code = 1
+
+set_gain:  sending |SOURCE:DIGITAL:DATA:BYTE 40,(@201)| to HP34970A to set gain to 9
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+calh (main):  Cannot open file c:\Users\stu\c\lab\current.us for input to read current
+encoder_angle():  angle = -165.0299987793 enc_angle = -165.0300000000 for counts = 600 (   0.0000012207 deg change)
+main():  Tilt stage loaded - read string = |yes|
+encoder_angle():  angle =  -75.0299987793 enc_angle =  -75.0300000000 for counts = 600 (   0.0000012207 deg change)
+set_gain:  sending |SOURCE:DIGITAL:DATA:BYTE 72,(@201)| to HP34970A to set gain to 10
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+main:  called WriteData(1, 6, 0) to set gain for DDPCA-300 amp and it returned 0
+main:  setting filter wheel to position 4 (630.79 nm)
+ChangeFilter:  Entering ChangeFilter with position = 4, Che blocking = 1, OLI blocking = 0
+ChangeFilter:  calling ibclr()
+ChangeFilter:  calling RQSCheck(fw)
+RQSCheck:  entered RQSCheck()
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+RQSCheck:  DoSerialPoll returned 4, iteration i = 1 in RQSCheck
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+RQSCheck:  DoSerialPoll returned 0, iteration i = 2 in RQSCheck
+RQSCheck:  returning value of 0 with i = 2 iterations (calls to DoSerialPoll)
+ChangeFilter:  RQSCheck() returned 0
+ChangeFilter:  sending command to move wheel 0 to position:  4
+ChangeFilter:  string to be sent = |t| first byte:  116 (0x74)
+ChangeFilter:  calling sleep(2)
+ChangeFilter:  returned from sleep - calling ibwait(fw)
+ChangeFilter:  done waiting for SRQ, calling ReadSerial()
+ReadSerial:  Entering ReadSerial()
+ReadSerial:  calling DoSerialPoll()DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+ReadSerial:  calling DoSerialPoll() as DoSerialPoll returned 4
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x41 (65)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+ReadSerial:  DoSerialPoll returned 2
+ReadSerial:  calling ibrd() to read 1 byte
+ReadSerial:  ibrd command returned
+ReadSerial:  Byte read is: 74 (116) on iteration i = 1
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x1 (1)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+ReadSerial:  DoSerialPoll returned 2
+ReadSerial:  calling ibrd() to read 1 byte
+ReadSerial:  ibrd command returned
+ReadSerial:  Byte read is: d (13) on iteration i = 2
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+ReadSerial:  Returning 116 on iteration 2
+ChangeFilter:  ReadSerial returned 116
+ChangeFilter:  byte to be checked against is  116
+ChangeFilter:  return byte compares OK - done = 4
+ChangeFilter:  sending command to move wheel 1 to position:  8
+ChangeFilter:  string to be sent = |ø| first byte:  -8 (0xfffffff8)
+ChangeFilter:  calling sleep(2)
+ChangeFilter:  returned from sleep - calling ibwait(fw)
+ChangeFilter:  done waiting for SRQ, calling ReadSerial()
+ReadSerial:  Entering ReadSerial()
+ReadSerial:  calling DoSerialPoll()DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+ReadSerial:  calling DoSerialPoll() as DoSerialPoll returned 4
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x41 (65)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+ReadSerial:  DoSerialPoll returned 2
+ReadSerial:  calling ibrd() to read 1 byte
+ReadSerial:  ibrd command returned
+ReadSerial:  Byte read is: fffffff8 (-8) on iteration i = 1
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x1 (1)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+ReadSerial:  DoSerialPoll returned 2
+ReadSerial:  calling ibrd() to read 1 byte
+ReadSerial:  ibrd command returned
+ReadSerial:  Byte read is: d (13) on iteration i = 2
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+ReadSerial:  Returning -8 on iteration 2
+ChangeFilter:  ReadSerial returned -8
+ChangeFilter:  byte to be checked against is  -8
+ChangeFilter:  return byte compares OK - done = -120
+ChangeFilter:  Returning 4 at completion
+main:  returned from setting filter wheel to position 4 (630.79 nm)
+OpenShutter:  Entering OpenShutter - executing a ibclr(fw)
+OpenShutter:  returned from ibclr(fw)
+OpenShutter:  calling RQSCheck()
+RQSCheck:  entered RQSCheck()
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+RQSCheck:  DoSerialPoll returned 4, iteration i = 1 in RQSCheck
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+RQSCheck:  DoSerialPoll returned 0, iteration i = 2 in RQSCheck
+RQSCheck:  returning value of 0 with i = 2 iterations (calls to DoSerialPoll)
+OpenShutter:  RQSCheck() returned 0
+OpenShutter:  calling ibwrt(fw, ¬, 1)
+OpenShutter:  ibwrt sent |¬| to filter wheel controller
+OpenShutter:  first byte of ibwrt string = -84 (0xffffffac)
+OpenShutter:  calling ibwait to wait for SRQ
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x41 (65)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+OpenShutter:  Iteration (i) = 1
+OpenShutter:  Byte returned by ibrd() is: 13 (0xd)
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+OpenShutter:  done while loop with 1 passes
+read_hp34970a_m:  start execution with num = 10, nplc = 10, chan =120
+read_hp34970a_m:  Sending HP 34970A |CONFIGURE:VOLTAGE:DC AUTO,MAX,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |INPUT:IMPEDANCE:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ONCE,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:RESOLUTION MIN,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:NPLC 10,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ROUTE:SCAN (@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:ALARM OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:CHANNEL OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:UNIT OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:TIME OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:COUNT 1|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:SOURCE IMMEDIATE|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  setup complete - entering read loop for 10 iterations
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 0)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.15864300E-03
+|
+read_hp34970a_m:  reading[0] = -2.15864300e-003
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 1)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.07036200E-03
+|
+read_hp34970a_m:  reading[1] = -2.07036200e-003
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 2)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.23722600E-03
+|
+read_hp34970a_m:  reading[2] = -2.23722600e-003
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 3)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.04163800E-03
+|
+read_hp34970a_m:  reading[3] = -2.04163800e-003
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 4)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.08655500E-03
+|
+read_hp34970a_m:  reading[4] = -2.08655500e-003
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 5)
+read_hp34970a_m:  ibcnt = 16, read string = |-1.93808300E-03
+|
+read_hp34970a_m:  reading[5] = -1.93808300e-003
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 6)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.15276600E-03
+|
+read_hp34970a_m:  reading[6] = -2.15276600e-003
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 7)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.22403600E-03
+|
+read_hp34970a_m:  reading[7] = -2.22403600e-003
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 8)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.03431200E-03
+|
+read_hp34970a_m:  reading[8] = -2.03431200e-003
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 9)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.11161700E-03
+|
+read_hp34970a_m:  reading[9] = -2.11161700e-003
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  average = -0.00210552, std_dev = 9.1449e-005 (-4.34329 percent)
+get_hp34970a_range:  Sending HP 34970A |SENSE:VOLTAGE:DC:RANGE:AUTO? (@120)|
+get_hp34970a_range:  Response to SENSE:VOLTAGE:DC:RANGE:AUTO? (@120):  1
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  get_hp_range returned -1 (autorange)
+compute_hp34970a_range:  range is autorange -> range from reading (-0.00210552) = 0.1
+read_hp34970a_m:  HP 34970A range = 0.1
+compute_hp34970a_error:  range = 0.1, index = 0
+compute_hp34970a_error:  range_error = 4e-005, reading_error = 5e-005
+compute_hp34970a_error:  range error component = 4e-006
+compute_hp34970a_error:  range error component (azero off) = 9.2e-006
+compute_hp34970a_error:  reading error component = -1.05276e-007
+compute_hp34970a_error:  total error (reading + range + azero) = 9.09472e-006
+compute_hp34970a_error:  Additional noise error = 0 (nplc dependent)
+compute_hp34970a_error:  total error (reading + range + azero + noise) = 9.09472e-006
+read_hp34970a_m:  HP 34970A error = 9.09472e-006 on -0.00210552 signal
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+OpenShutter:  Entering OpenShutter - executing a ibclr(fw)
+OpenShutter:  returned from ibclr(fw)
+OpenShutter:  calling RQSCheck()
+RQSCheck:  entered RQSCheck()
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+RQSCheck:  DoSerialPoll returned 4, iteration i = 1 in RQSCheck
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+RQSCheck:  DoSerialPoll returned 0, iteration i = 2 in RQSCheck
+RQSCheck:  returning value of 0 with i = 2 iterations (calls to DoSerialPoll)
+OpenShutter:  RQSCheck() returned 0
+OpenShutter:  calling ibwrt(fw, ª, 1)
+OpenShutter:  ibwrt sent |ª| to filter wheel controller
+OpenShutter:  first byte of ibwrt string = -86 (0xffffffaa)
+OpenShutter:  calling ibwait to wait for SRQ
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x41 (65)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+OpenShutter:  Iteration (i) = 1
+OpenShutter:  Byte returned by ibrd() is: -86 (0xffffffaa)
+OpenShutter:  byte = -86, shutter = -86
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x1 (1)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+OpenShutter:  Iteration (i) = 2
+OpenShutter:  Byte returned by ibrd() is: 13 (0xd)
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+OpenShutter:  done while loop with 2 passes
+encoder_angle():  angle =   39.5349998474 enc_angle =   39.5350000000 for counts = 1200 (  -0.0000001526 deg change)
+main:  Angle set 1 of 10
+main:  Moved stage X to 45 degrees from on axis
+encoder_angle():  angle =  -46.7949999571 enc_angle =  -46.7950000000 for counts = 1200 (   0.0000000429 deg change)
+main:  Moved stage Y to 0 degrees from on axis
+encoder_angle():  angle =  -66.0400009155 enc_angle =  -66.0400000000 for counts = 600 (  -0.0000009155 deg change)
+main: Moved stage U to 0 degrees from on axis
+encoder_angle():  angle =  104.9700012207 enc_angle =  104.9700000000 for counts = 600 (   0.0000012207 deg change)
+main:  Moved stage V to 180 degrees
+read_hp34970a_m:  start execution with num = 10, nplc = 10, chan =120
+read_hp34970a_m:  Sending HP 34970A |CONFIGURE:VOLTAGE:DC AUTO,MAX,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |INPUT:IMPEDANCE:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ONCE,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:RESOLUTION MIN,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:NPLC 10,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ROUTE:SCAN (@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:ALARM OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:CHANNEL OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:UNIT OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:TIME OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:COUNT 1|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:SOURCE IMMEDIATE|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  setup complete - entering read loop for 10 iterations
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 0)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.38108990E-01
+|
+read_hp34970a_m:  reading[0] = -2.38108990e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 1)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.39098010E-01
+|
+read_hp34970a_m:  reading[1] = -2.39098010e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 2)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.39198620E-01
+|
+read_hp34970a_m:  reading[2] = -2.39198620e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 3)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.38408850E-01
+|
+read_hp34970a_m:  reading[3] = -2.38408850e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 4)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.38842650E-01
+|
+read_hp34970a_m:  reading[4] = -2.38842650e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 5)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.38673690E-01
+|
+read_hp34970a_m:  reading[5] = -2.38673690e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 6)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.38488530E-01
+|
+read_hp34970a_m:  reading[6] = -2.38488530e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 7)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.38922200E-01
+|
+read_hp34970a_m:  reading[7] = -2.38922200e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 8)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.38039060E-01
+|
+read_hp34970a_m:  reading[8] = -2.38039060e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 9)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.38898760E-01
+|
+read_hp34970a_m:  reading[9] = -2.38898760e-001
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  average = -0.238668, std_dev = 0.000397533 (-0.166563 percent)
+get_hp34970a_range:  Sending HP 34970A |SENSE:VOLTAGE:DC:RANGE:AUTO? (@120)|
+get_hp34970a_range:  Response to SENSE:VOLTAGE:DC:RANGE:AUTO? (@120):  1
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  get_hp_range returned -1 (autorange)
+compute_hp34970a_range:  range is autorange -> range from reading (-0.238668) = 1
+read_hp34970a_m:  HP 34970A range = 1
+compute_hp34970a_error:  range = 1, index = 1
+compute_hp34970a_error:  range_error = 7e-006, reading_error = 4e-005
+compute_hp34970a_error:  range error component = 7e-006
+compute_hp34970a_error:  range error component (azero off) = 1.4e-005
+compute_hp34970a_error:  reading error component = -9.54672e-006
+compute_hp34970a_error:  total error (reading + range + azero) = 4.45328e-006
+compute_hp34970a_error:  Additional noise error = 0 (nplc dependent)
+compute_hp34970a_error:  total error (reading + range + azero + noise) = 4.45328e-006
+read_hp34970a_m:  HP 34970A error = 4.45328e-006 on -0.238668 signal
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+encoder_angle():  angle =    4.5349998474 enc_angle =    4.5350000000 for counts = 1200 (  -0.0000001526 deg change)
+main:  Angle set 2 of 10
+main:  Moved stage X to 10 degrees from on axis
+encoder_angle():  angle =   -1.7949999571 enc_angle =   -1.7950000000 for counts = 1200 (   0.0000000429 deg change)
+main:  Moved stage Y to 10 degrees from on axis
+encoder_angle():  angle =  -66.0400009155 enc_angle =  -66.0400000000 for counts = 600 (  -0.0000009155 deg change)
+main: Moved stage U to 0 degrees from on axis
+encoder_angle():  angle =  104.9700012207 enc_angle =  104.9700000000 for counts = 600 (   0.0000012207 deg change)
+main:  Moved stage V to 180 degrees
+read_hp34970a_m:  start execution with num = 10, nplc = 10, chan =120
+read_hp34970a_m:  Sending HP 34970A |CONFIGURE:VOLTAGE:DC AUTO,MAX,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |INPUT:IMPEDANCE:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ONCE,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:RESOLUTION MIN,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:NPLC 10,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ROUTE:SCAN (@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:ALARM OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:CHANNEL OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:UNIT OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:TIME OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:COUNT 1|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:SOURCE IMMEDIATE|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  setup complete - entering read loop for 10 iterations
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 0)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.52592430E-01
+|
+read_hp34970a_m:  reading[0] = -2.52592430e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 1)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.52523810E-01
+|
+read_hp34970a_m:  reading[1] = -2.52523810e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 2)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.52931010E-01
+|
+read_hp34970a_m:  reading[2] = -2.52931010e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 3)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.52043790E-01
+|
+read_hp34970a_m:  reading[3] = -2.52043790e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 4)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.52908360E-01
+|
+read_hp34970a_m:  reading[4] = -2.52908360e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 5)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.52722800E-01
+|
+read_hp34970a_m:  reading[5] = -2.52722800e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 6)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.52714370E-01
+|
+read_hp34970a_m:  reading[6] = -2.52714370e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 7)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.52017580E-01
+|
+read_hp34970a_m:  reading[7] = -2.52017580e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 8)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.52324950E-01
+|
+read_hp34970a_m:  reading[8] = -2.52324950e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 9)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.52152570E-01
+|
+read_hp34970a_m:  reading[9] = -2.52152570e-001
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  average = -0.252493, std_dev = 0.000341398 (-0.135211 percent)
+get_hp34970a_range:  Sending HP 34970A |SENSE:VOLTAGE:DC:RANGE:AUTO? (@120)|
+get_hp34970a_range:  Response to SENSE:VOLTAGE:DC:RANGE:AUTO? (@120):  1
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  get_hp_range returned -1 (autorange)
+compute_hp34970a_range:  range is autorange -> range from reading (-0.252493) = 1
+read_hp34970a_m:  HP 34970A range = 1
+compute_hp34970a_error:  range = 1, index = 1
+compute_hp34970a_error:  range_error = 7e-006, reading_error = 4e-005
+compute_hp34970a_error:  range error component = 7e-006
+compute_hp34970a_error:  range error component (azero off) = 1.4e-005
+compute_hp34970a_error:  reading error component = -1.00997e-005
+compute_hp34970a_error:  total error (reading + range + azero) = 3.90027e-006
+compute_hp34970a_error:  Additional noise error = 0 (nplc dependent)
+compute_hp34970a_error:  total error (reading + range + azero + noise) = 3.90027e-006
+read_hp34970a_m:  HP 34970A error = 3.90027e-006 on -0.252493 signal
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+encoder_angle():  angle =   14.5349998474 enc_angle =   14.5350000000 for counts = 1200 (  -0.0000001526 deg change)
+main:  Angle set 3 of 10
+main:  Moved stage X to 20 degrees from on axis
+encoder_angle():  angle =  -11.7949999571 enc_angle =  -11.7950000000 for counts = 1200 (   0.0000000429 deg change)
+main:  Moved stage Y to 10 degrees from on axis
+encoder_angle():  angle =  -66.0400009155 enc_angle =  -66.0400000000 for counts = 600 (  -0.0000009155 deg change)
+main: Moved stage U to 0 degrees from on axis
+encoder_angle():  angle =  104.9700012207 enc_angle =  104.9700000000 for counts = 600 (   0.0000012207 deg change)
+main:  Moved stage V to 180 degrees
+read_hp34970a_m:  start execution with num = 10, nplc = 10, chan =120
+read_hp34970a_m:  Sending HP 34970A |CONFIGURE:VOLTAGE:DC AUTO,MAX,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |INPUT:IMPEDANCE:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ONCE,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:RESOLUTION MIN,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:NPLC 10,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ROUTE:SCAN (@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:ALARM OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:CHANNEL OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:UNIT OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:TIME OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:COUNT 1|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:SOURCE IMMEDIATE|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  setup complete - entering read loop for 10 iterations
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 0)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.45048590E-01
+|
+read_hp34970a_m:  reading[0] = -2.45048590e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 1)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.45778830E-01
+|
+read_hp34970a_m:  reading[1] = -2.45778830e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 2)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.45345690E-01
+|
+read_hp34970a_m:  reading[2] = -2.45345690e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 3)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.44559610E-01
+|
+read_hp34970a_m:  reading[3] = -2.44559610e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 4)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.44880420E-01
+|
+read_hp34970a_m:  reading[4] = -2.44880420e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 5)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.44618480E-01
+|
+read_hp34970a_m:  reading[5] = -2.44618480e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 6)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.45311320E-01
+|
+read_hp34970a_m:  reading[6] = -2.45311320e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 7)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.44703160E-01
+|
+read_hp34970a_m:  reading[7] = -2.44703160e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 8)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.44524840E-01
+|
+read_hp34970a_m:  reading[8] = -2.44524840e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 9)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.44630460E-01
+|
+read_hp34970a_m:  reading[9] = -2.44630460e-001
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  average = -0.24494, std_dev = 0.000420816 (-0.171804 percent)
+get_hp34970a_range:  Sending HP 34970A |SENSE:VOLTAGE:DC:RANGE:AUTO? (@120)|
+get_hp34970a_range:  Response to SENSE:VOLTAGE:DC:RANGE:AUTO? (@120):  1
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  get_hp_range returned -1 (autorange)
+compute_hp34970a_range:  range is autorange -> range from reading (-0.24494) = 1
+read_hp34970a_m:  HP 34970A range = 1
+compute_hp34970a_error:  range = 1, index = 1
+compute_hp34970a_error:  range_error = 7e-006, reading_error = 4e-005
+compute_hp34970a_error:  range error component = 7e-006
+compute_hp34970a_error:  range error component (azero off) = 1.4e-005
+compute_hp34970a_error:  reading error component = -9.79761e-006
+compute_hp34970a_error:  total error (reading + range + azero) = 4.20239e-006
+compute_hp34970a_error:  Additional noise error = 0 (nplc dependent)
+compute_hp34970a_error:  total error (reading + range + azero + noise) = 4.20239e-006
+read_hp34970a_m:  HP 34970A error = 4.20239e-006 on -0.24494 signal
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+encoder_angle():  angle =   24.5349998474 enc_angle =   24.5350000000 for counts = 1200 (  -0.0000001526 deg change)
+main:  Angle set 4 of 10
+main:  Moved stage X to 30 degrees from on axis
+encoder_angle():  angle =   -1.7949999571 enc_angle =   -1.7950000000 for counts = 1200 (   0.0000000429 deg change)
+main:  Moved stage Y to 30 degrees from on axis
+encoder_angle():  angle =  -66.0400009155 enc_angle =  -66.0400000000 for counts = 600 (  -0.0000009155 deg change)
+main: Moved stage U to 0 degrees from on axis
+encoder_angle():  angle =  104.9700012207 enc_angle =  104.9700000000 for counts = 600 (   0.0000012207 deg change)
+main:  Moved stage V to 180 degrees
+read_hp34970a_m:  start execution with num = 10, nplc = 10, chan =120
+read_hp34970a_m:  Sending HP 34970A |CONFIGURE:VOLTAGE:DC AUTO,MAX,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |INPUT:IMPEDANCE:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ONCE,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:RESOLUTION MIN,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:NPLC 10,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ROUTE:SCAN (@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:ALARM OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:CHANNEL OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:UNIT OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:TIME OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:COUNT 1|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:SOURCE IMMEDIATE|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  setup complete - entering read loop for 10 iterations
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 0)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.09826920E-01
+|
+read_hp34970a_m:  reading[0] = -2.09826920e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 1)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.09272490E-01
+|
+read_hp34970a_m:  reading[1] = -2.09272490e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 2)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.09202560E-01
+|
+read_hp34970a_m:  reading[2] = -2.09202560e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 3)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.09892500E-01
+|
+read_hp34970a_m:  reading[3] = -2.09892500e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 4)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.09461070E-01
+|
+read_hp34970a_m:  reading[4] = -2.09461070e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 5)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.09163710E-01
+|
+read_hp34970a_m:  reading[5] = -2.09163710e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 6)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.09440130E-01
+|
+read_hp34970a_m:  reading[6] = -2.09440130e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 7)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.09546410E-01
+|
+read_hp34970a_m:  reading[7] = -2.09546410e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 8)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.09904620E-01
+|
+read_hp34970a_m:  reading[8] = -2.09904620e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 9)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.09268410E-01
+|
+read_hp34970a_m:  reading[9] = -2.09268410e-001
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  average = -0.209498, std_dev = 0.000286515 (-0.136763 percent)
+get_hp34970a_range:  Sending HP 34970A |SENSE:VOLTAGE:DC:RANGE:AUTO? (@120)|
+get_hp34970a_range:  Response to SENSE:VOLTAGE:DC:RANGE:AUTO? (@120):  1
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  get_hp_range returned -1 (autorange)
+compute_hp34970a_range:  range is autorange -> range from reading (-0.209498) = 1
+read_hp34970a_m:  HP 34970A range = 1
+compute_hp34970a_error:  range = 1, index = 1
+compute_hp34970a_error:  range_error = 7e-006, reading_error = 4e-005
+compute_hp34970a_error:  range error component = 7e-006
+compute_hp34970a_error:  range error component (azero off) = 1.4e-005
+compute_hp34970a_error:  reading error component = -8.37992e-006
+compute_hp34970a_error:  total error (reading + range + azero) = 5.62008e-006
+compute_hp34970a_error:  Additional noise error = 0 (nplc dependent)
+compute_hp34970a_error:  total error (reading + range + azero + noise) = 5.62008e-006
+read_hp34970a_m:  HP 34970A error = 5.62008e-006 on -0.209498 signal
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+encoder_angle():  angle =   54.5349998474 enc_angle =   54.5350000000 for counts = 1200 (  -0.0000001526 deg change)
+main:  Angle set 5 of 10
+main:  Moved stage X to 60 degrees from on axis
+encoder_angle():  angle =  -31.7949999571 enc_angle =  -31.7950000000 for counts = 1200 (   0.0000000429 deg change)
+main:  Moved stage Y to 30 degrees from on axis
+encoder_angle():  angle =  -66.0400009155 enc_angle =  -66.0400000000 for counts = 600 (  -0.0000009155 deg change)
+main: Moved stage U to 0 degrees from on axis
+encoder_angle():  angle =  104.9700012207 enc_angle =  104.9700000000 for counts = 600 (   0.0000012207 deg change)
+main:  Moved stage V to 180 degrees
+read_hp34970a_m:  start execution with num = 10, nplc = 10, chan =120
+read_hp34970a_m:  Sending HP 34970A |CONFIGURE:VOLTAGE:DC AUTO,MAX,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |INPUT:IMPEDANCE:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ONCE,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:RESOLUTION MIN,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:NPLC 10,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ROUTE:SCAN (@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:ALARM OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:CHANNEL OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:UNIT OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:TIME OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:COUNT 1|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:SOURCE IMMEDIATE|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  setup complete - entering read loop for 10 iterations
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 0)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.24640660E-01
+|
+read_hp34970a_m:  reading[0] = -2.24640660e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 1)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.24965410E-01
+|
+read_hp34970a_m:  reading[1] = -2.24965410e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 2)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.24678580E-01
+|
+read_hp34970a_m:  reading[2] = -2.24678580e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 3)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.25373660E-01
+|
+read_hp34970a_m:  reading[3] = -2.25373660e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 4)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.24971470E-01
+|
+read_hp34970a_m:  reading[4] = -2.24971470e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 5)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.24874940E-01
+|
+read_hp34970a_m:  reading[5] = -2.24874940e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 6)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.25228800E-01
+|
+read_hp34970a_m:  reading[6] = -2.25228800e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 7)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.25176780E-01
+|
+read_hp34970a_m:  reading[7] = -2.25176780e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 8)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.24906410E-01
+|
+read_hp34970a_m:  reading[8] = -2.24906410e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 9)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.24898120E-01
+|
+read_hp34970a_m:  reading[9] = -2.24898120e-001
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  average = -0.224971, std_dev = 0.000231976 (-0.103113 percent)
+get_hp34970a_range:  Sending HP 34970A |SENSE:VOLTAGE:DC:RANGE:AUTO? (@120)|
+get_hp34970a_range:  Response to SENSE:VOLTAGE:DC:RANGE:AUTO? (@120):  1
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  get_hp_range returned -1 (autorange)
+compute_hp34970a_range:  range is autorange -> range from reading (-0.224971) = 1
+read_hp34970a_m:  HP 34970A range = 1
+compute_hp34970a_error:  range = 1, index = 1
+compute_hp34970a_error:  range_error = 7e-006, reading_error = 4e-005
+compute_hp34970a_error:  range error component = 7e-006
+compute_hp34970a_error:  range error component (azero off) = 1.4e-005
+compute_hp34970a_error:  reading error component = -8.99886e-006
+compute_hp34970a_error:  total error (reading + range + azero) = 5.00114e-006
+compute_hp34970a_error:  Additional noise error = 0 (nplc dependent)
+compute_hp34970a_error:  total error (reading + range + azero + noise) = 5.00114e-006
+read_hp34970a_m:  HP 34970A error = 5.00114e-006 on -0.224971 signal
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+encoder_angle():  angle =   44.5349998474 enc_angle =   44.5350000000 for counts = 1200 (  -0.0000001526 deg change)
+main:  Angle set 6 of 10
+main:  Moved stage X to 50 degrees from on axis
+encoder_angle():  angle =   -1.7949999571 enc_angle =   -1.7950000000 for counts = 1200 (   0.0000000429 deg change)
+main:  Moved stage Y to 50 degrees from on axis
+encoder_angle():  angle =  -66.0400009155 enc_angle =  -66.0400000000 for counts = 600 (  -0.0000009155 deg change)
+main: Moved stage U to 0 degrees from on axis
+encoder_angle():  angle =  104.9700012207 enc_angle =  104.9700000000 for counts = 600 (   0.0000012207 deg change)
+main:  Moved stage V to 180 degrees
+read_hp34970a_m:  start execution with num = 10, nplc = 10, chan =120
+read_hp34970a_m:  Sending HP 34970A |CONFIGURE:VOLTAGE:DC AUTO,MAX,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |INPUT:IMPEDANCE:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ONCE,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:RESOLUTION MIN,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:NPLC 10,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ROUTE:SCAN (@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:ALARM OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:CHANNEL OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:UNIT OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:TIME OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:COUNT 1|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:SOURCE IMMEDIATE|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  setup complete - entering read loop for 10 iterations
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 0)
+read_hp34970a_m:  ibcnt = 16, read string = |-1.54851920E-01
+|
+read_hp34970a_m:  reading[0] = -1.54851920e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 1)
+read_hp34970a_m:  ibcnt = 16, read string = |-1.55162460E-01
+|
+read_hp34970a_m:  reading[1] = -1.55162460e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 2)
+read_hp34970a_m:  ibcnt = 16, read string = |-1.55191170E-01
+|
+read_hp34970a_m:  reading[2] = -1.55191170e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 3)
+read_hp34970a_m:  ibcnt = 16, read string = |-1.54974270E-01
+|
+read_hp34970a_m:  reading[3] = -1.54974270e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 4)
+read_hp34970a_m:  ibcnt = 16, read string = |-1.54637400E-01
+|
+read_hp34970a_m:  reading[4] = -1.54637400e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 5)
+read_hp34970a_m:  ibcnt = 16, read string = |-1.55353550E-01
+|
+read_hp34970a_m:  reading[5] = -1.55353550e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 6)
+read_hp34970a_m:  ibcnt = 16, read string = |-1.55229360E-01
+|
+read_hp34970a_m:  reading[6] = -1.55229360e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 7)
+read_hp34970a_m:  ibcnt = 16, read string = |-1.55214740E-01
+|
+read_hp34970a_m:  reading[7] = -1.55214740e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 8)
+read_hp34970a_m:  ibcnt = 16, read string = |-1.54828880E-01
+|
+read_hp34970a_m:  reading[8] = -1.54828880e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 9)
+read_hp34970a_m:  ibcnt = 16, read string = |-1.55160350E-01
+|
+read_hp34970a_m:  reading[9] = -1.55160350e-001
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  average = -0.15506, std_dev = 0.000225887 (-0.145677 percent)
+get_hp34970a_range:  Sending HP 34970A |SENSE:VOLTAGE:DC:RANGE:AUTO? (@120)|
+get_hp34970a_range:  Response to SENSE:VOLTAGE:DC:RANGE:AUTO? (@120):  1
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  get_hp_range returned -1 (autorange)
+compute_hp34970a_range:  range is autorange -> range from reading (-0.15506) = 1
+read_hp34970a_m:  HP 34970A range = 1
+compute_hp34970a_error:  range = 1, index = 1
+compute_hp34970a_error:  range_error = 7e-006, reading_error = 4e-005
+compute_hp34970a_error:  range error component = 7e-006
+compute_hp34970a_error:  range error component (azero off) = 1.4e-005
+compute_hp34970a_error:  reading error component = -6.20242e-006
+compute_hp34970a_error:  total error (reading + range + azero) = 7.79758e-006
+compute_hp34970a_error:  Additional noise error = 0 (nplc dependent)
+compute_hp34970a_error:  total error (reading + range + azero + noise) = 7.79758e-006
+read_hp34970a_m:  HP 34970A error = 7.79758e-006 on -0.15506 signal
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+encoder_angle():  angle =   94.5349998474 enc_angle =   94.5350000000 for counts = 1200 (  -0.0000001526 deg change)
+main:  Angle set 7 of 10
+main:  Moved stage X to 100 degrees from on axis
+encoder_angle():  angle =  -51.7949999571 enc_angle =  -51.7950000000 for counts = 1200 (   0.0000000429 deg change)
+main:  Moved stage Y to 50 degrees from on axis
+encoder_angle():  angle =  -66.0400009155 enc_angle =  -66.0400000000 for counts = 600 (  -0.0000009155 deg change)
+main: Moved stage U to 0 degrees from on axis
+encoder_angle():  angle =  104.9700012207 enc_angle =  104.9700000000 for counts = 600 (   0.0000012207 deg change)
+main:  Moved stage V to 180 degrees
+read_hp34970a_m:  start execution with num = 10, nplc = 10, chan =120
+read_hp34970a_m:  Sending HP 34970A |CONFIGURE:VOLTAGE:DC AUTO,MAX,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |INPUT:IMPEDANCE:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ONCE,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:RESOLUTION MIN,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:NPLC 10,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ROUTE:SCAN (@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:ALARM OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:CHANNEL OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:UNIT OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:TIME OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:COUNT 1|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:SOURCE IMMEDIATE|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  setup complete - entering read loop for 10 iterations
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 0)
+read_hp34970a_m:  ibcnt = 16, read string = |-3.30210420E-01
+|
+read_hp34970a_m:  reading[0] = -3.30210420e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 1)
+read_hp34970a_m:  ibcnt = 16, read string = |-3.29705510E-01
+|
+read_hp34970a_m:  reading[1] = -3.29705510e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 2)
+read_hp34970a_m:  ibcnt = 16, read string = |-3.28968020E-01
+|
+read_hp34970a_m:  reading[2] = -3.28968020e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 3)
+read_hp34970a_m:  ibcnt = 16, read string = |-3.29087470E-01
+|
+read_hp34970a_m:  reading[3] = -3.29087470e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 4)
+read_hp34970a_m:  ibcnt = 16, read string = |-3.29999190E-01
+|
+read_hp34970a_m:  reading[4] = -3.29999190e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 5)
+read_hp34970a_m:  ibcnt = 16, read string = |-3.29458580E-01
+|
+read_hp34970a_m:  reading[5] = -3.29458580e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 6)
+read_hp34970a_m:  ibcnt = 16, read string = |-3.29337160E-01
+|
+read_hp34970a_m:  reading[6] = -3.29337160e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 7)
+read_hp34970a_m:  ibcnt = 16, read string = |-3.29598710E-01
+|
+read_hp34970a_m:  reading[7] = -3.29598710e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 8)
+read_hp34970a_m:  ibcnt = 16, read string = |-3.29861300E-01
+|
+read_hp34970a_m:  reading[8] = -3.29861300e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 9)
+read_hp34970a_m:  ibcnt = 16, read string = |-3.29607130E-01
+|
+read_hp34970a_m:  reading[9] = -3.29607130e-001
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  average = -0.329583, std_dev = 0.000388705 (-0.117938 percent)
+get_hp34970a_range:  Sending HP 34970A |SENSE:VOLTAGE:DC:RANGE:AUTO? (@120)|
+get_hp34970a_range:  Response to SENSE:VOLTAGE:DC:RANGE:AUTO? (@120):  1
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  get_hp_range returned -1 (autorange)
+compute_hp34970a_range:  range is autorange -> range from reading (-0.329583) = 1
+read_hp34970a_m:  HP 34970A range = 1
+compute_hp34970a_error:  range = 1, index = 1
+compute_hp34970a_error:  range_error = 7e-006, reading_error = 4e-005
+compute_hp34970a_error:  range error component = 7e-006
+compute_hp34970a_error:  range error component (azero off) = 1.4e-005
+compute_hp34970a_error:  reading error component = -1.31833e-005
+compute_hp34970a_error:  total error (reading + range + azero) = 8.16666e-007
+compute_hp34970a_error:  Additional noise error = 0 (nplc dependent)
+compute_hp34970a_error:  total error (reading + range + azero + noise) = 8.16666e-007
+read_hp34970a_m:  HP 34970A error = 8.16666e-007 on -0.329583 signal
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+encoder_angle():  angle =   64.5349998474 enc_angle =   64.5350000000 for counts = 1200 (  -0.0000001526 deg change)
+main:  Angle set 8 of 10
+main:  Moved stage X to 70 degrees from on axis
+encoder_angle():  angle =   -1.7949999571 enc_angle =   -1.7950000000 for counts = 1200 (   0.0000000429 deg change)
+main:  Moved stage Y to 70 degrees from on axis
+encoder_angle():  angle =  -66.0400009155 enc_angle =  -66.0400000000 for counts = 600 (  -0.0000009155 deg change)
+main: Moved stage U to 0 degrees from on axis
+encoder_angle():  angle =  104.9700012207 enc_angle =  104.9700000000 for counts = 600 (   0.0000012207 deg change)
+main:  Moved stage V to 180 degrees
+read_hp34970a_m:  start execution with num = 10, nplc = 10, chan =120
+read_hp34970a_m:  Sending HP 34970A |CONFIGURE:VOLTAGE:DC AUTO,MAX,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |INPUT:IMPEDANCE:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ONCE,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:RESOLUTION MIN,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:NPLC 10,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ROUTE:SCAN (@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:ALARM OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:CHANNEL OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:UNIT OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:TIME OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:COUNT 1|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:SOURCE IMMEDIATE|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  setup complete - entering read loop for 10 iterations
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 0)
+read_hp34970a_m:  ibcnt = 16, read string = |-8.78922660E-02
+|
+read_hp34970a_m:  reading[0] = -8.78922660e-002
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 1)
+read_hp34970a_m:  ibcnt = 16, read string = |-8.79146920E-02
+|
+read_hp34970a_m:  reading[1] = -8.79146920e-002
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 2)
+read_hp34970a_m:  ibcnt = 16, read string = |-8.80961500E-02
+|
+read_hp34970a_m:  reading[2] = -8.80961500e-002
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 3)
+read_hp34970a_m:  ibcnt = 16, read string = |-8.77757480E-02
+|
+read_hp34970a_m:  reading[3] = -8.77757480e-002
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 4)
+read_hp34970a_m:  ibcnt = 16, read string = |-8.80284900E-02
+|
+read_hp34970a_m:  reading[4] = -8.80284900e-002
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 5)
+read_hp34970a_m:  ibcnt = 16, read string = |-8.78853350E-02
+|
+read_hp34970a_m:  reading[5] = -8.78853350e-002
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 6)
+read_hp34970a_m:  ibcnt = 16, read string = |-8.78584680E-02
+|
+read_hp34970a_m:  reading[6] = -8.78584680e-002
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 7)
+read_hp34970a_m:  ibcnt = 16, read string = |-8.81128050E-02
+|
+read_hp34970a_m:  reading[7] = -8.81128050e-002
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 8)
+read_hp34970a_m:  ibcnt = 16, read string = |-8.78667430E-02
+|
+read_hp34970a_m:  reading[8] = -8.78667430e-002
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 9)
+read_hp34970a_m:  ibcnt = 16, read string = |-8.79763960E-02
+|
+read_hp34970a_m:  reading[9] = -8.79763960e-002
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  average = -0.0879407, std_dev = 0.000109694 (-0.124736 percent)
+get_hp34970a_range:  Sending HP 34970A |SENSE:VOLTAGE:DC:RANGE:AUTO? (@120)|
+get_hp34970a_range:  Response to SENSE:VOLTAGE:DC:RANGE:AUTO? (@120):  1
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  get_hp_range returned -1 (autorange)
+compute_hp34970a_range:  range is autorange -> range from reading (-0.0879407) = 0.1
+read_hp34970a_m:  HP 34970A range = 0.1
+compute_hp34970a_error:  range = 0.1, index = 0
+compute_hp34970a_error:  range_error = 4e-005, reading_error = 5e-005
+compute_hp34970a_error:  range error component = 4e-006
+compute_hp34970a_error:  range error component (azero off) = 9.2e-006
+compute_hp34970a_error:  reading error component = -4.39704e-006
+compute_hp34970a_error:  total error (reading + range + azero) = 4.80296e-006
+compute_hp34970a_error:  Additional noise error = 0 (nplc dependent)
+compute_hp34970a_error:  total error (reading + range + azero + noise) = 4.80296e-006
+read_hp34970a_m:  HP 34970A error = 4.80296e-006 on -0.0879407 signal
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+encoder_angle():  angle =  134.5349998474 enc_angle =  134.5350000000 for counts = 1200 (  -0.0000001526 deg change)
+main:  Angle set 9 of 10
+main:  Moved stage X to 140 degrees from on axis
+encoder_angle():  angle =  -71.7949999571 enc_angle =  -71.7950000000 for counts = 1200 (   0.0000000429 deg change)
+main:  Moved stage Y to 70 degrees from on axis
+encoder_angle():  angle =  -66.0400009155 enc_angle =  -66.0400000000 for counts = 600 (  -0.0000009155 deg change)
+main: Moved stage U to 0 degrees from on axis
+encoder_angle():  angle =  104.9700012207 enc_angle =  104.9700000000 for counts = 600 (   0.0000012207 deg change)
+main:  Moved stage V to 180 degrees
+read_hp34970a_m:  start execution with num = 10, nplc = 10, chan =120
+read_hp34970a_m:  Sending HP 34970A |CONFIGURE:VOLTAGE:DC AUTO,MAX,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |INPUT:IMPEDANCE:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ONCE,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:RESOLUTION MIN,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:NPLC 10,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ROUTE:SCAN (@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:ALARM OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:CHANNEL OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:UNIT OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:TIME OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:COUNT 1|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:SOURCE IMMEDIATE|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  setup complete - entering read loop for 10 iterations
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 0)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.49528500E+00
+|
+read_hp34970a_m:  reading[0] = -2.49528500e+000
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 1)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.47788520E+00
+|
+read_hp34970a_m:  reading[1] = -2.47788520e+000
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 2)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.49206800E+00
+|
+read_hp34970a_m:  reading[2] = -2.49206800e+000
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 3)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.48301690E+00
+|
+read_hp34970a_m:  reading[3] = -2.48301690e+000
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 4)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.49357960E+00
+|
+read_hp34970a_m:  reading[4] = -2.49357960e+000
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 5)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.49150930E+00
+|
+read_hp34970a_m:  reading[5] = -2.49150930e+000
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 6)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.49370220E+00
+|
+read_hp34970a_m:  reading[6] = -2.49370220e+000
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 7)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.48972490E+00
+|
+read_hp34970a_m:  reading[7] = -2.48972490e+000
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 8)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.48620490E+00
+|
+read_hp34970a_m:  reading[8] = -2.48620490e+000
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 9)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.49620090E+00
+|
+read_hp34970a_m:  reading[9] = -2.49620090e+000
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  average = -2.48992, std_dev = 0.00586325 (-0.23548 percent)
+get_hp34970a_range:  Sending HP 34970A |SENSE:VOLTAGE:DC:RANGE:AUTO? (@120)|
+get_hp34970a_range:  Response to SENSE:VOLTAGE:DC:RANGE:AUTO? (@120):  1
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  get_hp_range returned -1 (autorange)
+compute_hp34970a_range:  range is autorange -> range from reading (-2.48992) = 10
+read_hp34970a_m:  HP 34970A range = 10
+compute_hp34970a_error:  range = 10, index = 2
+compute_hp34970a_error:  range_error = 5e-006, reading_error = 3.5e-005
+compute_hp34970a_error:  range error component = 5e-005
+compute_hp34970a_error:  range error component (azero off) = 7.5e-005
+compute_hp34970a_error:  reading error component = -8.71471e-005
+compute_hp34970a_error:  total error (reading + range + azero) = -1.21471e-005
+compute_hp34970a_error:  Additional noise error = 0 (nplc dependent)
+compute_hp34970a_error:  total error (reading + range + azero + noise) = -1.21471e-005
+read_hp34970a_m:  HP 34970A error = -1.21471e-005 on -2.48992 signal
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+encoder_angle():  angle =   39.5349998474 enc_angle =   39.5350000000 for counts = 1200 (  -0.0000001526 deg change)
+main:  Angle set 10 of 10
+main:  Moved stage X to 45 degrees from on axis
+encoder_angle():  angle =  -46.7949999571 enc_angle =  -46.7950000000 for counts = 1200 (   0.0000000429 deg change)
+main:  Moved stage Y to 0 degrees from on axis
+encoder_angle():  angle =  -66.0400009155 enc_angle =  -66.0400000000 for counts = 600 (  -0.0000009155 deg change)
+main: Moved stage U to 0 degrees from on axis
+encoder_angle():  angle =  104.9700012207 enc_angle =  104.9700000000 for counts = 600 (   0.0000012207 deg change)
+main:  Moved stage V to 180 degrees
+read_hp34970a_m:  start execution with num = 10, nplc = 10, chan =120
+read_hp34970a_m:  Sending HP 34970A |CONFIGURE:VOLTAGE:DC AUTO,MAX,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |INPUT:IMPEDANCE:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ONCE,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:RESOLUTION MIN,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:NPLC 10,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ROUTE:SCAN (@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:ALARM OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:CHANNEL OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:UNIT OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:TIME OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:COUNT 1|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:SOURCE IMMEDIATE|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  setup complete - entering read loop for 10 iterations
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 0)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.38661440E-01
+|
+read_hp34970a_m:  reading[0] = -2.38661440e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 1)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.38802880E-01
+|
+read_hp34970a_m:  reading[1] = -2.38802880e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 2)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.38730710E-01
+|
+read_hp34970a_m:  reading[2] = -2.38730710e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 3)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.38582290E-01
+|
+read_hp34970a_m:  reading[3] = -2.38582290e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 4)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.37394150E-01
+|
+read_hp34970a_m:  reading[4] = -2.37394150e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 5)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.36845910E-01
+|
+read_hp34970a_m:  reading[5] = -2.36845910e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 6)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.37898670E-01
+|
+read_hp34970a_m:  reading[6] = -2.37898670e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 7)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.38545550E-01
+|
+read_hp34970a_m:  reading[7] = -2.38545550e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 8)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.38937340E-01
+|
+read_hp34970a_m:  reading[8] = -2.38937340e-001
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 9)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.39068900E-01
+|
+read_hp34970a_m:  reading[9] = -2.39068900e-001
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  average = -0.238347, std_dev = 0.000728816 (-0.30578 percent)
+get_hp34970a_range:  Sending HP 34970A |SENSE:VOLTAGE:DC:RANGE:AUTO? (@120)|
+get_hp34970a_range:  Response to SENSE:VOLTAGE:DC:RANGE:AUTO? (@120):  1
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  get_hp_range returned -1 (autorange)
+compute_hp34970a_range:  range is autorange -> range from reading (-0.238347) = 1
+read_hp34970a_m:  HP 34970A range = 1
+compute_hp34970a_error:  range = 1, index = 1
+compute_hp34970a_error:  range_error = 7e-006, reading_error = 4e-005
+compute_hp34970a_error:  range error component = 7e-006
+compute_hp34970a_error:  range error component (azero off) = 1.4e-005
+compute_hp34970a_error:  reading error component = -9.53387e-006
+compute_hp34970a_error:  total error (reading + range + azero) = 4.46613e-006
+compute_hp34970a_error:  Additional noise error = 0 (nplc dependent)
+compute_hp34970a_error:  total error (reading + range + azero + noise) = 4.46613e-006
+read_hp34970a_m:  HP 34970A error = 4.46613e-006 on -0.238347 signal
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+OpenShutter:  Entering OpenShutter - executing a ibclr(fw)
+OpenShutter:  returned from ibclr(fw)
+OpenShutter:  calling RQSCheck()
+RQSCheck:  entered RQSCheck()
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+RQSCheck:  DoSerialPoll returned 4, iteration i = 1 in RQSCheck
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+RQSCheck:  DoSerialPoll returned 0, iteration i = 2 in RQSCheck
+RQSCheck:  returning value of 0 with i = 2 iterations (calls to DoSerialPoll)
+OpenShutter:  RQSCheck() returned 0
+OpenShutter:  calling ibwrt(fw, ¬, 1)
+OpenShutter:  ibwrt sent |¬| to filter wheel controller
+OpenShutter:  first byte of ibwrt string = -84 (0xffffffac)
+OpenShutter:  calling ibwait to wait for SRQ
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x41 (65)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+OpenShutter:  Iteration (i) = 1
+OpenShutter:  Byte returned by ibrd() is: -84 (0xffffffac)
+OpenShutter:  byte = -84, shutter = -84
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x1 (1)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+OpenShutter:  Iteration (i) = 2
+OpenShutter:  Byte returned by ibrd() is: 13 (0xd)
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+OpenShutter:  done while loop with 2 passes
+read_hp34970a_m:  start execution with num = 10, nplc = 10, chan =120
+read_hp34970a_m:  Sending HP 34970A |CONFIGURE:VOLTAGE:DC AUTO,MAX,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |INPUT:IMPEDANCE:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ONCE,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:RESOLUTION MIN,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |SENSE:VOLTAGE:DC:NPLC 10,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |ROUTE:SCAN (@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:ALARM OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:CHANNEL OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:UNIT OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |FORMAT:READING:TIME OFF|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:COUNT 1|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  Sending HP 34970A |TRIGGER:SOURCE IMMEDIATE|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  setup complete - entering read loop for 10 iterations
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 0)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.16097500E-03
+|
+read_hp34970a_m:  reading[0] = -2.16097500e-003
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 1)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.00812800E-03
+|
+read_hp34970a_m:  reading[1] = -2.00812800e-003
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 2)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.05283700E-03
+|
+read_hp34970a_m:  reading[2] = -2.05283700e-003
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 3)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.02341300E-03
+|
+read_hp34970a_m:  reading[3] = -2.02341300e-003
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 4)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.21527400E-03
+|
+read_hp34970a_m:  reading[4] = -2.21527400e-003
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 5)
+read_hp34970a_m:  ibcnt = 16, read string = |-1.93444700E-03
+|
+read_hp34970a_m:  reading[5] = -1.93444700e-003
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 6)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.60751800E-03
+|
+read_hp34970a_m:  reading[6] = -2.60751800e-003
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 7)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.05007000E-03
+|
+read_hp34970a_m:  reading[7] = -2.05007000e-003
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 8)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.28580700E-03
+|
+read_hp34970a_m:  reading[8] = -2.28580700e-003
+read_hp34970a_m:  Sending HP 34970A |READ?|
+read_hp34970a_m:  waiting for SRQ to indicate reading done...
+read_hp34970a_m:  returned from WaitSRQ()
+read_hp34970a_m:  FindRQS returned ibcnt = 0 and result = 80
+read_hp34970a_m:  HP34970A requested service
+read_hp34970a_m:  FEMTO amplifier Pin5 status = 0 - not overloaded
+read_hp34970a_m:  sending Recieve command (iteration = 9)
+read_hp34970a_m:  ibcnt = 16, read string = |-2.04468100E-03
+|
+read_hp34970a_m:  reading[9] = -2.04468100e-003
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  average = -0.00213832, std_dev = 0.000195481 (-9.14183 percent)
+get_hp34970a_range:  Sending HP 34970A |SENSE:VOLTAGE:DC:RANGE:AUTO? (@120)|
+get_hp34970a_range:  Response to SENSE:VOLTAGE:DC:RANGE:AUTO? (@120):  1
+
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+read_hp34970a_m:  get_hp_range returned -1 (autorange)
+compute_hp34970a_range:  range is autorange -> range from reading (-0.00213832) = 0.1
+read_hp34970a_m:  HP 34970A range = 0.1
+compute_hp34970a_error:  range = 0.1, index = 0
+compute_hp34970a_error:  range_error = 4e-005, reading_error = 5e-005
+compute_hp34970a_error:  range error component = 4e-006
+compute_hp34970a_error:  range error component (azero off) = 9.2e-006
+compute_hp34970a_error:  reading error component = -1.06916e-007
+compute_hp34970a_error:  total error (reading + range + azero) = 9.09308e-006
+compute_hp34970a_error:  Additional noise error = 0 (nplc dependent)
+compute_hp34970a_error:  total error (reading + range + azero + noise) = 9.09308e-006
+read_hp34970a_m:  HP 34970A error = 9.09308e-006 on -0.00213832 signal
+read_hp34970a_m:  Sending HP 34970A |ZERO:AUTO ON,(@120)|
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+OpenShutter:  Entering OpenShutter - executing a ibclr(fw)
+OpenShutter:  returned from ibclr(fw)
+OpenShutter:  calling RQSCheck()
+RQSCheck:  entered RQSCheck()
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+RQSCheck:  DoSerialPoll returned 4, iteration i = 1 in RQSCheck
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+RQSCheck:  DoSerialPoll returned 0, iteration i = 2 in RQSCheck
+RQSCheck:  returning value of 0 with i = 2 iterations (calls to DoSerialPoll)
+OpenShutter:  RQSCheck() returned 0
+OpenShutter:  calling ibwrt(fw, ª, 1)
+OpenShutter:  ibwrt sent |ª| to filter wheel controller
+OpenShutter:  first byte of ibwrt string = -86 (0xffffffaa)
+OpenShutter:  calling ibwait to wait for SRQ
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x41 (65)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+OpenShutter:  Iteration (i) = 1
+OpenShutter:  Byte returned by ibrd() is: -86 (0xffffffaa)
+OpenShutter:  byte = -86, shutter = -86
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x1 (1)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+OpenShutter:  Iteration (i) = 2
+OpenShutter:  Byte returned by ibrd() is: 13 (0xd)
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+OpenShutter:  done while loop with 2 passes
+main:  irrad_error = -2.98335e-005
+main:  read_error = 4.45328e-006
+main:  sig = 0.000397533
+main:  sig (all terms) = 0.000398676
+main:  irrad_error = -3.15616e-005
+main:  read_error = 3.90027e-006
+main:  sig = 0.000341398
+main:  sig (all terms) = 0.000342876
+main:  irrad_error = -3.06175e-005
+main:  read_error = 4.20239e-006
+main:  sig = 0.000420816
+main:  sig (all terms) = 0.00042195
+main:  irrad_error = -2.61872e-005
+main:  read_error = 5.62008e-006
+main:  sig = 0.000286515
+main:  sig (all terms) = 0.000287764
+main:  irrad_error = -2.81214e-005
+main:  read_error = 5.00114e-006
+main:  sig = 0.000231976
+main:  sig (all terms) = 0.000233728
+main:  irrad_error = -1.93826e-005
+main:  read_error = 7.79758e-006
+main:  sig = 0.000225887
+main:  sig (all terms) = 0.000226851
+main:  irrad_error = -4.11979e-005
+main:  read_error = 8.16666e-007
+main:  sig = 0.000388705
+main:  sig (all terms) = 0.000390883
+main:  irrad_error = -1.09926e-005
+main:  read_error = 4.80296e-006
+main:  sig = 0.000109694
+main:  sig (all terms) = 0.000110348
+main:  irrad_error = -0.00031124
+main:  read_error = -1.21471e-005
+main:  sig = 0.00586325
+main:  sig (all terms) = 0.00587152
+main:  irrad_error = -2.97933e-005
+main:  read_error = 4.46613e-006
+main:  sig = 0.000728816
+main:  sig (all terms) = 0.000729438
+encoder_angle():  angle =  -75.0299987793 enc_angle =  -75.0300000000 for counts = 600 (   0.0000012207 deg change)
+encoder_angle():  angle =   39.5349998474 enc_angle =   39.5350000000 for counts = 1200 (  -0.0000001526 deg change)
+encoder_angle():  angle =  -46.7949999571 enc_angle =  -46.7950000000 for counts = 1200 (   0.0000000429 deg change)
+encoder_angle():  angle =  -66.0400009155 enc_angle =  -66.0400000000 for counts = 600 (  -0.0000009155 deg change)
+main:  calling ChangeFilter(fw, 0) prior to shutdown
+ChangeFilter:  Entering ChangeFilter with position = 0, Che blocking = 1, OLI blocking = 0
+ChangeFilter:  calling ibclr()
+ChangeFilter:  calling RQSCheck(fw)
+RQSCheck:  entered RQSCheck()
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+RQSCheck:  DoSerialPoll returned 4, iteration i = 1 in RQSCheck
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+RQSCheck:  DoSerialPoll returned 0, iteration i = 2 in RQSCheck
+RQSCheck:  returning value of 0 with i = 2 iterations (calls to DoSerialPoll)
+ChangeFilter:  RQSCheck() returned 0
+ChangeFilter:  sending command to move wheel 0 to position:  0
+ChangeFilter:  string to be sent = |p| first byte:  112 (0x70)
+ChangeFilter:  calling sleep(2)
+ChangeFilter:  returned from sleep - calling ibwait(fw)
+ChangeFilter:  done waiting for SRQ, calling ReadSerial()
+ReadSerial:  Entering ReadSerial()
+ReadSerial:  calling DoSerialPoll()DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+ReadSerial:  calling DoSerialPoll() as DoSerialPoll returned 4
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x41 (65)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+ReadSerial:  DoSerialPoll returned 2
+ReadSerial:  calling ibrd() to read 1 byte
+ReadSerial:  ibrd command returned
+ReadSerial:  Byte read is: 70 (112) on iteration i = 1
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x1 (1)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+ReadSerial:  DoSerialPoll returned 2
+ReadSerial:  calling ibrd() to read 1 byte
+ReadSerial:  ibrd command returned
+ReadSerial:  Byte read is: d (13) on iteration i = 2
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+ReadSerial:  Returning 112 on iteration 2
+ChangeFilter:  ReadSerial returned 112
+ChangeFilter:  byte to be checked against is  112
+ChangeFilter:  return byte compares OK - done = 0
+ChangeFilter:  sending command to move wheel 1 to position:  8
+ChangeFilter:  string to be sent = |ø| first byte:  -8 (0xfffffff8)
+ChangeFilter:  calling sleep(2)
+ChangeFilter:  returned from sleep - calling ibwait(fw)
+ChangeFilter:  done waiting for SRQ, calling ReadSerial()
+ReadSerial:  Entering ReadSerial()
+ReadSerial:  calling DoSerialPoll()DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+ReadSerial:  calling DoSerialPoll() as DoSerialPoll returned 4
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x41 (65)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+ReadSerial:  DoSerialPoll returned 2
+ReadSerial:  calling ibrd() to read 1 byte
+ReadSerial:  ibrd command returned
+ReadSerial:  Byte read is: d (13) on iteration i = 1
+ReadSerial:  First byte read is a carriage return
+ReadSerial:  assuming new and previous filter positions are the same
+ChangeFilter:  ReadSerial returned -8
+ChangeFilter:  byte to be checked against is  -8
+ChangeFilter:  return byte compares OK - done = -120
+ChangeFilter:  Returning 0 at completion
+main:  filter wheel positioned to position 0
+main:  calling OpenShutter(fw, close)
+OpenShutter:  Entering OpenShutter - executing a ibclr(fw)
+OpenShutter:  returned from ibclr(fw)
+OpenShutter:  calling RQSCheck()
+RQSCheck:  entered RQSCheck()
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+RQSCheck:  DoSerialPoll returned 4, iteration i = 1 in RQSCheck
+RQSCheck:  calling DoSerialPoll()
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+RQSCheck:  DoSerialPoll returned 0, iteration i = 2 in RQSCheck
+RQSCheck:  returning value of 0 with i = 2 iterations (calls to DoSerialPoll)
+OpenShutter:  RQSCheck() returned 0
+OpenShutter:  calling ibwrt(fw, ¬, 1)
+OpenShutter:  ibwrt sent |¬| to filter wheel controller
+OpenShutter:  first byte of ibwrt string = -84 (0xffffffac)
+OpenShutter:  calling ibwait to wait for SRQ
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x43 (67)
+DoSerialPoll:  Serial and GPIB buffers both empty
+DoSerialPoll:  Returning with flag = 4
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x41 (65)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+OpenShutter:  Iteration (i) = 1
+OpenShutter:  Byte returned by ibrd() is: -84 (0xffffffac)
+OpenShutter:  byte = -84, shutter = -84
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x1 (1)
+DoSerialPoll:  Serial data wating to be read
+DoSerialPoll:  Returning with flag = 2
+OpenShutter:  Iteration (i) = 2
+OpenShutter:  Byte returned by ibrd() is: 13 (0xd)
+DoSerialPoll:  Entered DoSerialPoll
+DoSerialPoll:  calling ibrsp to request serial poll
+DoSerialPoll:  Serial poll byte is 0x3 (3)
+DoSerialPoll:  device is NOT requesting service and both buffers are empty
+DoSerialPoll:  Returning with flag = 0
+OpenShutter:  done while loop with 2 passes
+main:  OpenShutter returned 1
+
+amp_local:  sending |SOURCE:DIGITAL:DATA:BYTE 2,(@202)| to HP34970A to set amp to local control
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+amp_local:  Returning with return code = 1
+
+amp_off:  sending |SOURCE:DIGITAL:DATA:BYTE 6,(@202)| to HP34970A to turn amp off
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+amp_off:  Returning with return code = 1
+
+amp_off:  sending |SOURCE:DIGITAL:DATA:BYTE 0,(@202)| to HP34970A
+status_hp34970a:  status byte = 0 on iteration 0
+status_hp34970a:  The following items were true on completion:
+status_hp34970a:  End of list - returning with result = 0
+
+amp_off:  Returning with return code = 1
+
+reset_hp34970a:  Sent |*RST| to HP34970a
+reset_hp34970a:  EnableLocal() completed
+reset_hp34970a:  HP34970A reset and put in Local mode - returning
+
