@@ -1,6 +1,7 @@
 Magic Black
 - v1: only in-plane of incidence (i.e., no azimuth consideration)
 - v2: azimuth following Zemax's built-in angles
+- v3.0 ("MagicBlack_v3o0_Casey20261015.xls"): measurement made by Casey, slightly off center where the damaged sample appeared not as bad;
 
 "blank_v2o0_20250911"
 - JNC's RT-300S's computer monitor was on (in bottom cabinet of machine)

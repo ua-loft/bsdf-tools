@@ -8,7 +8,7 @@ clc, clearvars, close all
 
 
 % filepath_fred = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\test_AeroglazeZ307_wPrimer9929__onAl6061T6_12x12in.txt";
-filepath_fred = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\Z306_from_FRED_20260811\Aeroglaze_Z306_from_PEs_FRED_binomial_model_20260811_8percNormTIS.txt";
+filepath_fred = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\MagicBlack_v3o0_Casey20261015.txt";
     % If multiwavelength, use format: 
         % filepath_fred = "C:\...\my_fred_file_*nm.txt"
     % for filenames like "my_fred_file_1243o53nm.txt", 
@@ -27,7 +27,7 @@ MULTI_WAVELENGTH = false;
 
 
 % filepath_zemax = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\zemax\test_AeroglazeZ307_wPrimer9929__onAl6061T6_12x12in.bsdf";
-filepath_zemax = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\zemax\Z306_from_FRED_20260811\Aeroglaze_Z306_from_PEs_FRED_binomial_model_20260811_8percNormTIS.bsdf";
+filepath_zemax = "C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\zemax\MagicBlack_v3o0_Casey20261015.bsdf";
     % name of new BSDF file to output results to; include '.bsdf' extension
 
     % If multiwavelength, use format: 
@@ -45,18 +45,18 @@ name_contact = "Jacob P. Krell (jacobpkrell@arizona.edu)"; % name of person
     % including email or phone number in parentheses too
 
 % name_sample = "Aeroglaze Z307 with 9929 Primer on Al 6061-T6 (12""x12"" sample)";
-name_sample = "Aeroglaze Z306";
+name_sample = "[WARNING: SAMPLE SURFACE WAS SCRATCHED WITH CLOTH PRIOR TO MEASUREMENT] Magic Black on Aluminum; measured where sample looked least damaged";
     % name of sample measured
 
-% name_scatterometer = "Wyant College's J&C RT-300S";
-name_scatterometer = "";
+name_scatterometer = "Wyant College's J&C RT-300S";
+% name_scatterometer = "";
 
-% name_source = "HeNe laser (632.8 nm, 3.5mm spot diam.)";
-name_source = "";
+name_source = "630nm laser, 3.5mm spot diam.";
+% name_source = "";
     % name of light source used
 
-% name_angles = "(I,A,R) = ([10,70], -90:10:0, -80:5:80)";
-name_angles = "";
+name_angles = "(I,A,R) = (10:20:70, -90:10:90, -80:5:80)";
+% name_angles = "";
 
 % Filenames of raw measurements, where first element is the blank data used
 % to zero the sample measurements:
@@ -66,11 +66,11 @@ name_angles = "";
 % filenames = ["blank_v3o2_20260412.xls", ...
 %     "Aeroglaze_Z307_12inX12in_20260809.xls"];
 
-blank_dataset_filename = "";
-raw_dataset_filenames = {".\\_imported\\Z306_from_FRED_20260811\\tabulated_FRED_Z306_TIS0o06_specAzi0d.txt"};
-fred_dataset_filenames = {".\\Z306_from_FRED_20260811\\Aeroglaze_Z306_from_PEs_FRED_binomial_model_20260811_6percNormTIS.txt"};
+blank_dataset_filename = ".\\rt-300s\\blank_v3o2_20260412.xls";
+raw_dataset_filenames = {".\\rt-300s\\MagicBlack_v3o0_Casey20261015.xls"};
+fred_dataset_filenames = {".\\MagicBlack_v3o0_Casey20261015.txt"};
 
-name_dates = ["Dataset exported 2026/08/11 by Photon Engineering, from FRED binomial model"]; % date(s) measurements were made
+name_dates = ["2026/10/15"]; % date(s) measurements were made
 
 % num_avg_per_rot = 1; % number of measurements per stage rotation angle 
     % (which get averaged; note assumes same number per each rotation);
@@ -78,7 +78,7 @@ name_dates = ["Dataset exported 2026/08/11 by Photon Engineering, from FRED bino
     % NOTE IF ISOTROPIC AND RT-300S, and have (A,R) = (-A,-R) data, then 
     % double number of measurement files because R>0 for A \in [-90,0] is 
     % same as R<0 for A \in [0,90].
-num_avg_per_rot = "";
+num_avg_per_rot = "2";
 
 notes = []; 
     % [] or {'my first note', 'my second note'};

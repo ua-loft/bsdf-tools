@@ -61,7 +61,7 @@ S = 0; % 0 : 10: 90; % stage rotation [deg]; if isotropic set to integer 0,
 %     'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\raw\rt-300s\IMX455_stageRotation80_20250922.xls', ...
 %     'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\raw\rt-300s\IMX455_stageRotation90_20250922.xls'};
 %     % cell of filepath(s) to measured RT-300S data (include '.xls')
-filepaths_rt300s = {'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\raw\rt-300s\Aeroglaze_Z307_12inX12in_20260809.xls'};
+filepaths_rt300s = {'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\raw\rt-300s\MagicBlack_v3o0_Casey20261015.xls'};
 ISOTROPIC = true; % set true if sample is isotropic
 ANISO_W_XZ_SYMM = false; % set true if sample is anisotropic but exhibits 
     % plane-symmetric features (e.g., lenslet array) across YZ plane when 
@@ -72,12 +72,9 @@ ANISO_W_YZ_SYMM = false; % same, but for XZ plane
 % Filepath of 'blank' (no light source) RT-300S data (include '.xls'):
 blankpath_rt300s = 'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\raw\rt-300s\blank_v3o2_20260412.xls';
 
-% DEBUG
-lambertianpath_fred = 'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\test_lambertian_20260811.txt';
-
 % New FRED file's target filepath to save to (include '.txt'):
-filepath_fred = 'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\test_AeroglazeZ307_wPrimer9929__onAl6061T6_12x12in.txt';
-OVERWRITE = true; % if true and FRED file already exists, will overwrite
+filepath_fred = 'C:\Users\jakep\Documents\Optics_local\UofA\bsdf-tools\data\processed\fred\MagicBlack_v3o0_Casey20261015.txt';
+OVERWRITE = false; % if true and FRED file already exists, will overwrite
 
 % [END] USER INPUTS.
 % =========================================================================
@@ -153,30 +150,30 @@ if ISOTROPIC
     [Pi, Ai, Ps, As, BRDF, ~] = remove_fred_redundancy_iso(Pi, Ai, Ps, As, BRDF);
 end
 
-%DEBUG
-[PiL, AiL, PsL, AsL, BRDF_L] = load_fred(lambertianpath_fred);
-
-%DEBUG
-G = nan(size(BRDF));
-for Pi_val = unique(Pi)
-    mPi = Pi == Pi_val;
-    mLPi = PiL == Pi_val;
-    for Ai_val = unique(Ai(mPi))
-        mPiAi = and(mPi, Ai == Ai_val);
-        mLPiAi = and(mLPi, AiL == Ai_val);
-        mLPiAiPs0 = and(mLPiAi, PsL == 0); % should be single element
-        for Ps_val = unique(Ps(mPiAi))
-            mPiAiPs = and(mPiAi, Ps == Ps_val);
-            mLPiAiPs = and(mLPiAi, PsL == Ps_val);
-            for As_val = unique(As(mPiAiPs))
-                mPiAiPsAs = and(mPiAiPs, As == As_val);
-                mLPiAiPsAs = and(mLPiAiPs, AsL == As_val);
-                G(mPiAiPsAs) = BRDF_L(mLPiAiPs0) / BRDF_L(mLPiAiPsAs);
-            end
-        end
-    end
-end
-BRDF = BRDF ./ G;
+% %DEBUG
+% [PiL, AiL, PsL, AsL, BRDF_L] = load_fred(lambertianpath_fred);
+% 
+% %DEBUG
+% G = nan(size(BRDF));
+% for Pi_val = unique(Pi)
+%     mPi = Pi == Pi_val;
+%     mLPi = PiL == Pi_val;
+%     for Ai_val = unique(Ai(mPi))
+%         mPiAi = and(mPi, Ai == Ai_val);
+%         mLPiAi = and(mLPi, AiL == Ai_val);
+%         mLPiAiPs0 = and(mLPiAi, PsL == 0); % should be single element
+%         for Ps_val = unique(Ps(mPiAi))
+%             mPiAiPs = and(mPiAi, Ps == Ps_val);
+%             mLPiAiPs = and(mLPiAi, PsL == Ps_val);
+%             for As_val = unique(As(mPiAiPs))
+%                 mPiAiPsAs = and(mPiAiPs, As == As_val);
+%                 mLPiAiPsAs = and(mLPiAiPs, AsL == As_val);
+%                 G(mPiAiPsAs) = BRDF_L(mLPiAiPs0) / BRDF_L(mLPiAiPsAs);
+%             end
+%         end
+%     end
+% end
+% BRDF = BRDF ./ G;
 
 % Write to FRED file:
 write_fred(Pi, Ai, Ps, As, BRDF, filepath_fred);
